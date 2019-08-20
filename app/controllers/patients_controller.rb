@@ -44,3 +44,5 @@ class PatientsController < ApplicationController
     params.require(:patient).permit(:first_name, :last_name, :email, :user_id)
   end
 end
+
+

@@ -1,6 +1,15 @@
-<h1>Hello world</h1>
-<% @patients.each do |p| %>
-<%= p.first_name  %>
-<%= p.last_name  %>
-<%= p.email  %>
-<% end %>
+<div class="container-fluid">
+    <div class="row text-center">
+        <h1 class="col-12 p-2">Patients</h1>
+        <input type="search" class="col-4 offset-4 mb-3"></input>
+        <% @patients.each do |p| %>
+        <%= link_to '', doctor_patient_path(p) do %>
+        <div class="offset-3 col-6"><span class="font15">
+                <%= p.first_name %>
+                <%= p.last_name %></span>
+            <%= p.email %>
+          </div>
+          <% end %>
+        <% end %>
+    </div>
+</div>
