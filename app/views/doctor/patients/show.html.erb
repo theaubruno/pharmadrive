@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="left col-6">
+      <div class="patient-name">
+        <h1> <%= @patient.first_name %> <%= @patient.last_name %> </h1> <%= link_to '', edit_doctor_patient_path, class: 'fas fa-pen ml-1'  %>
+      </div>
+
+      <div class="patient-lists">
+        <% @patient.lists.each do |list| %>
+          <div class="card-list">
+            <h6> <%= list.prescribed_at %></h6>
+            <h6><%= list.drugs.count %> prescriptions</h6>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+
+    <div class="right col-6">
+
+    </div>
+
+  </div>
+
+</div>
