@@ -25,7 +25,7 @@ class Doctor::PatientsController < ApplicationController
   def update
     @patient.update(patient_params)
 
-    redirect_to doctor_patient_path(@user)
+    redirect_to doctor_patient_path(@patient)
   end
 
   def destroy
