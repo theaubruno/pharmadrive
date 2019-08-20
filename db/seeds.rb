@@ -7,9 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "Destroying all .."
+List.destroy_all
 Patient.destroy_all
 User.destroy_all
-List.destroy_all
+
 
 puts "Adding User"
 
@@ -38,14 +39,24 @@ p19 = Patient.create!(first_name: "Chloé", last_name: "Loron", email: "chloé@e
 p20 = Patient.create!(first_name: "Lena", last_name: "Contentin", email: "lena@example.com", user_id: d1.id)
 
 
+Date.new(2018,02,15)
 
 puts " Adding List"
 
-l1 = List.create!(patient_id: p1.id, user_id: d1.id, note: "Grippe", prescribed_at:"", ready_at: "", delivered: "")
-l2 = List.create!(patient_id: p2.id, user_id: d1.id, note: "Grippe", prescribed_at:"", ready_at: "", delivered: "")
-l3 = List.create!(patient_id: p3.id, user_id: d1.id, note: "Grippe", prescribed_at:"", ready_at: "", delivered: "")
-l4 = List.create!(patient_id: p4.id, user_id: d1.id, note: "Grippe", prescribed_at:"", ready_at: "", delivered: "")
-l5 = List.create!(patient_id: p5.id, user_id: d1.id, note: "Grippe", prescribed_at:"", ready_at: "", delivered: "")
-l6 = List.create!(patient_id: p6.id, user_id: d1.id, note: "Grippe", prescribed_at:"", ready_at: "", delivered: "")
+l1 = List.create!(patient_id: p1.id, user_id: d1.id, note: "Grippe", prescribed_at: Date.new(2018,2,15), ready_at: "", delivered: "")
+l2 = List.create!(patient_id: p1.id, user_id: d1.id, note: "Entorse", prescribed_at: Date.new(2018,6,21), ready_at: "", delivered: "")
+l3 = List.create!(patient_id: p1.id, user_id: d1.id, note: "Burn-out", prescribed_at: Date.new(2018,8,30), ready_at: "", delivered: "")
+l4 = List.create!(patient_id: p1.id, user_id: d1.id, note: "Dépression", prescribed_at: Date.new(2018,12,7), ready_at: "", delivered: "")
+l5 = List.create!(patient_id: p1.id, user_id: d1.id, note: "Gastro", prescribed_at: Date.new(2019,03,20), ready_at: "", delivered: "")
+l6 = List.create!(patient_id: p1.id, user_id: d1.id, note: "Fracture du genou", prescribed_at: Date.new(2019,07,14), ready_at: "", delivered: "")
+
+l7 = List.create!(patient_id: p2.id, user_id: d1.id, note: "Grippe", prescribed_at: Date.new(2018,2,15), ready_at: "", delivered: "")
+l8 = List.create!(patient_id: p2.id, user_id: d1.id, note: "Grippe", prescribed_at: Date.new(2018,6,21), ready_at: "", delivered: "")
+l9 = List.create!(patient_id: p2.id, user_id: d1.id, note: "Grippe", prescribed_at: Date.new(2018,8,30), ready_at: "", delivered: "")
+l10 = List.create!(patient_id: p2.id, user_id: d1.id, note: "Grippe", prescribed_at: Date.new(2018,12,7), ready_at: "", delivered: "")
+l11 = List.create!(patient_id: p2.id, user_id: d1.id, note: "Grippe", prescribed_at: Date.new(2019,03,20), ready_at: "", delivered: "")
+l12 = List.create!(patient_id: p2.id, user_id: d1.id, note: "Grippe", prescribed_at: Date.new(2019,07,14), ready_at: "", delivered: "")
+
+
 
 puts "Done ! "
