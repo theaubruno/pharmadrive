@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" >
   <div class="row">
     <div class="left col-6 border" style="height: 100vh">
       <div class="patient-name">
@@ -8,7 +8,7 @@
       <div class="patient-lists ">
         <% @patient.lists.each do |list| %>
           <div class="card-list">
-            <h6> <%= list.prescribed_at.strftime("%A, %e, %B, %C") %> - <%= list.drugs.count %> prescriptions </h6>
+            <h5> <%= list.prescribed_at.strftime("%A, %e, %B, %C") %> - <%= list.drugs.count %> prescriptions </h5>
           </div>
         <% end %>
       </div>
