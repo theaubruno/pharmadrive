@@ -6,9 +6,16 @@
 @import "card-list";
 @import "card-patient";
 
+
 .container-fluid {
   background-color : #F8F9FA;
   a {
     text-decoration: none;
   }
+}
+
+.search-barre {
+  width: 100vh;
+  margin-right: 0px;
+  margin-left: 0px;
 }
