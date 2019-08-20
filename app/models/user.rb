@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :patients
   has_many :lists
   has_many :lists, through: :patients
+  has_many :patients, through: :lists
 end
