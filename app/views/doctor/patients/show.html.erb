@@ -36,6 +36,49 @@
             </div>
         </div>
         <div class="right col-6 border">
-        </div>
-    </div>
-</div>
+          <div class="list-in-creation">
+            <h3>Nouvelle ordonnance : </h3>
+            <%= simple_form_for :list, url: doctor_patient_lists_path(@patient, @list), method: :post  do |form| %>
+              <div class="new-drug">
+                <%= form.fields_for [ @list, @drug ] do |f| %>
+                    <%= f.input :drug_name, label: "Nom du médicament", class: "drug-name-input" %>
+                    <%= f.input :dosage, label: "Dosage", class: "dosage-input" %>
+                    <%= f.input :posology, label: "Posologie", class: "posology-input" %>
+                    <%= f.input :quantity, label: "Quantité", class: "quantity-input" %>
+                    <%= f.input :qsp, label: "QSP", class: "qsp-input" %>
+                <% end %>
+              </div>
+              <div class="">
+              <%= link_to ' Ajouter une prescription', class: 'far fa-plus-circle font05' %>
+              </div>
+
+              <button type="button" class="btn btn-success color-white" data-toggle="modal" data-target="#exampleModal" id="book">
+                Choisir la Pharmacie
+              </button>
+
+
+              <%= form.button :submit, class: 'add-drug' %>
+            <% end %>
+          </div>
+
+<script>
+
+const listInCreation = document.querySelector(".list-in-creation");
+const addDrug = document.querySelector(".add-drug");
+
+addDrug.addEventListener("click", (event) => {
+
+  const drugNameInput = document.querySelector(".list_drug_drug_name input");
+  const dosageInput = document.querySelector(".list_drug_dosage input");
+  const posologyInput = document.querySelector(".list_drug_posology input");
+  const quantityInput = document.querySelector(".list_drug_quantity input");
+  const qspInput = document.querySelector(".list_drug_qsp input");
+
+
+  listInCreation.insertAdjacentHTML("afterbegin" , `<div><p>${drugNameInput.value} - ${dosageInput.value} -${posologyInput.value} /j- ${quantityInput.value} boites - ${qspInput.value}</p></div>`);
+
+
+});
+
+</script>
+
