@@ -1,25 +1,33 @@
 <div class="container-fluid">
-    <div class="row text-center align-items-center">
-      <h1 class="col-12 p-2">Patients</h1>
-      <div class="search-barre col-6">
-        <%= form_tag doctor_patients_path, method: :get do %>
-          <%= text_field_tag :query,
+    <div class="row text-center align-items-center d-inline">
+        <h1 class="col-12 p-2">Rechercher un patient</h1>
+        <div class="row justify-content-center mb-4">
+        <div class="search-bar col-12 col-lg-6" style='margin-right: 19px;'>
+            <%= form_tag doctor_patients_path, method: :get do %>
+            <%= text_field_tag :query,
             params[:query],
             class: "form-control",
-            placeholder: "Rechercher un patient"
+            placeholder: "Tapez son nom"
           %>
-          <%= submit_tag "Rechercher", class: "btn btn-primary" %>
-        <% end %>
-      </div>
+            <% end %>
+            <%= content_tag(:button, "Add Patient", type: 'submit')%>
+            </div>
+        </div>
+        <div class="patients">
         <% @patients.each do |p| %>
         <%= link_to doctor_patient_path(p) do %>
-        <div class="card-patient offset-3 col-6"><span class="font15">
-                <%= p.last_name %>
-                <%= p.first_name %>
-                </span>
-            - <%= p.email %>
-        <% end %>
+        <div class="row justify-content-center">
+        <div class="card-patient offset-3 col-12 col-lg-6"><span class="font15">
+          <ul class="menu">
+                <li class="item"><%= p.last_name %> <%= p.first_name %> - <%= p.email %></li>
+
+            </span>
+
+            <% end %>
+            </ul>
+        </div>
         </div>
         <% end %>
+        </div>
     </div>
 </div>
