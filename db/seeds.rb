@@ -5,8 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
 puts "Destroying all .."
+Drug.destroy_all
 List.destroy_all
 Patient.destroy_all
 User.destroy_all
@@ -41,7 +41,7 @@ p20 = Patient.create!(first_name: "Lena", last_name: "Contentin", email: "lena@e
 
 Date.new(2018,02,15)
 
-puts " Adding List"
+puts "Adding List"
 
 l1 = List.create!(patient_id: p1.id, user_id: d1.id, note: "Grippe", prescribed_at: Date.new(2018,2,15), ready_at: "", delivered: "")
 l2 = List.create!(patient_id: p1.id, user_id: d1.id, note: "Entorse", prescribed_at: Date.new(2018,6,21), ready_at: "", delivered: "")
@@ -57,6 +57,21 @@ l10 = List.create!(patient_id: p2.id, user_id: d1.id, note: "Grippe", prescribed
 l11 = List.create!(patient_id: p2.id, user_id: d1.id, note: "Grippe", prescribed_at: Date.new(2019,03,20), ready_at: "", delivered: "")
 l12 = List.create!(patient_id: p2.id, user_id: d1.id, note: "Grippe", prescribed_at: Date.new(2019,07,14), ready_at: "", delivered: "")
 
+puts "Adding Drug"
+
+d1 = Drug.create!(list_id: l1.id, drug_name: "Doliprane", dosage:"1000mg", posology:"0-1-0", quantity:" 1 boîtes", qsp: "7 jours")
+d2 = Drug.create!(list_id: l1.id, drug_name: "Ibuprophène", dosage:"500mg", posology:"1-0-1", quantity:" 2 boîtes", qsp: "5 jours")
+d3 = Drug.create!(list_id: l1.id, drug_name: "Maxilase", dosage:"150cl", posology:"1-1-1", quantity:" 1 flacon", qsp: "5 jours")
+
+d4 = Drug.create!(list_id: l5.id, drug_name: "Tiorfan", dosage:"500mg", posology:"1-1-0", quantity:" 1 boîtes", qsp: "4 jours")
+d5 = Drug.create!(list_id: l5.id, drug_name: "Ibuprophène", dosage:"500mg", posology:"1-0-1", quantity:" 2 boîtes", qsp: " 4 jours")
+d6 = Drug.create!(list_id: l5.id, drug_name: "Doliprane", dosage:"1000mg", posology:"0-1-0", quantity:" 1 boîtes", qsp: "7 jours")
+
+d7 = Drug.create!(list_id: l2.id, drug_name: "Ketum", dosage:"500ml", posology:"1-0-1", quantity:" 1 flacon", qsp: "4 jours")
+d8 = Drug.create!(list_id: l2.id, drug_name: "Doliprane", dosage:"1000mg", posology:"0-1-0", quantity:" 1 boîtes", qsp: "7 jours")
+
+d9 = Drug.create!(list_id: l3.id, drug_name: "Citalorum almus", dosage:"500ml", posology:"0-0-1", quantity:" 2 boites", qsp: " 1 mois")
+d9 = Drug.create!(list_id: l4.id, drug_name: "Citalorum almus", dosage:"500ml", posology:"0-0-1", quantity:" 2 boites", qsp: " 1 mois")
 
 
 puts "Done ! "
