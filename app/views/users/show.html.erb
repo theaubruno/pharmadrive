@@ -1,0 +1,9 @@
+<%= current_user.name %>
+<%= current_user.address %>
+<br>
+<% if current_user.role == 'doctor' %>
+<%= current_user.lists.count %>
+<%= '102' %>
+<% else %>
+<%= 'Tu es pharmacien' %>
+<% end %>
