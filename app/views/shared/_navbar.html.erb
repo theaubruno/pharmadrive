@@ -14,7 +14,7 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item active">
-          <%= link_to "Mon compte", edit_user_registration_path, class: "nav-link" %>
+          <%= link_to "Mon compte", user_path(current_user), class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "nav-link" %>
