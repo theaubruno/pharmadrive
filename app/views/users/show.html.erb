@@ -2,8 +2,10 @@
 <%= current_user.address %>
 <br>
 <% if current_user.role == 'doctor' %>
-<%= current_user.lists.count %>
-<%= '102' %>
+<%= @user.lists.count %>
+<%= @user.patients.count %>
 <% else %>
 <%= 'Tu es pharmacien' %>
 <% end %>
+
+ <%= link_to "Modifier vos informations", edit_user_registration_path, class: "nav-link" %>
