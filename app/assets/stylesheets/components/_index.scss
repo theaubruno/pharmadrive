@@ -2,15 +2,19 @@
 @import "alert";
 @import "avatar";
 @import "navbar";
+@import "search-bar";
 
 @import "card-list";
 @import "card-patient";
+@import "index-list";
+@import "button";
+@import "form";
 
 
 .container-fluid {
   background-color : #F8F9FA;
   a {
-    text-decoration: none;
+    text-decoration: none !important;
   }
 }
 
@@ -34,4 +38,11 @@
 }
 .green{
   color: lightgreen;
+}
+.justify-between{
+  justify-content: space-between;
+}
+
+.btn:focus, .btn.focus{
+  box-shadow: 0 0 0 0.2rem rgba(110, 251, 22, 0) !important;
 }
