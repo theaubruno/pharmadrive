@@ -12,6 +12,7 @@ Patient.destroy_all
 User.destroy_all
 
 
+
 puts "Adding User"
 
 d1 = User.create!(role: "doctor", name: "Wangermez Vincent", email:"doctor1@example.com", password:"password")
