@@ -12,14 +12,14 @@
                 <div class="accordion" id="accordionExample">
                     <% @patient.lists.each do |list| %>
                     <div class="card">
-                        <div class="card-header" id="heading<%=list.id%>">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<%=list.id%>" aria-expanded="false" aria-controls="collapse<%=list.id%>">
-                                    <h5>
-                                        <%= list.prescribed_at.strftime("%A, %e, %B, %C") %> -
-                                        <%= list.drugs.count %> prescriptions </h5>
+                        <div class="card-header d-flex" id="heading<%=list.id%>">
+
+                                <button class="btn d-flex w-100 justify-between" type="button" data-toggle="collapse" data-target="#collapse<%=list.id%>" aria-expanded="false" aria-controls="collapse<%=list.id%>">
+
+                                        <span><%= list.prescribed_at.strftime("%A %e %B %C") %></span>
+                                        <span><%= list.drugs.count %> prescriptions </span>
                                 </button>
-                            </h2>
+
                         </div>
                         <div id="collapse<%=list.id%>" class="collapse" aria-labelledby="heading<%=list.id%>" data-parent="#accordionExample">
                             <div class="card-body">
