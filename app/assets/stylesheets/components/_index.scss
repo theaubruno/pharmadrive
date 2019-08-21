@@ -8,12 +8,13 @@
 @import "card-patient";
 @import "index-list";
 @import "button";
+@import "form";
 
 
 .container-fluid {
   background-color : #F8F9FA;
   a {
-    text-decoration: none;
+    text-decoration: none !important;
   }
 }
 
@@ -21,4 +22,27 @@
   width: 100vh;
   margin-right: 0px;
   margin-left: 0px;
+}
+.font05 {
+  font-size: 0.5em;
+}
+
+.font08 {
+  font-size: 0.8em !important;
+}
+.font12 {
+  font-size: 1.2em;
+}
+.font15 {
+  font-size: 1.5em;
+}
+.green{
+  color: lightgreen;
+}
+.justify-between{
+  justify-content: space-between;
+}
+
+.btn:focus, .btn.focus{
+  box-shadow: 0 0 0 0.2rem rgba(110, 251, 22, 0) !important;
 }
