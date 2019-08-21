@@ -2,7 +2,12 @@ class Doctor::PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
 
   def index
-    @patients = Patient.all
+    if params[:query].present?
+      sql_query = "first_name ILIKE :query OR last_name ILIKE :query"
+      @patients = Patient.where(sql_query, query: "%#{params[:query]}%").order('last_name ASC')
+    else
+      @patients = Patient.all.order('last_name ASC')
+    end
   end
 
   def show
