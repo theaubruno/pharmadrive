@@ -12,8 +12,7 @@ class Pharmacy::ListsController < ApplicationController
   end
 
   def update
-    @list.delivered = true
-    @list.save
+    @list.update(list_params)
 
     redirect_to pharmacy_lists_path(@pharmacy)
   end
@@ -31,6 +30,6 @@ class Pharmacy::ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:patient_id, :prescribed_at, :user_id, :delivered)
+    params.require(:list).permit(:patient_id, :prescribed_at, :user_id, :delivered_at, :ready_at)
   end
 end
