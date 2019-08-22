@@ -2,14 +2,14 @@
   <% if user_signed_in? %>
     <% if current_user.role == 'doctor' %>
     <%= link_to doctor_patients_path, class: "navbar-brand" do %>
-       <p class="text-primary">
-      <%= image_tag "clipboard.png" %>
+       <p>
+      <%= image_tag "ordobleue.png" %>
       <%= Pharmadrive %></p>
       <% end %>
   <% else %>
     <%= link_to pharmacy_lists_path, class: "navbar-brand" do %>
-      <p class="text-success">
-      <%= image_tag "clipboard.png" %>
+      <p>
+      <%= image_tag "ordoverte.png" %>
       <%= Pharmadrive %></p>
       <% end %>
   <% end %>
