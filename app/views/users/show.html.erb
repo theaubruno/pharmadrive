@@ -1,9 +1,21 @@
-<%= current_user.name %>
-<%= current_user.address %>
+<br>
+<div class="card-stats">
+<%= current_user.name %> </div>
 <br>
 <% if current_user.role == 'doctor' %>
-<%= @user.lists.count %>
-<%= @user.patients.count %>
+<div class="container-stats">
+<div class="card-stats">
+<%= "Nombre de patients:" %>
+<br>
+<strong> <%= @user.patients.count %></strong>
+</div>
+<br>
+<div class="card-stats">
+<%= "Nombre d'ordonnances:" %>
+<br>
+<strong> <%= @user.lists.count %></strong>
+</div>
+</div>
 <% else %>
 <%= 'Tu es pharmacien' %>
 <% end %>
