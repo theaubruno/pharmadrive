@@ -15,9 +15,9 @@ User.destroy_all
 
 puts "Adding User"
 
-d1 = User.create!(role: "doctor", name: "Wangermez Vincent", email:"doctor1@example.com", password:"password")
+d1 = User.create!(role: "doctor", name: "Wangermez Vincent", email:"doctor1@example.com", address:"107 Cours Balguerie Stuttenberg, 33300 Bordeaux", password:"password")
 
-u1 = User.create!(role:"pharmacy", name: "Pharmacie du Musée", email:"pharmacy1@example.com", password:"password")
+u1 = User.create!(role:"pharmacy", name: "Pharmacie du Musée", email:"pharmacy1@example.com", address:"93 Cours Balguerie Stuttenberg, 33300 Bordeaux", password:"password")
 
 puts "Adding Patient"
 

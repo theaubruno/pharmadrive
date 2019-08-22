@@ -13,5 +13,5 @@ Rails.application.routes.draw do
     resources :lists, only: [:index, :update ]
   end
 
-  resources :users, only: [:show]
+  resources :users, only: [:index, :show]
 end
