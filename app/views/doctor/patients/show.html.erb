@@ -5,7 +5,7 @@
                 <h1>
                     <%= @patient.first_name %>
                     <%= @patient.last_name %>
-                    <%= link_to ' edit', edit_doctor_patient_path, class: 'fas fa-pen ml-1 font05 green' %>
+                    <%= link_to '', edit_doctor_patient_path(@patient), class: 'fas fa-pen ml-1 font05 green' %>
                     <button id="showfrom" class="font05">+ Ordonnance</button>
                 </h1>
             </div>

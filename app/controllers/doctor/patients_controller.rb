@@ -20,10 +20,10 @@ class Doctor::PatientsController < ApplicationController
   end
 
   def create
-    @patient = Patient.new(user_params)
+    @patient = Patient.new(patient_params)
+    @patient.user = current_user
     @patient.save
-
-    # redirect_to patient_path(@patient)
+    redirect_to doctor_patients_path
   end
 
   def edit
@@ -48,6 +48,6 @@ class Doctor::PatientsController < ApplicationController
   end
 
   def patient_params
-    params.require(:patient).permit(:first_name, :last_name, :email, :user_id)
+    params.require(:patient).permit(:first_name, :last_name, :email)
   end
 end
