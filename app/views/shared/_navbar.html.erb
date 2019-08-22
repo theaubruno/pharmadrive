@@ -1,9 +1,25 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to doctor_patients_path, class: "navbar-brand" do %>
-    <p>
-    <%= image_tag "clipboard.png" %>
-    <%= Pharmadrive %></p>
-    <% end %>
+  <% if user_signed_in? %>
+    <% if current_user.role == 'doctor' %>
+    <%= link_to doctor_patients_path, class: "navbar-brand" do %>
+      <p>
+      <%= image_tag "clipboard.png" %>
+      <%= Pharmadrive %></p>
+      <% end %>
+  <% else %>
+    <%= link_to pharmacy_lists_path, class: "navbar-brand" do %>
+      <p>
+      <%= image_tag "clipboard.png" %>
+      <%= Pharmadrive %></p>
+      <% end %>
+  <% end %>
+  <% else %>
+  <%= link_to root_path, class: "navbar-brand" do %>
+      <p>
+      <%= image_tag "clipboard.png" %>
+      <%= Pharmadrive %></p>
+      <% end %>
+  <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
