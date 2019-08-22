@@ -12,7 +12,6 @@ class Doctor::PatientsController < ApplicationController
 
   def show
     @list = List.new
-    @drug = Drug.new
   end
 
   def new
