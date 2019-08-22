@@ -12,9 +12,32 @@
                     <%= list.drugs.count %> prescriptions
                 </div>
                 <div>
-                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalLong">
+                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalLong<%= list.id %>">
                         Détails
                     </button>
+                    <div class="modal fade" id="exampleModalLong<%= list.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Prescriptions </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <% list.drugs.each do |drug| %>
+                                      <%= drug.drug_name %>
+                                      <%= drug.dosage %>
+                                      <%= drug.posology %> <br>
+                                    <% end %>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <%= link_to 'Retiré', pharmacy_list_path(list), method: :patch, class:"btn btn-primary" %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <% end %>
@@ -45,6 +68,11 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
+                                    <% list.drugs.each do |drug| %>
+                                      <%= drug.drug_name %>
+                                      <%= drug.dosage %>
+                                      <%= drug.posology %> <br>
+                                    <% end %>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
