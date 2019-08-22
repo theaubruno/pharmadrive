@@ -13,6 +13,7 @@ class Doctor::PatientsController < ApplicationController
   def show
     @list = List.new
     @drug = Drug.new
+    @drug.list = @list
   end
 
   def new

@@ -16,7 +16,7 @@
                         <div class="card-header d-flex" id="heading<%=list.id%>">
                             <button class="btn d-flex w-100 justify-between" type="button" data-toggle="collapse" data-target="#collapse<%=list.id%>" aria-expanded="false" aria-controls="collapse<%=list.id%>">
                                 <span>
-                                    <%= list.prescribed_at.strftime("%A %e %B %C") %></span>
+                                    <%= list.prescribed_at%></span>
                                 <span>
                                     <%= list.drugs.count %> prescriptions </span>
                             </button>
@@ -36,8 +36,12 @@
             </div>
         </div>
         <div class="right col-6 border">
+          <div><h3>Nouvelle ordonnance : </h3>
+           <button id="showfromlist" class="font05 ">+ Ordonnance</button></div>
           <div class="list-in-creation">
-            <h3>Nouvelle ordonnance : </h3>
+          <div id="newordo" class="d-none">
+
+
             <%= simple_form_for :list, url: doctor_patient_lists_path(@patient, @list), method: :post  do |form| %>
               <div class="new-drug">
                 <%= form.fields_for [ @list, @drug ] do |f| %>
@@ -49,17 +53,19 @@
                 <% end %>
               </div>
               <div class="">
-              <%= link_to ' Ajouter une prescription', class: 'far fa-plus-circle font05' %>
+
+              <%= link_to ' Ajouter une prescription', class: 'far fa-plus-circle font05 ' %>
               </div>
 
-              <button type="button" class="btn btn-success color-white" data-toggle="modal" data-target="#exampleModal" id="book">
+              <button type="button" class="btn btn-success color-white add-drug" data-toggle="modal" data-target="#exampleModal" id="book">
                 Choisir la Pharmacie
               </button>
 
 
-              <%= form.button :submit, class: 'add-drug' %>
+              <%= form.button :submit, class: 'opennewordo' %>
             <% end %>
           </div>
+        </div>
 
 <script>
 
@@ -86,6 +92,4 @@ addDrug.addEventListener("click", (event) => {
         </div>
     </div>
 </div>
-<!--             <form id="newordo" class="d-none">
-            </form> -->
 

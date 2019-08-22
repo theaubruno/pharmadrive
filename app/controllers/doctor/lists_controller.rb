@@ -13,18 +13,21 @@ class Doctor::ListsController < ApplicationController
   end
 
   def create
-    @list = List.new(params[:id])
+    @list = List.new(list_params)
     # @patient = Patient.find(@patient_id.id)
     @user = current_user
-
-    # trouver un patient
+       # trouver un patient
+    @patient = Patient.find(params[:patient_id])
     # l'asocier à ta liste
-    # associer le user à la liste
+    @list.patient_id = @patient.id
+        # associer le user à la liste
+    @list.user_id = @user.id
+
+      raise
     # passser tous ls params à ta liste
 
-    raise
-    if @list.save
-      redirect_to doctor_patient_path(@list)
+    if @list.save(params[:list])
+      # redirect_to doctor_patient_path(@list)
     else
       render 'doctor/patients/show'
     end
@@ -54,6 +57,7 @@ class Doctor::ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:user_id, :patient_id)
+    params.require(:list).permit(:user_id, :patient_id, drugs_attributes: [:id, :drug_name, :dosage, :posology, :quantity, :qsp])
+
   end
 end
