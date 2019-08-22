@@ -12,7 +12,8 @@ class Pharmacy::ListsController < ApplicationController
   end
 
   def update
-    @list.update(list_params)
+    @list.delivered = true
+    @list.save
 
     redirect_to pharmacy_lists_path(@pharmacy)
   end
