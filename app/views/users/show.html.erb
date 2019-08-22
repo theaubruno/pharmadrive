@@ -1,9 +1,11 @@
 <br>
+<div class="row">
 <div class="card-stats">
 <%= current_user.name %> </div>
+</div>
 <br>
 <% if current_user.role == 'doctor' %>
-<div class="container-stats">
+<div class="row-style">
 <div class="card-stats">
 <%= "Nombre de patients:" %>
 <br>
@@ -17,7 +19,18 @@
 </div>
 </div>
 <% else %>
-<%= 'Tu es pharmacien' %>
+<div class="row-style">
+<div class="container-stats">
+<div class="card-stats">
+<br>
+<div class="card-stats">
+<%= "Nombre d'ordonnances:" %>
+<br>
+<strong> <%= @user.lists.count %></strong>
+</div>
+</div>
+</div>
+</div>
 <% end %>
 
  <%= link_to "Modifier vos informations", edit_user_registration_path, class: "nav-link" %>
