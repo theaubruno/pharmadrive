@@ -28,6 +28,7 @@
       <div class="card-list d-flex justify-content-lg-between">
         <div>
           <%= list.patient.first_name %> <%= list.patient.last_name %> - <%= list.drugs.count %> prescriptions
+          <% list.id %>
         </div>
         <div>
           <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalLong">
@@ -57,13 +58,7 @@
         </button>
       </div>
       <div class="modal-body">
-<div class="card-body">
-          <% list.drugs.each do |drug| %>
-            <%= drug.drug_name %>
-            <%= drug.dosage %>
-            <%= drug.posology %> <br>
-          <% end %>
-        </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
