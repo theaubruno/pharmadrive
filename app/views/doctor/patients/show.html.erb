@@ -26,7 +26,9 @@
                                 <% list.drugs.each do |drug| %>
                                 <%= drug.drug_name %>
                                 <%= drug.dosage %>
-                                <%= drug.posology %> <br>
+                                <%= drug.posology %>
+                                <%= drug.quantity %>
+                                <%= drug.qsp %> <br>
                                 <% end %>
                             </div>
                         </div>
@@ -36,60 +38,38 @@
             </div>
         </div>
         <div class="right col-6 border">
-          <div><h3>Nouvelle ordonnance : </h3>
-           <button id="showfromlist" class="font05 ">+ Ordonnance</button></div>
-          <div class="list-in-creation">
-          <div id="newordo" class="d-none">
+            <div>
+                <h3>Nouvelle ordonnance : </h3>
+                <button id="showfromlist" class="font05 ">+ Ordonnance</button>
+            </div>
+            <div class="list-in-creation">
+                <div id="newordo" class="d-none">
+                    <%= simple_form_for @list , url: doctor_patient_lists_path(@patient, @list), method: :post do |f| %>
+                    <div id="drugs">
+                        <%= f.simple_fields_for :drugs, Drug.new do |drug| %>
+                        <!-- Task: <%#= task.text_field :name %> -->
+                        <%= drug.input :drug_name, input_html:{ class: 'inputsforms' }%>
+                        <%= drug.input :dosage, input_html:{ class: 'inputsforms' }%>
+                        <%= drug.input :posology, input_html:{ class: 'inputsforms' }%>
+                        <%= drug.input :quantity, input_html:{ class: 'inputsforms' }%>
+                        <%= drug.input :qsp, input_html:{ class: 'inputsforms' }%>
+                        <div class="links">
+                        </div>
+                        <% end %>
+
+                    </div>
 
 
-            <%= simple_form_for :list, url: doctor_patient_lists_path(@patient, @list), method: :post  do |form| %>
-              <div class="new-drug">
-                <%= form.fields_for [ @list, @drug ] do |f| %>
-                    <%= f.input :drug_name, label: "Nom du médicament", class: "drug-name-input" %>
-                    <%= f.input :dosage, label: "Dosage", class: "dosage-input" %>
-                    <%= f.input :posology, label: "Posologie", class: "posology-input" %>
-                    <%= f.input :quantity, label: "Quantité", class: "quantity-input" %>
-                    <%= f.input :qsp, label: "QSP", class: "qsp-input" %>
-                <% end %>
-              </div>
-              <div class="">
-
-              <%= link_to ' Ajouter une prescription', class: 'far fa-plus-circle font05 ' %>
-              </div>
-
-              <button type="button" class="btn btn-success color-white add-drug" data-toggle="modal" data-target="#exampleModal" id="book">
-                Choisir la Pharmacie
-              </button>
-
-
-              <%= form.button :submit, class: 'opennewordo' %>
-            <% end %>
-          </div>
-        </div>
-
-<script>
-
-const listInCreation = document.querySelector(".list-in-creation");
-const addDrug = document.querySelector(".add-drug");
-
-addDrug.addEventListener("click", (event) => {
-
-  const drugNameInput = document.querySelector(".list_drug_drug_name input");
-  const dosageInput = document.querySelector(".list_drug_dosage input");
-  const posologyInput = document.querySelector(".list_drug_posology input");
-  const quantityInput = document.querySelector(".list_drug_quantity input");
-  const qspInput = document.querySelector(".list_drug_qsp input");
-
-
-  listInCreation.insertAdjacentHTML("afterbegin" , `<div><p>${drugNameInput.value} - ${dosageInput.value} -${posologyInput.value} /j- ${quantityInput.value} boites - ${qspInput.value}</p></div>`);
-
-
-});
-
-</script>
-
-
+                 <!--    <div class="">
+                        <%= link_to ' Ajouter une prescription', class: 'far fa-plus-circle font05 ' %>
+                    </div> -->
+                    <button type="button" id="book" class="add-drug">
+                        Ajouter
+                    </button>
+                    <%= f.submit 'Create List'%>
+                                        <% end %>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-

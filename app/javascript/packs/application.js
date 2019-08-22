@@ -2,52 +2,61 @@ import "bootstrap";
 
 
 
-if (document.getElementById('newordo')!== null) {
-let form = document.getElementById('newordo')
+if (document.getElementById('newordo') !== null) {
+    let form = document.getElementById('newordo')
+    let parentsDrugs = document.getElementById('drugs')
 
-const button = document.getElementById('showfrom')
-const buttonList = document.getElementById('showfromlist')
-const addPharma = document.querySelector('.opennewordo')
-let count = 0
+    const button = document.getElementById('showfrom')
+    const buttonList = document.getElementById('showfromlist')
+    const addPharma = document.querySelector('.opennewordo')
+    let count = 0
 
-button.addEventListener("click", (event) => {
-  form.classList.toggle("d-none")
-});
-
-buttonList.addEventListener("click", (event) => {
-  count ++;
-  form.innerHTML = `
+    button.addEventListener("click", (event) => {
+        form.classList.toggle("d-none")
+    });
 
 
-            <form novalidate="novalidate" class="simple_form list" action="/doctor/patients/1/lists" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="Pi2z0OgmQxvxiWBv+gWl/eVbC/2sceL9OcoswS+s4+uuAMlvN1QYmS3STMd4xA/iPMJLzxTzQLyND0h8+AwfYg==">
-              <div class="new-drug">
+    // form.classList.toggle("d-none")
 
-                    <div class="form-group string optional list_drug_drug_name"><label class="form-control-label string optional" for="list_drug_drug_name">Nom du médicament</label><input class="form-control string optional" type="text" name="list[drug][drug_name]" id="list_drug_drug_name${count}"></div>
-                    <div class="form-group string optional list_drug_dosage"><label class="form-control-label string optional" for="list_drug_dosage">Dosage</label><input class="form-control string optional" type="text" name="list[drug][dosage]" id="list_drug_dosage${count}"></div>
-                    <div class="form-group string optional list_drug_posology"><label class="form-control-label string optional" for="list_drug_posology">Posologie</label><input class="form-control string optional" type="text" name="list[drug][posology]" id="list_drug_posology${count}"></div>
-                    <div class="form-group string optional list_drug_quantity"><label class="form-control-label string optional" for="list_drug_quantity">Quantité</label><input class="form-control string optional" type="text" name="list[drug][quantity]" id="list_drug_quantity${count}"></div>
-                    <div class="form-group string optional list_drug_qsp"><label class="form-control-label string optional" for="list_drug_qsp">QSP</label><input class="form-control string optional" type="text" name="list[drug][qsp]" id="list_drug_qsp${count}"></div>
-              </div>
-              <div class="">
+    const listInCreation = document.querySelector(".list-in-creation");
+    const addDrug = document.querySelector(".add-drug");
 
-              <a href="/doctor/patients/1?class=far+fa-plus-circle+font05+"> Ajouter une prescription</a>
-              </div>
-
-              <button type="button" class="btn btn-success color-white add-drug" data-toggle="modal" data-target="#exampleModal" id="book${count}">
-                Choisir la Pharmacie
-              </button>
+    addDrug.addEventListener("click", (event) => {
 
 
-              <input type="submit" name="commit" value="Save List" class="btn opennewordo" data-disable-with="Save List">
-</form>          `;
-  // form.classList.toggle("d-none")
-});
+        const inputsforms = document.querySelectorAll('.inputsforms');
 
+        // const inputsformsVisible = document.querySelectorAll('.inputsforms:not(d-none)');
 
-addPharma.addEventListener("click", (event) => {
-  form.classList.toggle("d-none")
-});
+        inputsforms.forEach((input) => {
+          input.parentElement.classList.add("d-none");
+          // input.classList.toggle("d-none");
+        });
+
+         const sdah = document.querySelector(".inputsforms:not(.d-none)");
+
+        if (sdah !== null) {
+        let drugNameInput = document.querySelector(".inputsforms:not(.d-none)").value;
+        let dosageInput = document.querySelector(".inputsforms:not(.d-none)").value;
+        let posologyInput = document.querySelector(".inputsforms:not(.d-none)").value;
+        let quantityInput = document.querySelector(".inputsforms:not(.d-none)").value;
+        let qspInput = document.querySelector(".inputsforms:not(.d-none)").value;
+        listInCreation.insertAdjacentHTML('afterbegin',`<div><p>${drugNameInput} - ${dosageInput} -${posologyInput} /j- ${quantityInput} boites - ${qspInput}</p></div>`);
+        };
+        count++;
+
+        parentsDrugs.insertAdjacentHTML('beforeend', `
+                        <!-- Task:  -->
+                        <div class="form-group string optional list_drugs_drug_name"><label class="form-control-label string optional inputsforms" for="list_drugs_attributes_${count}_drug_name">Drug name</label><input class="form-control string optional" type="text" name="list[drugs_attributes][${count}][drug_name]" id="list_drugs_attributes_${count}_drug_name"></div>
+                        <div class="form-group string optional list_drugs_dosage"><label class="form-control-label string optional inputsforms" for="list_drugs_attributes_${count}_dosage">Dosage</label><input class="form-control string optional" type="text" name="list[drugs_attributes][${count}][dosage]" id="list_drugs_attributes_${count}_dosage"></div>
+                        <div class="form-group string optional list_drugs_posology"><label class="form-control-label string optional inputsforms" for="list_drugs_attributes_${count}_posology">Posology</label><input class="form-control string optional" type="text" name="list[drugs_attributes][${count}][posology]" id="list_drugs_attributes_${count}_posology"></div>
+                        <div class="form-group string optional list_drugs_quantity"><label class="form-control-label string optional inputsforms" for="list_drugs_attributes_${count}_quantity">Quantity</label><input class="form-control string optional" type="text" name="list[drugs_attributes][${count}][quantity]" id="list_drugs_attributes_${count}_quantity"></div>
+                        <div class="form-group string optional list_drugs_qsp"><label class="form-control-label string optional inputsforms" for="list_drugs_attributes_${count}_qsp">Qsp</label><input class="form-control string optional" type="text" name="list[drugs_attributes][${count}][qsp]" id="list_drugs_attributes_${count}_qsp"></div>
+                        <div class="links">
+                        </div>
+                    `);
+    });
+    // addPharma.addEventListener("click", (event) => {
+    //   form.classList.toggle("d-none")
+    // });
 };
-
-
-

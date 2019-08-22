@@ -23,9 +23,7 @@ class Doctor::ListsController < ApplicationController
         # associer le user à la liste
     @list.user_id = @user.id
 
-      raise
     # passser tous ls params à ta liste
-
     if @list.save(params[:list])
       # redirect_to doctor_patient_path(@list)
     else
@@ -57,7 +55,7 @@ class Doctor::ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:user_id, :patient_id, drugs_attributes: [:id, :drug_name, :dosage, :posology, :quantity, :qsp])
+    params.require(:list).permit(:note, drugs_attributes: [:id, :drug_name, :dosage, :posology, :quantity, :qsp, :_destroy])
 
   end
 end
