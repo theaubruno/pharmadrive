@@ -13,11 +13,13 @@ class Doctor::ListsController < ApplicationController
   end
 
   def create
+    raise
     @list = List.new(params[:id])
     # @patient = Patient.find(@patient_id.id)
     @user = current_user
 
     # trouver un patient
+
     # l'asocier à ta liste
     # associer le user à la liste
     # passser tous ls params à ta liste
@@ -54,6 +56,6 @@ class Doctor::ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:user_id, :patient_id)
+    params.require(:list).permit(:note, drugs_attributes: [:id, :drug_name, :dosage, :posology, :quantity, :qsp, :_destroy])
   end
 end

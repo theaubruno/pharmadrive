@@ -16,7 +16,7 @@
                         <div class="card-header d-flex" id="heading<%=list.id%>">
                             <button class="btn d-flex w-100 justify-between" type="button" data-toggle="collapse" data-target="#collapse<%=list.id%>" aria-expanded="false" aria-controls="collapse<%=list.id%>">
                                 <span>
-                                    <%= list.prescribed_at.strftime("%A %e %B %C") %></span>
+                                    <%= list.prescribed_at %></span>
                                 <span>
                                     <%= list.drugs.count %> prescriptions </span>
                             </button>
@@ -38,18 +38,18 @@
         <div class="right col-6 border">
           <div class="list-in-creation">
             <h3>Nouvelle ordonnance : </h3>
-            <%= simple_form_for :list, url: doctor_patient_lists_path(@patient, @list), method: :post  do |form| %>
+            <%#= simple_form_for :list, url: doctor_patient_lists_path(@patient, @list), method: :post  do |form| %>
               <div class="new-drug">
-                <%= form.fields_for [ @list, @drug ] do |f| %>
-                    <%= f.input :drug_name, label: "Nom du médicament", class: "drug-name-input" %>
-                    <%= f.input :dosage, label: "Dosage", class: "dosage-input" %>
-                    <%= f.input :posology, label: "Posologie", class: "posology-input" %>
-                    <%= f.input :quantity, label: "Quantité", class: "quantity-input" %>
-                    <%= f.input :qsp, label: "QSP", class: "qsp-input" %>
-                <% end %>
+                <%#= form.fields_for [ @list, @drug ] do |f| %>
+                    <%#= f.input :drug_name, label: "Nom du médicament", class: "drug-name-input" %>
+                    <%#= f.input :dosage, label: "Dosage", class: "dosage-input" %>
+                    <%#= f.input :posology, label: "Posologie", class: "posology-input" %>
+                    <%#= f.input :quantity, label: "Quantité", class: "quantity-input" %>
+                    <%#= f.input :qsp, label: "QSP", class: "qsp-input" %>
+                <%# end %>
               </div>
               <div class="">
-              <%= link_to ' Ajouter une prescription', class: 'far fa-plus-circle font05' %>
+              <%#= link_to ' Ajouter une prescription', class: 'far fa-plus-circle font05' %>
               </div>
 
               <button type="button" class="btn btn-success color-white" data-toggle="modal" data-target="#exampleModal" id="book">
@@ -57,9 +57,12 @@
               </button>
 
 
-              <%= form.button :submit, class: 'add-drug' %>
-            <% end %>
+              <%#= form.button :submit, class: 'add-drug' %>
+            <% #end %>
           </div>
+        </div>
+    </div>
+</div>
 
 <script>
 
@@ -83,9 +86,25 @@ addDrug.addEventListener("click", (event) => {
 </script>
 
 
-        </div>
-    </div>
-</div>
+
 <!--             <form id="newordo" class="d-none">
             </form> -->
+
+
+<%= simple_form_for @list , url: doctor_patient_lists_path(@patient, @list), method: :post do |f| %>
+  <%= f.input :note %>
+  <div id="drugs">
+    <%= f.simple_fields_for :drugs, Drug.new do |drug| %>
+      <!-- Task: <%#= task.text_field :name %> -->
+      <%= drug.input :drug_name %>
+      <%= drug.input :dosage %>
+      <%= drug.input :posology %>
+      <%= drug.input :quantity %>
+      <%= drug.input :qsp %>
+      <div class="links">
+      </div>
+    <% end %>
+  </div>
+  <%= f.submit 'Create List' %>
+<% end %>
 
