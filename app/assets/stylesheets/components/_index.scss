@@ -63,3 +63,17 @@
 .row {
   justify-content: space-evenly;
 }
+
+.patients {
+  height: 65vh;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.noscroll {
+  width: 100vw;
+  height: 90vh;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
