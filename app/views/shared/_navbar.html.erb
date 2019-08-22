@@ -1,5 +1,5 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to root_path, class: "navbar-brand" do %>
+  <%= link_to doctor_patients_path, class: "navbar-brand" do %>
     <p>
     <%= image_tag "clipboard.png" %>
     <%= Pharmadrive %></p>
@@ -13,12 +13,24 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
+      <% if current_user.role == 'doctor' %>
         <li class="nav-item active">
           <%= link_to "Mon compte", user_path(current_user), class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "nav-link" %>
         </li>
+        <% else %>
+          <li class="nav-item active">
+          <%= link_to "Archives", user_path(current_user), class: "nav-link" %>
+        </li>
+           <li class="nav-item active">
+          <%= link_to "Mon compte", user_path(current_user), class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "nav-link" %>
+        </li>
+        <% end %>
       <% else %>
       <li class="nav-item active">
           <%= link_to "S'inscrire", new_user_registration_path, class: "nav-link" %>
