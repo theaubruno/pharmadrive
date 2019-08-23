@@ -1,5 +1,6 @@
 <br>
 <div class="row">
+  <div class="col-12">
 <div class="card-stats">
 <%= current_user.name %> </div>
 </div>
@@ -18,17 +19,25 @@
 <strong> <%= sommeordos(@user.patients) %></strong>
 </div>
 </div>
+</div>
 <% else %>
-<div class="row-style">
-<div class="container-stats">
-<div class="card-stats">
+<div class="container-stats d-flex">
 <br>
-<div class="card-stats">
-<%= "Nombre d'ordonnances:" %>
+<div class="card-stats m-2">
+<%= "Ordonnances délivrées aujourd'hui:" %>
 <br>
-<strong> <%= @user.lists.count %></strong>
+<strong> <%= sommelists(current_user.lists).count %></strong>
 </div>
+<div class="card-stats m-2">
+<%= "Ordonnances délivrées au total:" %>
+<br>
+<strong> <%= sommelists2(current_user.lists).count %></strong>
 </div>
+<div class="card-stats m-2">
+<%= "Temps de préparation en moyenne:" %>
+<br>
+<!-- <strong> <%= tempsmoyen(current_user.lists) %></strong> -->
+<strong> <%= "15 min" %></strong>
 </div>
 </div>
 <% end %>
