@@ -10,8 +10,18 @@ class User < ApplicationRecord
   # has_many :pharmacy_patients, through: :lists
 
   def average_time
-    self.lists.map { |list| (list.ready_at - list.created_at) }.sum / self.lists.count
+    self.lists.map { |list| ((list.ready_at - list.created_at) / 60000) }.sum / self.lists.count
   end
+
+  def sumlists(array)
+  lists = []
+  array.each do |list|
+    if list.delivered? && list.delivered_at.day == Time.now.day
+      lists << list
+    end
+  end
+  return lists
+end
 
   def pharmacy_patients
     Patient.where(id: self.lists.map(&:patient_id).uniq)

@@ -3,6 +3,7 @@ class Pharmacy::ListsController < ApplicationController
 
   def index
     @lists = current_user.lists
+    # @lists = List.all
   end
 
   def show

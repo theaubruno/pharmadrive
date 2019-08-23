@@ -5,8 +5,8 @@ def sommeordos(array)
   sum = 0
   array.each do |patient|
     sum += patient.lists.count
+    return sum
   end
-  return sum
 end
 
 def sommelists(array)
