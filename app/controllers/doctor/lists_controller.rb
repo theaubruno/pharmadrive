@@ -15,13 +15,12 @@ class Doctor::ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     # @patient = Patient.find(@patient_id.id)
-    @user = current_user
        # trouver un patient
     @patient = Patient.find(params[:patient_id])
     # l'asocier à ta liste
     @list.patient_id = @patient.id
         # associer le user à la liste
-    @list.user_id = @user.id
+    @list.user_id = User.find_by(role: :pharmacy)
 
     # passser tous ls params à ta liste
     if @list.save(params[:list])
