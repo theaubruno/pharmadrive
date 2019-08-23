@@ -5,6 +5,14 @@ class Pharmacy::ListsController < ApplicationController
     @lists = List.all
   end
 
+  def archives
+    @patients = Patient.all
+  end
+
+  def archives_show
+    @lists = List.all
+  end
+
   def show
   end
 
@@ -30,6 +38,6 @@ class Pharmacy::ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:patient_id, :prescribed_at, :user_id, :delivered)
+    params.require(:list).permit(:patient_id, :prescribed_at, :user_id, :delivered_at, :ready_at)
   end
 end

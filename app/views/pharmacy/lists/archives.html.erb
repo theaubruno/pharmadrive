@@ -1,0 +1,30 @@
+
+  <div class="row text-center align-items-center d-inline">
+    <h1 class="col-12 p-2">Mes Clients </h1>
+    <div class="row justify-content-center mb-4">
+      <div class="search-bar col-12 col-lg-6 fa fa-search" style='margin-right: 19px;'>
+        <%= form_tag pharmacy_lists_path, method: :get do %>
+        <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+          placeholder: "Rechercher un patient"
+          %>
+          <% end %>
+        </div>
+      </div>
+      <div class="patients">
+        <% @patients.each do |patient| %>
+          <div class="row justify-content-center">
+            <%= link_to pharmacy_archives_show_path(patient) do %>
+              <div class="card-patient offset-3 col-12 col-lg-6"><span class="font15">
+
+                    <%= patient.last_name %>
+                    <%= patient.first_name %>
+
+                </span>
+            <% end %>
+              </div>
+          </div>
+        <% end %>
+      </div>
+  </div>
