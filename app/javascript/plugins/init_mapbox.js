@@ -25,7 +25,11 @@ const initMapbox = () => {
 
 
     const el = document.createElement('div');
-    el.className = 'marker-pharmacy';
+    if (marker.role === 'doctor') {
+      el.className = 'marker-doctor';
+    } else {
+      el.className = 'marker-pharmacy';
+    }
     new mapboxgl.Marker(el)
       .setLngLat([ marker.lng, marker.lat ])
       .setPopup(popup) // add this
