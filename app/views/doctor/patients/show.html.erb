@@ -48,11 +48,11 @@
                     <div id="drugs">
                         <%= f.simple_fields_for :drugs, Drug.new do |drug| %>
                         <!-- Task: <%#= task.text_field :name %> -->
-                        <%= drug.input :drug_name, input_html:{ class: 'inputsforms' }%>
-                        <%= drug.input :dosage, input_html:{ class: 'inputsforms' }%>
-                        <%= drug.input :posology, input_html:{ class: 'inputsforms' }%>
-                        <%= drug.input :quantity, input_html:{ class: 'inputsforms' }%>
-                        <%= drug.input :qsp, input_html:{ class: 'inputsforms' }%>
+                        <%= drug.input :drug_name, input_html:{ class: 'inputsforms one' }%>
+                        <%= drug.input :dosage, input_html:{ class: 'inputsforms two' }%>
+                        <%= drug.input :posology, input_html:{ class: 'inputsforms three' }%>
+                        <%= drug.input :quantity, input_html:{ class: 'inputsforms four' }%>
+                        <%= drug.input :qsp, input_html:{ class: 'inputsforms five' }%>
                         <div class="links">
                         </div>
                         <% end %>
