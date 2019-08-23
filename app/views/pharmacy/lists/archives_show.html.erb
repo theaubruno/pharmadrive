@@ -1,34 +1,31 @@
 <div class="noscroll">
   <div class="row text-center align-items-center d-inline">
     <h1 class="col-12 p-2">Mes patients
-      <%= link_to  new_doctor_patient_path, method: :get do%>
-      <div class="btn btn-p">
-        <p><i class="fas fa-plus"></i>
-        Ajouter un patient</p>
-      </div>
-      <% end %>
     </h1>
     <div class="row justify-content-center mb-4">
       <div class="search-bar col-12 col-lg-6 fa fa-search" style='margin-right: 19px;'>
-        <%= form_tag doctor_patients_path, method: :get do %>
+        <%= form_tag pharmacy_archives_show_path, method: :get do %>
         <%= text_field_tag :query,
         params[:query],
         class: "form-control",
-          placeholder: "Rechercher un patient"
+          placeholder: "Rechercher une date ou médicamment"
           %>
           <% end %>
         </div>
       </div>
       <div class="patients">
+
         <% @lists.each do |list| %>
+               <%  if list.delivered?  %>
           <div class="row justify-content-center">
             <div class="card-patient offset-3 col-12 col-lg-6"><span class="font15">
-                  <%= list.delivered_at -%>
+                  <%= list.delivered_at.day %> / <%= list.delivered_at.month %> / <%= list.delivered_at.year %>
                   - <%= list.drugs.count %> prescriptions
               </span>
 
           </div>
       </div>
+<% end %>
 <% end %>
     </div>
   </div>

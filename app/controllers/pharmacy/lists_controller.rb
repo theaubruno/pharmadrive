@@ -1,16 +1,18 @@
 class Pharmacy::ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
+  # before_action :set_list, only: [:archives_show]
 
   def index
     @lists = List.all
   end
 
   def archives
-    @patients = Patient.all
+    @patients = current_user.pharmacy_patients
   end
 
   def archives_show
-    @lists = List.all
+    @patient = Patient.find(params[:format].to_i)
+    @lists = @patient.lists
   end
 
   def show
@@ -32,6 +34,10 @@ class Pharmacy::ListsController < ApplicationController
   end
 
   private
+
+  def set_patient
+    @patient = Patient.find(params[:id])
+  end
 
   def set_list
     @list = List.find(params[:id])
