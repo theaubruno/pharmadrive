@@ -28,33 +28,36 @@ if (document.getElementById('newordo') !== null) {
 
         // const inputsformsVisible = document.querySelectorAll('.inputsforms:not(d-none)');
 
-        inputsforms.forEach((input) => {
-          input.parentElement.classList.add("d-none");
-          // input.classList.toggle("d-none");
-        });
 
-         const sdah = document.querySelector(".inputsforms:not(.d-none)");
 
-        if (sdah !== null) {
-        let drugNameInput = document.querySelector(".inputsforms:not(.d-none)").value;
-        let dosageInput = document.querySelector(".inputsforms:not(.d-none)").value;
-        let posologyInput = document.querySelector(".inputsforms:not(.d-none)").value;
-        let quantityInput = document.querySelector(".inputsforms:not(.d-none)").value;
-        let qspInput = document.querySelector(".inputsforms:not(.d-none)").value;
-        listInCreation.insertAdjacentHTML('afterbegin',`<div><p>${drugNameInput} - ${dosageInput} -${posologyInput} /j- ${quantityInput} boites - ${qspInput}</p></div>`);
+        let verify = document.querySelector(".inputsforms:not(.d-none)");
+
+        if (verify !== undefined) {
+        let drugNameInput = document.querySelector(".inputsforms:not(.d-none).one");
+        let dosageInput = document.querySelector(".inputsforms:not(.d-none).two");
+        let posologyInput = document.querySelector(".inputsforms:not(.d-none).three");
+        let quantityInput = document.querySelector(".inputsforms:not(.d-none).four");
+        let qspInput = document.querySelector(".inputsforms:not(.d-none).five");
+        listInCreation.insertAdjacentHTML('afterbegin',`<div><p>${drugNameInput.value} - ${dosageInput.value} -${posologyInput.value} /j- ${quantityInput.value} boites - ${qspInput.value}</p></div>`);
         };
+
         count++;
 
         parentsDrugs.insertAdjacentHTML('beforeend', `
                         <!-- Task:  -->
-                        <div class="form-group string optional list_drugs_drug_name"><label class="form-control-label string optional inputsforms" for="list_drugs_attributes_${count}_drug_name">Drug name</label><input class="form-control string optional" type="text" name="list[drugs_attributes][${count}][drug_name]" id="list_drugs_attributes_${count}_drug_name"></div>
-                        <div class="form-group string optional list_drugs_dosage"><label class="form-control-label string optional inputsforms" for="list_drugs_attributes_${count}_dosage">Dosage</label><input class="form-control string optional" type="text" name="list[drugs_attributes][${count}][dosage]" id="list_drugs_attributes_${count}_dosage"></div>
-                        <div class="form-group string optional list_drugs_posology"><label class="form-control-label string optional inputsforms" for="list_drugs_attributes_${count}_posology">Posology</label><input class="form-control string optional" type="text" name="list[drugs_attributes][${count}][posology]" id="list_drugs_attributes_${count}_posology"></div>
-                        <div class="form-group string optional list_drugs_quantity"><label class="form-control-label string optional inputsforms" for="list_drugs_attributes_${count}_quantity">Quantity</label><input class="form-control string optional" type="text" name="list[drugs_attributes][${count}][quantity]" id="list_drugs_attributes_${count}_quantity"></div>
-                        <div class="form-group string optional list_drugs_qsp"><label class="form-control-label string optional inputsforms" for="list_drugs_attributes_${count}_qsp">Qsp</label><input class="form-control string optional" type="text" name="list[drugs_attributes][${count}][qsp]" id="list_drugs_attributes_${count}_qsp"></div>
+                        <div class="form-group string optional list_drugs_drug_name"><label class="form-control-label string optional" for="list_drugs_attributes_${count}_drug_name">Drug name</label><input class="form-control string optional inputsforms one" type="text" name="list[drugs_attributes][${count}][drug_name]" id="list_drugs_attributes_${count}_drug_name"></div>
+                        <div class="form-group string optional list_drugs_dosage"><label class="form-control-label string optional" for="list_drugs_attributes_${count}_dosage">Dosage</label><input class="form-control string optional inputsforms two" type="text" name="list[drugs_attributes][${count}][dosage]" id="list_drugs_attributes_${count}_dosage"></div>
+                        <div class="form-group string optional list_drugs_posology"><label class="form-control-label string optional" for="list_drugs_attributes_${count}_posology">Posology</label><input class="form-control string optional inputsforms three" type="text" name="list[drugs_attributes][${count}][posology]" id="list_drugs_attributes_${count}_posology"></div>
+                        <div class="form-group string optional list_drugs_quantity"><label class="form-control-label string optional" for="list_drugs_attributes_${count}_quantity">Quantity</label><input class="form-control string optional inputsforms four" type="text" name="list[drugs_attributes][${count}][quantity]" id="list_drugs_attributes_${count}_quantity"></div>
+                        <div class="form-group string optional list_drugs_qsp"><label class="form-control-label string optional" for="list_drugs_attributes_${count}_qsp">Qsp</label><input class="form-control string optional inputsforms five" type="text" name="list[drugs_attributes][${count}][qsp]" id="list_drugs_attributes_${count}_qsp"></div>
                         <div class="links">
                         </div>
                     `);
+                inputsforms.forEach((input) => {
+          input.classList.add("d-none");
+          input.parentElement.classList.add("d-none");
+          // input.classList.toggle("d-none");
+        });
     });
     // addPharma.addEventListener("click", (event) => {
     //   form.classList.toggle("d-none")
