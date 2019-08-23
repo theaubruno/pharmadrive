@@ -39,6 +39,12 @@ if (document.getElementById('newordo') !== null) {
         let quantityInput = document.querySelector(".inputsforms:not(.d-none).four");
         let qspInput = document.querySelector(".inputsforms:not(.d-none).five");
         listInCreation.insertAdjacentHTML('afterbegin',`<div><p>${drugNameInput.value} - ${dosageInput.value} -${posologyInput.value} /j- ${quantityInput.value} boites - ${qspInput.value}</p></div>`);
+         drugNameInput.value = "";
+         dosageInput.value = "";
+         posologyInput.value = "";
+         quantityInput.value = "";
+         qspInput.value = "";
+
         };
 
         count++;
@@ -53,9 +59,13 @@ if (document.getElementById('newordo') !== null) {
                         <div class="links">
                         </div>
                     `);
+
                 inputsforms.forEach((input) => {
           input.classList.add("d-none");
           input.parentElement.classList.add("d-none");
+
+
+
           // input.classList.toggle("d-none");
         });
     });
@@ -63,3 +73,11 @@ if (document.getElementById('newordo') !== null) {
     //   form.classList.toggle("d-none")
     // });
 };
+
+import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
+
+import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the stylesheet_pack_tag in the layout!
+
+import { initMapbox } from '../plugins/init_mapbox';
+
+initMapbox();

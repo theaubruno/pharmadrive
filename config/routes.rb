@@ -15,5 +15,5 @@ Rails.application.routes.draw do
     get 'archives_show', to: 'lists#archives_show', as: :archives_show
   end
 
-  resources :users, only: [:show]
+  resources :users, only: [:index, :show]
 end
