@@ -20,17 +20,16 @@
         </div>
       </div>
       <div class="patients">
-        <% @patients.each do |p| %>
-          <%= link_to doctor_patient_path(p) do %>
+        <% @lists.each do |list| %>
           <div class="row justify-content-center">
             <div class="card-patient offset-3 col-12 col-lg-6"><span class="font15">
-                  <%= p.last_name %>
-                  <%= p.first_name %>
+                  <%= list.delivered_at %>
+                  <%= list.drugs.count %>
               </span>
-              <% end %>
+
           </div>
       </div>
-      <% end %>
+<% end %>
     </div>
   </div>
 </div>
