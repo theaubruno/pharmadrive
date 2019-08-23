@@ -1,13 +1,14 @@
 .card-patient {
     border-radius: 3px;
     background-color: white;
-    padding: 0px 0px;
-    margin: 8px;
+    padding: 8px 0px;
+    margin: 6px;
     border: 0.5px solid #DFE1E6;
 
 
     a {
-      color: black;
+      color: #494949;
+      text-decoration: none;
     }
 
     &:hover {
