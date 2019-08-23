@@ -23,8 +23,8 @@
         <% @lists.each do |list| %>
           <div class="row justify-content-center">
             <div class="card-patient offset-3 col-12 col-lg-6"><span class="font15">
-                  <%= list.delivered_at %>
-                  <%= list.drugs.count %>
+                  <%= list.delivered_at -%>
+                  - <%= list.drugs.count %> prescriptions
               </span>
 
           </div>
