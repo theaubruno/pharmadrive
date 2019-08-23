@@ -1,4 +1,5 @@
 import mapboxgl from 'mapbox-gl';
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
@@ -17,22 +18,24 @@ const initMapbox = () => {
     });
     const markers = JSON.parse(mapElement.dataset.markers);
   markers.forEach((marker) => {
-    new mapboxgl.Marker()
-      .setLngLat([ marker.lng, marker.lat ])
-      .addTo(map);
-  });
-  }
-};
+    const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
 
-const addMarkersToMap = (map, markers) => {
-  markers.forEach((marker) => {
-    const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // add this
+// const logomarker = document.getElementById('role');
+// const roletext = console.log(logomarker.innerText);
 
-    new mapboxgl.Marker()
+
+    const el = document.createElement('div');
+    el.className = 'marker-pharmacy';
+    new mapboxgl.Marker(el)
       .setLngLat([ marker.lng, marker.lat ])
       .setPopup(popup) // add this
       .addTo(map);
   });
+  fitMapToMarkers(map, markers);
+  map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken }));
+  }
+
+
 };
 
 export { initMapbox };

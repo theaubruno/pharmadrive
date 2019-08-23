@@ -4,11 +4,11 @@ class PagesController < ApplicationController
   def home
     @users = User.geocoded
 
-    @markers = @users.map do |flat|
+    @markers = @users.map do |user|
       {
-        lat: flat.latitude,
-        lng: flat.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { flat: flat })
+        lat: user.latitude,
+        lng: user.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { user: user })
       }
     end
   end
