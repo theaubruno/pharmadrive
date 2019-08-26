@@ -3,7 +3,8 @@ class Pharmacy::ListsController < ApplicationController
   # before_action :set_list, only: [:archives_show]
 
   def index
-    @lists = List.all
+    @lists = current_user.lists
+    # @lists = List.all
   end
 
   def archives
