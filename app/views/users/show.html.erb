@@ -1,23 +1,26 @@
 <br>
 <div class="card-stats">
-<%= current_user.name %> </div>
-<br>
-<% if current_user.role == 'doctor' %>
-<div class="container-stats">
-<div class="card-stats">
-<%= "Nombre de patients:" %>
-<br>
-<strong> <%= @user.patients.count %></strong>
-</div>
-<br>
-<div class="card-stats">
-<%= "Nombre d'ordonnances:" %>
-<br>
-<strong> <%= sommeordos(@user.patients) %></strong>
-</div>
-</div>
-<% else %>
-<%= 'Tu es pharmacien' %>
-<% end %>
+  <%= current_user.name %> </div>
+  <br>
+  <% if current_user.role == 'doctor' %>
+  <div class="container-stats">
+    <div class="card-stats">
+      <%= "Nombre de patients:" %>
+      <br>
+      <strong> <%= @user.patients.count %></strong>
+    </div>
+    <br>
+    <div class="card-stats">
+      <%= "Nombre d'ordonnances:" %>
+      <br>
+      <strong> <%= sommeordos(@user.patients) %></strong>
+    </div>
+  </div>
+  <% else %>
+  <%= 'Tu es pharmacien' %>
+  <% end %>
 
- <%= link_to "Modifier vos informations", edit_user_registration_path, class: "nav-link" %>
+  <%= link_to "Modifier vos informations", edit_user_registration_path, class: "nav-link" %>
+
+  <div id="chart" style="width:100%; height:400px;">
+  </div>
