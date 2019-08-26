@@ -3,6 +3,7 @@ class Pharmacy::ListsController < ApplicationController
 
   def index
     @lists = List.all
+    #order('List.patient.first_name ASC')
   end
 
   def archives
