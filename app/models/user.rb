@@ -31,6 +31,11 @@ end
   end
 
   # has_many :patients, through: :lists
+
+  def pharmacy_patients
+    Patient.where(id: self.lists.map(&:patient_id).uniq)
+  end
+
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
