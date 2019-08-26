@@ -1,6 +1,5 @@
 import "bootstrap";
-
-
+import "../plugins/chart"
 
 if (document.getElementById('newordo') !== null) {
     let form = document.getElementById('newordo')
