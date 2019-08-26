@@ -46,7 +46,7 @@
                     <%= simple_form_for @list , url: doctor_patient_lists_path(@patient, @list), method: :post do |f| %>
                     <div id="drugs">
                         <%= f.simple_fields_for :drugs, Drug.new do |drug| %>
-                        <!-- Task: <%#= task.text_field :name %> -->
+
                         <%= drug.input :drug_name, input_html:{ class: 'inputsforms one' }%>
                         <%= drug.input :dosage, input_html:{ class: 'inputsforms two' }%>
                         <%= drug.input :posology, input_html:{ class: 'inputsforms three' }%>
@@ -57,7 +57,6 @@
                         <% end %>
                     </div>
                     <!--    <div class="">
-                        <%= link_to ' Ajouter une prescription', class: 'far fa-plus-circle font05 ' %>
                     </div> -->
                     <button type="button" id="book" class="add-drug">
                         Ajouter
