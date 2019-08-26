@@ -39,7 +39,6 @@ class Doctor::ListsController < ApplicationController
 
   def update
     @list.update(list_params)
-
    # redirect_to user_path(@user)
   end
 
