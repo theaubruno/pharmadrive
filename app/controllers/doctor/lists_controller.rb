@@ -55,7 +55,7 @@ class Doctor::ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:note, drugs_attributes: [:id, :drug_name, :dosage, :posology, :quantity, :qsp, :_destroy])
+    params.require(:list).permit(:note, :user_id, drugs_attributes: [:id, :drug_name, :dosage, :posology, :quantity, :qsp, :_destroy])
 
   end
 end

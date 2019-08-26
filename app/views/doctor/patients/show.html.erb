@@ -45,8 +45,8 @@
                 <div id="newordo" class="d-none">
                     <%= simple_form_for @list , url: doctor_patient_lists_path(@patient, @list), method: :post do |f| %>
                     <div id="drugs">
+                        <%= f.input :user_id, label: ".", input_html: { class: 'hidden' } %>
                         <%= f.simple_fields_for :drugs, Drug.new do |drug| %>
-
                         <%= drug.input :drug_name, input_html:{ class: 'inputsforms one' }%>
                         <%= drug.input :dosage, input_html:{ class: 'inputsforms two' }%>
                         <%= drug.input :posology, input_html:{ class: 'inputsforms three' }%>
@@ -62,7 +62,7 @@
                         Ajouter
                     </button>
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
+                    <button id='btn-map' type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
                         Selectionner la pharmacie
                     </button>
                     <!-- Modal -->
@@ -82,6 +82,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Retour</button>
+                                    <%= f.submit 'Créer ordonnance' %>
 
                                 </div>
                             </div>
@@ -93,3 +94,5 @@
         </div>
     </div>
 </div>
+
+
