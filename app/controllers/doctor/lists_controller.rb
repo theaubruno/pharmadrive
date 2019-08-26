@@ -20,9 +20,11 @@ class Doctor::ListsController < ApplicationController
     # l'asocier à ta liste
     @list.patient_id = @patient.id
         # associer le user à la liste
-     User.find_by(role: :pharmacy)
+    User.find_by(role: :pharmacy)
     # passser tous ls params à ta liste
     if @list.save
+      mail = ListMailer.with(list: @list).create_confirmation
+      mail.deliver_now
       redirect_to doctor_patient_path(@patient)
     else
       render 'doctor/patients/show'
@@ -36,7 +38,6 @@ class Doctor::ListsController < ApplicationController
 
   def update
     @list.update(list_params)
-
    # redirect_to user_path(@user)
   end
 
