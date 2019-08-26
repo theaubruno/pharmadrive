@@ -6,7 +6,7 @@
             </div>
             <% @lists.each do |list| %>
             <% if list.ready? && !list.delivered? %>
-              <div class="card-list d-flex justify-content-lg-between">
+              <div id="card<%=list.id%>" class="card-list d-flex justify-content-lg-between">
                   <div>
                       <%= list.patient.first_name %>
                       <%= list.patient.last_name %> -
@@ -51,7 +51,7 @@
             </div>
             <% @lists.each do |list| %>
             <% if !list.ready? && !list.delivered? %>
-              <div class="card-list d-flex justify-content-lg-between">
+              <div id="card<%=list.id%>" class="card-list d-flex justify-content-lg-between">
                   <div>
                       <%= list.patient.first_name %>
                       <%= list.patient.last_name %> -
