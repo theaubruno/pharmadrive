@@ -1,5 +1,5 @@
 class Doctor::ListsController < ApplicationController
-  before_action :set_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_list, only: [:show, :edit, :update, :destroy, :map]
 
   def index
     @lists = List.all
@@ -46,6 +46,8 @@ class Doctor::ListsController < ApplicationController
 
     # redirect_to root_path
   end
+
+
 
   private
 
