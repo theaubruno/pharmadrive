@@ -6,6 +6,14 @@ class Pharmacy::ListsController < ApplicationController
     # @lists = List.all
   end
 
+  def archives
+    @patients = Patient.all
+  end
+
+  def archives_show
+    @lists = List.all
+  end
+
   def show
   end
 

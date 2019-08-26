@@ -11,7 +11,9 @@ Rails.application.routes.draw do
 
   namespace :pharmacy do
     resources :lists, only: [:index, :update ]
+    get 'archives', to: 'lists#archives', as: :archives
+    get 'archives_show', to: 'lists#archives_show', as: :archives_show
   end
 
-  resources :users, only: [:show]
+  resources :users, only: [:index, :show]
 end

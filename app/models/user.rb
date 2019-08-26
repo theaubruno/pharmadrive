@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :patients
   has_many :lists
   # has_many :lists, through: :patients
+
   # has_many :pharmacy_patients, through: :lists
 
   def average_time
@@ -26,4 +27,9 @@ end
   def pharmacy_patients
     Patient.where(id: self.lists.map(&:patient_id).uniq)
   end
+
+  # has_many :patients, through: :lists
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
 end
