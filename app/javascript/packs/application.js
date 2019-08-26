@@ -1,7 +1,7 @@
 import "bootstrap";
 
 
-
+// SCRIPT POUR LES ORDONNANCES
 if (document.getElementById('newordo') !== null) {
     let form = document.getElementById('newordo')
     let parentsDrugs = document.getElementById('drugs')
@@ -77,4 +77,6 @@ import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the styleshe
 import { initMapbox } from '../plugins/init_mapbox';
 
 initMapbox();
+
+
 

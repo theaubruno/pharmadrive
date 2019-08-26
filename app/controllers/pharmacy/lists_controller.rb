@@ -25,7 +25,6 @@ class Pharmacy::ListsController < ApplicationController
 
   def update
     @list.update(list_params)
-
     redirect_to pharmacy_lists_path(@pharmacy)
   end
 

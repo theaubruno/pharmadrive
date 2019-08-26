@@ -1,6 +1,3 @@
-
-
-
 <div class="container-fluid dragndrop">
   <div class="row">
     <div class="left col-6 border list-num1" style="min-height: 100vh" id='left' ondrop="drop(event)" ondragover="allowDrop(event)">
@@ -35,6 +32,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <%= link_to 'Livrer', pharmacy_list_path(list.id, list: {delivered_at: Time.now}), method: :patch, class:"btn btn-primary" %>
+                    <%= link_to 'Retirer', pharmacy_list_path(list.id, list: {ready_at: nil}), method: :patch, class:"d-none card#{list.id}" %>
                   </div>
                 </div>
               </div>
@@ -71,12 +69,11 @@
                       <%= drug.drug_name %>
                       <%= drug.dosage %>
                       <%= drug.posology %> <br>
-
                     <% end %>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <%= link_to 'Préparer', pharmacy_list_path(list.id, list: {ready_at: Time.now}), method: :patch, class:"btn btn-primary" %>
+                    <button type="button" class="btn btn-secondary <%= list.id %>" data-dismiss="modal">Close</button>
+                    <%= link_to 'Préparer', pharmacy_list_path(list.id, list: {ready_at: Time.now}), method: :patch, class:"btn btn-primary card#{list.id}" %>
                   </div>
                 </div>
               </div>
@@ -89,6 +86,10 @@
 </div>
 
 <script>
+
+let idDragDown = "";
+let idDrag = "";
+
   function allowDrop(ev) {
     ev.preventDefault();
   }
@@ -99,11 +100,18 @@
 
   function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
-  }
+
+    idDrag = ev.target.id
+    idDragDown = document.querySelector(`.${idDrag}`);
+    console.log(idDragDown);
+  };
 
   function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
-  }
+    document.querySelector(`.${idDrag}`).click();
+};
+
 </script>
+
