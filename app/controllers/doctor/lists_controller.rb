@@ -1,5 +1,5 @@
 class Doctor::ListsController < ApplicationController
-  before_action :set_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_list, only: [:show, :edit, :update, :destroy, :map]
 
   def index
     @lists = List.all
@@ -46,6 +46,8 @@ class Doctor::ListsController < ApplicationController
     # redirect_to root_path
   end
 
+
+
   private
 
   def set_list
@@ -53,7 +55,7 @@ class Doctor::ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:note, drugs_attributes: [:id, :drug_name, :dosage, :posology, :quantity, :qsp, :_destroy])
+    params.require(:list).permit(:note, :user_id, drugs_attributes: [:id, :drug_name, :dosage, :posology, :quantity, :qsp, :_destroy])
 
   end
 end
