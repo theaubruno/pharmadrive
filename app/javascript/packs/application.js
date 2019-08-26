@@ -39,11 +39,7 @@ if (document.getElementById('newordo') !== null) {
         let quantityInput = document.querySelector(".inputsforms:not(.d-none).four");
         let qspInput = document.querySelector(".inputsforms:not(.d-none).five");
         listInCreation.insertAdjacentHTML('afterbegin',`<div><p>${drugNameInput.value} - ${dosageInput.value} -${posologyInput.value} /j- ${quantityInput.value} boites - ${qspInput.value}</p></div>`);
-         drugNameInput.value = "";
-         dosageInput.value = "";
-         posologyInput.value = "";
-         quantityInput.value = "";
-         qspInput.value = "";
+
 
         };
 
