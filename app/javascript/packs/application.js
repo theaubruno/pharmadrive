@@ -1,6 +1,5 @@
 import "bootstrap";
-
-
+import "../plugins/chart"
 
 if (document.getElementById('newordo') !== null) {
     let form = document.getElementById('newordo')
@@ -39,11 +38,7 @@ if (document.getElementById('newordo') !== null) {
         let quantityInput = document.querySelector(".inputsforms:not(.d-none).four");
         let qspInput = document.querySelector(".inputsforms:not(.d-none).five");
         listInCreation.insertAdjacentHTML('afterbegin',`<div><p>${drugNameInput.value} - ${dosageInput.value} -${posologyInput.value} /j- ${quantityInput.value} boites - ${qspInput.value}</p></div>`);
-         drugNameInput.value = "";
-         dosageInput.value = "";
-         posologyInput.value = "";
-         quantityInput.value = "";
-         qspInput.value = "";
+
 
         };
 
@@ -81,3 +76,28 @@ import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the styleshe
 import { initMapbox } from '../plugins/init_mapbox';
 
 initMapbox();
+
+import { initMapbox2 } from '../plugins/init_mapbox2';
+
+initMapbox2();
+
+
+// Select pharmacy
+
+const input = document.getElementById('list_user_id')
+const pharmacies = document.querySelectorAll('.marker-pharmacy')
+
+pharmacies.forEach((pharmacy) => {
+  pharmacy.addEventListener('click', event => {
+    setTimeout(function() {
+      const btn = document.querySelector('.superbtn')
+      btn.addEventListener('click', event => {
+        event.preventDefault();
+        input.value = parseInt(btn.dataset.id);
+        btn.disabled = 'true'
+
+        document.querySelector('.mapboxgl-popup-close-button').click()
+      })
+    }, 1);
+  })
+})
