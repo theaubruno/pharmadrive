@@ -1,3 +1,4 @@
 <h2><%= pharmacy.name %></h2>
 <p id="role"><%= pharmacy.role %></p>
 <p><%= pharmacy.address %></p>
+<%= link_to "Valider", doctor_patient_lists_path(@patient), method: :post%>
