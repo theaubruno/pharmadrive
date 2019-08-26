@@ -15,17 +15,16 @@ class Doctor::ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     # @patient = Patient.find(@patient_id.id)
-    @user = current_user
        # trouver un patient
     @patient = Patient.find(params[:patient_id])
     # l'asocier à ta liste
     @list.patient_id = @patient.id
         # associer le user à la liste
-    @list.user_id = @user.id
+    @list.user = User.find(16) #User.find_by(role: :pharmacy)
 
     # passser tous ls params à ta liste
-    if @list.save(params[:list])
-      # redirect_to doctor_patient_path(@list)
+    if @list.save
+      redirect_to doctor_patient_path(@patient)
     else
       render 'doctor/patients/show'
     end

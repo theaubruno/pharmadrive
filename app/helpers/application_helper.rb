@@ -1,7 +1,7 @@
 module ApplicationHelper
 end
 
-def sommeordos(array)
+def sumordos(array)
   sum = 0
   array.each do |patient|
     sum += patient.lists.count
@@ -9,7 +9,7 @@ def sommeordos(array)
   end
 end
 
-def sommelists(array)
+def sumlists(array)
   lists = []
   array.each do |list|
     if list.delivered? && list.delivered_at.day == Time.now.day
@@ -19,7 +19,7 @@ def sommelists(array)
   return lists
 end
 
-def sommelists2(array)
+def sumlists2(array)
   lists2 = []
   array.each do |list|
     if list.delivered?
@@ -27,14 +27,4 @@ def sommelists2(array)
     end
   end
   return lists2
-end
-
-def tempsmoyen(array)
-  times = []
-  array.each do |list|
-    time = (list.ready_at.to_i - list.created_at.to_i)
-    times << time
-  end
-  average = times.inject { |sum, el| sum + el }.to_f / times.size
-  return average
 end

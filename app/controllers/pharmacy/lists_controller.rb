@@ -2,7 +2,8 @@ class Pharmacy::ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
 
   def index
-    @lists = List.all
+    @lists = current_user.lists
+    # @lists = List.all
   end
 
   def archives

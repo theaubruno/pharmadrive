@@ -1,45 +1,48 @@
 <br>
 <div class="row">
   <div class="col-12">
-<div class="card-stats">
-<%= current_user.name %> </div>
-</div>
-<br>
-<% if current_user.role == 'doctor' %>
-<div class="row-style">
-<div class="card-stats">
-<%= "Nombre de patients:" %>
-<br>
-<strong> <%= @user.patients.count %></strong>
-</div>
-<br>
-<div class="card-stats">
-<%= "Nombre d'ordonnances:" %>
-<br>
-<strong> <%= sommeordos(@user.patients) %></strong>
-</div>
-</div>
-</div>
-<% else %>
-<div class="container-stats d-flex">
-<br>
-<div class="card-stats m-2">
-<%= "Ordonnances délivrées aujourd'hui:" %>
-<br>
-<strong> <%= sommelists(current_user.lists).count %></strong>
-</div>
-<div class="card-stats m-2">
-<%= "Ordonnances délivrées au total:" %>
-<br>
-<strong> <%= sommelists2(current_user.lists).count %></strong>
-</div>
-<div class="card-stats m-2">
-<%= "Temps de préparation en moyenne:" %>
-<br>
-<!-- <strong> <%= tempsmoyen(current_user.lists) %></strong> -->
-<strong> <%= "15 min" %></strong>
-</div>
-</div>
-<% end %>
+    <div class="card-stats">
+      <%= current_user.name %> </div>
+    </div>
+    <br>
+    <% if current_user.role == 'doctor' %>
+    <div class="row-style">
+      <div class="card-stats">
+        <%= "Nombre de patients:" %>
+        <br>
+        <strong> <%= @user.patients.count %></strong>
+      </div>
+      <br>
+      <div class="card-stats">
+        <%= "Nombre d'ordonnances:" %>
+        <br>
+        <strong> <%= sumordos(@user.patients) %></strong>
+      </div>
+    </div>
+  </div>
+  <% else %>
+  <div class="container-stats d-flex">
+    <br>
+    <div class="card-stats m-2">
+      <%= "Ordonnances délivrées aujourd'hui:" %>
+      <br>
+      <strong> <%= sumlists(@user.lists).count %></strong>
+    </div>
+    <div class="card-stats m-2">
+      <%= "Ordonnances délivrées au total:" %>
+      <br>
+      <strong> <%= current_user.lists.where.not(delivered_at: nil).count %></strong>
+    </div>
+    <div class="card-stats m-2">
+      <%= "Temps de préparation en moyenne:" %>
+      <br>
+      <p>
+      <strong> <%= current_user.average_time.to_i
+       %></strong>
+      <%= "min"  %>
+      </p>
+    </div>
+  </div>
+  <% end %>
 
- <%= link_to "Modifier vos informations", edit_user_registration_path, class: "nav-link" %>
+  <%= link_to "Modifier vos informations", edit_user_registration_path, class: "nav-link" %>
