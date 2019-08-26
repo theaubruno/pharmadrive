@@ -16,7 +16,7 @@
                         <div class="card-header d-flex" id="heading<%=list.id%>">
                             <button class="btn d-flex w-100 justify-between" type="button" data-toggle="collapse" data-target="#collapse<%=list.id%>" aria-expanded="false" aria-controls="collapse<%=list.id%>">
                                 <span>
-                                    <%= list.prescribed_at.strftime("%A %e %B %C") %></span>
+                                    <%= list.created_at.strftime("%d %B %Y")%> </span>
                                 <span>
                                     <%= list.drugs.count %> prescriptions </span>
                             </button>
@@ -26,7 +26,9 @@
                                 <% list.drugs.each do |drug| %>
                                 <%= drug.drug_name %>
                                 <%= drug.dosage %>
-                                <%= drug.posology %> <br>
+                                <%= drug.posology %>
+                                <%= drug.quantity %>
+                                <%= drug.qsp %> <br>
                                 <% end %>
                             </div>
                         </div>
@@ -36,56 +38,61 @@
             </div>
         </div>
         <div class="right col-6 border">
-          <div class="list-in-creation">
-            <h3>Nouvelle ordonnance : </h3>
-            <%= simple_form_for :list, url: doctor_patient_lists_path(@patient, @list), method: :post  do |form| %>
-              <div class="new-drug">
-                <%= form.fields_for [ @list, @drug ] do |f| %>
-                    <%= f.input :drug_name, label: "Nom du médicament", class: "drug-name-input" %>
-                    <%= f.input :dosage, label: "Dosage", class: "dosage-input" %>
-                    <%= f.input :posology, label: "Posologie", class: "posology-input" %>
-                    <%= f.input :quantity, label: "Quantité", class: "quantity-input" %>
-                    <%= f.input :qsp, label: "QSP", class: "qsp-input" %>
-                <% end %>
-              </div>
-              <div class="">
-              <%= link_to ' Ajouter une prescription', class: 'far fa-plus-circle font05' %>
-              </div>
+            <div>
+                <h3>Nouvelle ordonnance : </h3>
+            </div>
+            <div class="list-in-creation">
+                <div id="newordo" class="d-none">
+                    <%= simple_form_for @list , url: doctor_patient_lists_path(@patient, @list), method: :post do |f| %>
+                    <div id="drugs">
+                        <%= f.input :user_id, label: ".", input_html: { class: 'hidden' } %>
+                        <%= f.simple_fields_for :drugs, Drug.new do |drug| %>
+                        <%= drug.input :drug_name, input_html:{ class: 'inputsforms one' }%>
+                        <%= drug.input :dosage, input_html:{ class: 'inputsforms two' }%>
+                        <%= drug.input :posology, input_html:{ class: 'inputsforms three' }%>
+                        <%= drug.input :quantity, input_html:{ class: 'inputsforms four' }%>
+                        <%= drug.input :qsp, input_html:{ class: 'inputsforms five' }%>
+                        <div class="links">
+                        </div>
+                        <% end %>
+                    </div>
+                    <!--    <div class="">
+                    </div> -->
+                    <button type="button" id="book" class="add-drug">
+                        Ajouter
+                    </button>
+                    <!-- Button trigger modal -->
+                    <button id='btn-map' type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
+                        Selectionner la pharmacie
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Selection de la pharmacie</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Choisir une pharmacie ?
+                                    <div id="map2" style="width: 100%;
+  height: 450px;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Retour</button>
+                                    <%= f.submit 'Créer ordonnance' %>
 
-              <button type="button" class="btn btn-success color-white" data-toggle="modal" data-target="#exampleModal" id="book">
-                Choisir la Pharmacie
-              </button>
-
-
-              <%= form.button :submit, class: 'add-drug' %>
-            <% end %>
-          </div>
-
-<script>
-
-const listInCreation = document.querySelector(".list-in-creation");
-const addDrug = document.querySelector(".add-drug");
-
-addDrug.addEventListener("click", (event) => {
-
-  const drugNameInput = document.querySelector(".list_drug_drug_name input");
-  const dosageInput = document.querySelector(".list_drug_dosage input");
-  const posologyInput = document.querySelector(".list_drug_posology input");
-  const quantityInput = document.querySelector(".list_drug_quantity input");
-  const qspInput = document.querySelector(".list_drug_qsp input");
-
-
-  listInCreation.insertAdjacentHTML("afterbegin" , `<div><p>${drugNameInput.value} - ${dosageInput.value} -${posologyInput.value} /j- ${quantityInput.value} boites - ${qspInput.value}</p></div>`);
-
-
-});
-
-</script>
-
-
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% end %>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<!--             <form id="newordo" class="d-none">
-            </form> -->
+
 

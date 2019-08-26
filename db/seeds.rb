@@ -15,9 +15,9 @@ User.destroy_all
 
 puts "Adding User"
 
-d1 = User.create!(role: "doctor", name: "Wangermez Vincent", email:"doctor1@example.com", password:"password")
+d1 = User.create!(role: "doctor", name: "Wangermez Vincent", email:"doctor1@example.com", address:"107 Cours Balguerie Stuttenberg, 33300 Bordeaux", password:"password")
 
-u1 = User.create!(role:"pharmacy", name: "Pharmacie du Musée", email:"pharmacy1@example.com", password:"password")
+u1 = User.create!(role:"pharmacy", name: "Pharmacie du Musée", email:"pharmacy1@example.com", address:"93 Cours Balguerie Stuttenberg, 33300 Bordeaux", password:"password")
 
 puts "Adding Patient"
 
@@ -46,35 +46,29 @@ Date.new(2018,02,15)
 
 puts "Adding List"
 
-l1 = List.create!(patient_id: p1.id, user_id: u1.id, note: "Grippe", prescribed_at: Date.new(2018,2,15), ready_at: "", delivered: true)
-l2 = List.create!(patient_id: p1.id, user_id: u1.id, note: "Entorse", prescribed_at: Date.new(2018,6,21), ready_at: "", delivered: true)
-l3 = List.create!(patient_id: p1.id, user_id: u1.id, note: "Burn-out", prescribed_at: Date.new(2018,8,30), ready_at: "", delivered: true)
-l4 = List.create!(patient_id: p1.id, user_id: u1.id, note: "Dépression", prescribed_at: Date.new(2018,12,7), ready_at: "", delivered: true)
-l5 = List.create!(patient_id: p1.id, user_id: u1.id, note: "Gastro", prescribed_at: Date.new(2019,03,20), ready_at: "", delivered: true)
-l6 = List.create!(patient_id: p1.id, user_id: u1.id, note: "Fracture du genou", prescribed_at: Date.new(2019,07,14), ready_at: "", delivered: false)
+l1 = List.create!(patient_id: p1.id, user_id: u1.id, note: "Grippe", created_at: Date.new(2018,2,15), ready_at: Date.new(2018,2,16), delivered_at: Date.new(2018,2,17))
+l2 = List.create!(patient_id: p1.id, user_id: u1.id, note: "Entorse", created_at: Date.new(2018,6,21), ready_at: Date.new(2018,6,22), delivered_at: Date.new(2018,6,23))
+l3 = List.create!(patient_id: p1.id, user_id: u1.id, note: "Burn-out", created_at: Date.new(2018,8,30), ready_at: Date.new(2018,8,15))
+l4 = List.create!(patient_id: p1.id, user_id: u1.id, note: "Dépression", created_at: Date.new(2018,12,7))
+l5 = List.create!(patient_id: p1.id, user_id: u1.id, note: "Gastro", created_at: Date.new(2019,03,20))
+l6 = List.create!(patient_id: p1.id, user_id: u1.id, note: "Fracture du genou", created_at: Date.new(2019,07,14))
 
-l7 = List.create!(patient_id: p2.id, user_id: u1.id, note: "Grippe", prescribed_at: Date.new(2018,2,15), ready_at: "", delivered: true)
-l8 = List.create!(patient_id: p2.id, user_id: u1.id, note: "Grippe", prescribed_at: Date.new(2018,6,21), ready_at: "", delivered: true)
-l9 = List.create!(patient_id: p2.id, user_id: u1.id, note: "Grippe", prescribed_at: Date.new(2018,8,30), ready_at: "", delivered: true)
-l10 = List.create!(patient_id: p2.id, user_id: u1.id, note: "Grippe", prescribed_at: Date.new(2018,12,7), ready_at: "", delivered: true)
-l11 = List.create!(patient_id: p2.id, user_id: u1.id, note: "Grippe", prescribed_at: Date.new(2019,03,20), ready_at: "", delivered: true)
-l12 = List.create!(patient_id: p2.id, user_id: u1.id, note: "Grippe", prescribed_at: Date.new(2019,07,14), ready_at: "", delivered: false)
 
 puts "Adding Drug"
 
-d1 = Drug.create!(list_id: l1.id, drug_name: "Doliprane", dosage:"1000mg", posology:"0-1-0", quantity:" 1 boîtes", qsp: "7 jours")
-d2 = Drug.create!(list_id: l1.id, drug_name: "Ibuprophène", dosage:"500mg", posology:"1-0-1", quantity:" 2 boîtes", qsp: "5 jours")
-d3 = Drug.create!(list_id: l1.id, drug_name: "Maxilase", dosage:"150cl", posology:"1-1-1", quantity:" 1 flacon", qsp: "5 jours")
+d1 = Drug.create!(list_id: l6.id, drug_name: "Doliprane1", dosage:"1000mg", posology:"0-1-0", quantity:" 1 boîtes", qsp: "7 jours")
+d2 = Drug.create!(list_id: l6.id, drug_name: "Ibuprophène1", dosage:"500mg", posology:"1-0-1", quantity:" 2 boîtes", qsp: "5 jours")
+d3 = Drug.create!(list_id: l6.id, drug_name: "Maxilase", dosage:"150cl", posology:"1-1-1", quantity:" 1 flacon", qsp: "5 jours")
 
 d4 = Drug.create!(list_id: l5.id, drug_name: "Tiorfan", dosage:"500mg", posology:"1-1-0", quantity:" 1 boîtes", qsp: "4 jours")
-d5 = Drug.create!(list_id: l5.id, drug_name: "Ibuprophène", dosage:"500mg", posology:"1-0-1", quantity:" 2 boîtes", qsp: " 4 jours")
-d6 = Drug.create!(list_id: l5.id, drug_name: "Doliprane", dosage:"1000mg", posology:"0-1-0", quantity:" 1 boîtes", qsp: "7 jours")
+d5 = Drug.create!(list_id: l5.id, drug_name: "Ibuprophène2", dosage:"500mg", posology:"1-0-1", quantity:" 2 boîtes", qsp: " 4 jours")
+d6 = Drug.create!(list_id: l5.id, drug_name: "Doliprane2", dosage:"1000mg", posology:"0-1-0", quantity:" 1 boîtes", qsp: "7 jours")
 
 d7 = Drug.create!(list_id: l2.id, drug_name: "Ketum", dosage:"500ml", posology:"1-0-1", quantity:" 1 flacon", qsp: "4 jours")
-d8 = Drug.create!(list_id: l2.id, drug_name: "Doliprane", dosage:"1000mg", posology:"0-1-0", quantity:" 1 boîtes", qsp: "7 jours")
+d8 = Drug.create!(list_id: l2.id, drug_name: "Doliprane3", dosage:"1000mg", posology:"0-1-0", quantity:" 1 boîtes", qsp: "7 jours")
 
 d9 = Drug.create!(list_id: l3.id, drug_name: "Citalorum almus", dosage:"500ml", posology:"0-0-1", quantity:" 2 boites", qsp: " 1 mois")
-d9 = Drug.create!(list_id: l4.id, drug_name: "Citalorum almus", dosage:"500ml", posology:"0-0-1", quantity:" 2 boites", qsp: " 1 mois")
+d9 = Drug.create!(list_id: l1.id, drug_name: "Citalorum almus", dosage:"500ml", posology:"0-0-1", quantity:" 2 boites", qsp: " 1 mois")
 
 
 puts "Done ! "

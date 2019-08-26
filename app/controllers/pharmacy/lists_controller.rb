@@ -1,8 +1,20 @@
 class Pharmacy::ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
+  # before_action :set_list, only: [:archives_show]
 
   def index
-    @lists = List.all
+    @lists = current_user.lists
+    # @lists = List.all
+    #order('List.patient.first_name ASC')
+  end
+
+  def archives
+    @patients = current_user.pharmacy_patients
+  end
+
+  def archives_show
+    @patient = Patient.find(params[:format].to_i)
+    @lists = @patient.lists
   end
 
   def show
@@ -12,9 +24,14 @@ class Pharmacy::ListsController < ApplicationController
   end
 
   def update
-    @list.delivered = true
-    @list.save
-
+    @list.update(list_params)
+    if @list.delivered?
+      mail = ListMailer.with(list: @list).mail_delivered
+      mail.deliver_now
+    elsif @list.ready?
+      mail = ListMailer.with(list: @list).mail_ready
+      mail.deliver_now
+    end
     redirect_to pharmacy_lists_path(@pharmacy)
   end
 
@@ -26,11 +43,15 @@ class Pharmacy::ListsController < ApplicationController
 
   private
 
+  def set_patient
+    @patient = Patient.find(params[:id])
+  end
+
   def set_list
     @list = List.find(params[:id])
   end
 
   def list_params
-    params.require(:list).permit(:patient_id, :prescribed_at, :user_id, :delivered)
+    params.require(:list).permit(:patient_id, :prescribed_at, :user_id, :delivered_at, :ready_at)
   end
 end
