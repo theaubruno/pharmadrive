@@ -150,6 +150,6 @@ pharmacies.forEach((pharmacy) => {
 //= require sweetalert2
 //= require sweet-alert2-rails
 import { typedHome } from '../components/typed';
-if (window.location.href === "https://ibaybeach.herokuapp.com/" || window.location.href === "http://localhost:3000/" ){
+if (window.location.href === "https://pharmadrive.herokuapp.com" || window.location.href === "http://localhost:3000/" ){
  typedHome();
 };
