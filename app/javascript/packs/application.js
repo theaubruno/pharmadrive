@@ -104,6 +104,7 @@ import { initMapbox2 } from '../plugins/init_mapbox2';
     const input = document.getElementById('list_user_id')
     const pharmacies = document.querySelectorAll('.marker-pharmacy')
     const selectpharm = document.getElementById('pharmselect')
+    const selectaddre = document.getElementById('addresselect')
 
     pharmacies.forEach((pharmacy) => {
       pharmacy.addEventListener('click', event => {
@@ -112,12 +113,12 @@ import { initMapbox2 } from '../plugins/init_mapbox2';
           btn.addEventListener('click', event => {
             event.preventDefault();
             input.value = parseInt(btn.dataset.id);
-            btn.disabled = 'true'
-            selectpharm.insertAdjacentHTML('beforeend', btn.dataset.name, " ");
-            selectpharm.insertAdjacentHTML('beforeend', btn.dataset.address);
+            // btn.disabled = 'true'
+            selectpharm.innerHTML = btn.dataset.name;
+            selectaddre.innerHTML = btn.dataset.address;
 
 
-            document.querySelector('.mapboxgl-popup-close-button').click()
+            // document.querySelector('.mapboxgl-popup-close-button').click()
           })
         }, 1);
       });
