@@ -51,16 +51,23 @@
 }
 
 .card-stats {
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: black;
-  font-size: 24px;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  border-radius: 5px;
-  box-shadow: 0 0 13px rgba(0,0,0,0.2);
-  width: 450px;
+  width: 200px;
+  height: 200px;
+  border: solid black;
+  border-radius: 50%;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 200px;
+  font-size: 100px;
+}
+
+
+.card-stats-title {
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 200px;
 }
 
 .row-style {
