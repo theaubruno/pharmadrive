@@ -5,6 +5,9 @@ import Highcharts from 'highcharts';
 // Load module after Highcharts is loaded
 require('highcharts/modules/exporting')(Highcharts);
 
+const chart = document.querySelector("#chart").dataset.average
+const daily = document.querySelector("#chart").dataset.daily
+
 var myChart = Highcharts.chart('chart', {
           title: {
             text: 'Fruit Consumption'
@@ -21,9 +24,9 @@ var myChart = Highcharts.chart('chart', {
           },
           series: [{
             name: 'Jane',
-            data: [1, 0, 4]
+            data: [parseInt(chart)]
           }, {
             name: 'John',
-            data: [5, 7, 3]
+            data: [parseInt(daily)]
           }]
         });

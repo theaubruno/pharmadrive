@@ -36,15 +36,25 @@
       <%= "Temps de préparation en moyenne:" %>
       <br>
       <p>
-      <strong> <%= current_user.average_time.to_i
-       %></strong>
-      <%= "min"  %>
+        <strong> <%= current_user.average_time.to_i
+        %></strong>
+        <%= "min"  %>
       </p>
     </div>
-    <div id="chart" style="width:100%; height:400px;"></div>
-
+    <div class="card-stats m-2">
+      <%= "Temps de préparation en moyenne:" %>
+      <br>
+      <p>
+        <strong> <%= @average %>
+      </strong>
+      <%= "min"  %>
+    </p>
   </div>
-  <% end %>
+  <div id="chart" style="width:100%; height:400px;" data-average="<%= current_user.average_time.to_i %>" data-daily="<%= @average  %>"></div>
 
-  <%= link_to "Modifier vos informations", edit_user_registration_path, class: "nav-link" %>
+</div>
+<% end %>
 
+<%= link_to "Modifier vos informations", edit_user_registration_path, class: "nav-link" %>
+
+<%#=  List.group_by_day(:created_at).count  %>
