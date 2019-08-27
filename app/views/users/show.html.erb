@@ -24,46 +24,46 @@
   <div class="container-stats">
     <div class="row">
       <div class="col-3">
-        <%= "Ordonnances délivrées aujourd'hui:" %>
+        <h4>Ordonnances délivrées aujourd'hui:</h4>
         <div class="card-stats">
 
-          <strong> <%= sumlists(@user.lists).count %></strong>
+          <%= sumlists(@user.lists).count %>
         </div>
       </div>
       <div class="col-3">
-        <%= "Ordonnances délivrées au total:" %>
+        <h4> Ordonnances délivrées au total:</h4>
         <div class="card-stats">
-          <strong> <%= current_user.lists.where.not(delivered_at: nil).count %></strong>
+          <%= current_user.lists.where.not(delivered_at: nil).count %>
         </div>
       </div>
       <div class="col-3">
-        <%= "Temps de préparation en moyenne:" %>
+        <h4>Temps de préparation en moyenne:</h4>
         <div class="card-stats">
 
 
           <p>
-            <strong> <%= current_user.average_time.to_i %></strong>
+            <%= current_user.average_time.to_i %>
             <%= "min"  %>
           </p>
         </div>
       </div>
       <div class="col-3">
-       <%= "Temps de préparation en moyenne aujourd'hui:" %>
+        <h4> Temps de préparation aujourd'hui:</h4>
        <div class="card-stats">
 
 
         <p>
-          <strong> <%= current_user.average_daily.to_i %>
-          </strong>
+          <%= current_user.average_daily.to_i %>
           <%= "min"  %>
         </p>
       </div>
     </div>
   </div>
+  <div class="graph">
   <div class="col-12">
     <div id="chart" style="width:100%; height:400px;" data-average="<%= current_user.average_time.to_i %>" data-daily="<%= current_user.average_daily.to_i  %>"></div>
   </div>
-
+</div>
 </div>
 <% end %>
 
