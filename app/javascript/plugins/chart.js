@@ -34,3 +34,30 @@ if (document.getElementById('chart') !== null){
           }]
         });
 };
+
+if (document.getElementById('chart1') !== null){
+  const patients = document.querySelector("#chart1").dataset.daily2
+  const alltime = document.querySelector("#chart1").dataset.alltime
+  var myChart = Highcharts.chart('chart1', {
+          title: {
+            text: 'Nombre de patients en moyenne'
+          },
+          xAxis: {
+            tickInterval: 24 * 3600 * 1000, // one week
+              tickWidth: 0,
+        gridLineWidth: 1,
+          },
+          yAxis: {
+            title: {
+              text: 'Durée'
+            }
+          },
+          series: [{
+            name: 'Depuis toujours',
+            data: [parseInt(alltime)]
+          }, {
+            name: "Aujourd'hui",
+            data: [parseInt(patients)]
+          }]
+        });
+};
