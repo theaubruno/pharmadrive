@@ -113,7 +113,7 @@ import { initMapbox2 } from '../plugins/init_mapbox2';
             event.preventDefault();
             input.value = parseInt(btn.dataset.id);
             btn.disabled = 'true'
-            selectpharm.insertAdjacentHTML('beforeend', btn.dataset.name);
+            selectpharm.insertAdjacentHTML('beforeend', btn.dataset.name, " ");
             selectpharm.insertAdjacentHTML('beforeend', btn.dataset.address);
 
 
