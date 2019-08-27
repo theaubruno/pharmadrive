@@ -1,0 +1,22 @@
+<div>
+  Medecin : <%= @list.patient.user.name %>
+</div>
+
+<div>
+  Ordonnance du <%= @list.created_at.strftime("%d %B %Y") %>
+</div>
+
+<div>
+  Pharmacie : <%= @list.user.name %>
+</div>
+
+
+<div>
+  <% @list.drugs.each do |drug| %>
+    <%= drug.drug_name %>
+    <%= drug.dosage %>
+    <%= drug.posology %>
+    <%= drug.quantity %>
+    <%= drug.qsp %> <br>
+  <% end %>
+</div>

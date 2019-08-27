@@ -30,6 +30,7 @@
                                 <%= drug.quantity %>
                                 <%= drug.qsp %> <br>
                                 <% end %>
+                                <%= link_to 'Pdf', doctor_list_listpdf_path(list.id, format: :pdf) %>
                             </div>
                         </div>
                     </div>
@@ -57,6 +58,8 @@
                         <% end %>
                     </div>
                     <!--    <div class="">
+                        <%= link_to 'Ajouter une prescription', class: 'far fa-plus-circle font05 ' %>
+
                     </div> -->
                     <button type="button" id="book" class="add-drug">
                         Ajouter
