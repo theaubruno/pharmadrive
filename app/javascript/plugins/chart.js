@@ -5,6 +5,7 @@ import Highcharts from 'highcharts';
 // Load module after Highcharts is loaded
 require('highcharts/modules/exporting')(Highcharts);
 
+if (document.getElementById('chart') !== null){
 var myChart = Highcharts.chart('chart', {
           chart: {
             type: 'bar'
@@ -28,3 +29,4 @@ var myChart = Highcharts.chart('chart', {
             data: [5, 7, 3]
           }]
         });
+};
