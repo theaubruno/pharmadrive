@@ -1,7 +1,9 @@
 import "bootstrap";
 
-
 // SCRIPT POUR LES ORDONNANCES
+import "../plugins/chart";
+
+
 if (document.getElementById('newordo') !== null) {
     let form = document.getElementById('newordo')
     let parentsDrugs = document.getElementById('drugs')
@@ -79,4 +81,31 @@ import { initMapbox } from '../plugins/init_mapbox';
 initMapbox();
 
 
+
+
+
+import { initMapbox2 } from '../plugins/init_mapbox2';
+
+initMapbox2();
+
+
+// Select pharmacy
+
+const input = document.getElementById('list_user_id')
+const pharmacies = document.querySelectorAll('.marker-pharmacy')
+
+pharmacies.forEach((pharmacy) => {
+  pharmacy.addEventListener('click', event => {
+    setTimeout(function() {
+      const btn = document.querySelector('.superbtn')
+      btn.addEventListener('click', event => {
+        event.preventDefault();
+        input.value = parseInt(btn.dataset.id);
+        btn.disabled = 'true'
+
+        document.querySelector('.mapboxgl-popup-close-button').click()
+      })
+    }, 1);
+  });
+})
 

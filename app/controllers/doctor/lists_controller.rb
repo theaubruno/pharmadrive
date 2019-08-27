@@ -1,5 +1,5 @@
 class Doctor::ListsController < ApplicationController
-  before_action :set_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_list, only: [:show, :edit, :update, :destroy, :map]
 
   def index
     @lists = List.all
@@ -20,9 +20,11 @@ class Doctor::ListsController < ApplicationController
     # l'asocier à ta liste
     @list.patient_id = @patient.id
         # associer le user à la liste
-     User.find_by(role: :pharmacy)
+    User.find_by(role: :pharmacy)
     # passser tous ls params à ta liste
     if @list.save
+      mail = ListMailer.with(list: @list).create_confirmation
+      mail.deliver_now
       redirect_to doctor_patient_path(@patient)
     else
       render 'doctor/patients/show'
@@ -36,7 +38,6 @@ class Doctor::ListsController < ApplicationController
 
   def update
     @list.update(list_params)
-
    # redirect_to user_path(@user)
   end
 
@@ -46,6 +47,8 @@ class Doctor::ListsController < ApplicationController
     # redirect_to root_path
   end
 
+
+
   private
 
   def set_list
@@ -53,7 +56,7 @@ class Doctor::ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:note, drugs_attributes: [:id, :drug_name, :dosage, :posology, :quantity, :qsp, :_destroy])
+    params.require(:list).permit(:note, :user_id, drugs_attributes: [:id, :drug_name, :dosage, :posology, :quantity, :qsp, :_destroy])
 
   end
 end

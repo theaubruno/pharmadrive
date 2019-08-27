@@ -40,14 +40,13 @@
         <div class="right col-6 border">
             <div>
                 <h3>Nouvelle ordonnance : </h3>
-
             </div>
             <div class="list-in-creation">
                 <div id="newordo" class="d-none">
                     <%= simple_form_for @list , url: doctor_patient_lists_path(@patient, @list), method: :post do |f| %>
                     <div id="drugs">
+                        <%= f.input :user_id, label: ".", input_html: { class: 'hidden' } %>
                         <%= f.simple_fields_for :drugs, Drug.new do |drug| %>
-
                         <%= drug.input :drug_name, input_html:{ class: 'inputsforms one' }%>
                         <%= drug.input :dosage, input_html:{ class: 'inputsforms two' }%>
                         <%= drug.input :posology, input_html:{ class: 'inputsforms three' }%>
@@ -63,12 +62,12 @@
                         Ajouter
                     </button>
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
+                    <button id='btn-map' type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
                         Selectionner la pharmacie
                     </button>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
+                        <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Selection de la pharmacie</h5>
@@ -77,11 +76,14 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                   Confirmer l'ordonnance ?
+                                    Choisir une pharmacie ?
+                                    <div id="map2" style="width: 100%;
+  height: 450px;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Retour</button>
-                               <%= f.submit 'Create List'%>
+                                    <%= f.submit 'Créer ordonnance' %>
+
                                 </div>
                             </div>
                         </div>
@@ -92,3 +94,5 @@
         </div>
     </div>
 </div>
+
+
