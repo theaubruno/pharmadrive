@@ -1,5 +1,6 @@
 class Doctor::PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
+  before_action :map, only: [:show]
 
   def index
     if params[:query].present?
@@ -40,7 +41,22 @@ class Doctor::PatientsController < ApplicationController
     # redirect_to root_path
   end
 
+
   private
+
+  def map
+    @users = User.geocoded
+    @pharmacies = User.where(role: 'pharmacy')
+
+    @markers = @pharmacies.map do |pharmacy|
+      {
+        lat: pharmacy.latitude,
+        lng: pharmacy.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { pharmacy: pharmacy }),
+        role: pharmacy.role
+      }
+    end
+  end
 
   def set_patient
     @patient = Patient.find(params[:id])

@@ -3,9 +3,9 @@ class Pharmacy::ListsController < ApplicationController
   # before_action :set_list, only: [:archives_show]
 
   def index
-    @lists = current_user.lists
-    # @lists = List.all
-    #order('List.patient.first_name ASC')
+    # @lists = current_user.lists
+    @lists = List.all
+    # order('List.patient.first_name ASC')
   end
 
   def archives
@@ -25,7 +25,13 @@ class Pharmacy::ListsController < ApplicationController
 
   def update
     @list.update(list_params)
-
+    if @list.delivered?
+      mail = ListMailer.with(list: @list).mail_delivered
+      mail.deliver_now
+    elsif @list.ready?
+      mail = ListMailer.with(list: @list).mail_ready
+      mail.deliver_now
+    end
     redirect_to pharmacy_lists_path(@pharmacy)
   end
 
