@@ -86,28 +86,43 @@ initMapbox();
 
 import { initMapbox2 } from '../plugins/init_mapbox2';
 
-initMapbox2();
+
+// window.addEventListener("DOMContentLoaded", (event) => {
+//   // Select pharmacy
 
 
-// Select pharmacy
+//   })
 
-const input = document.getElementById('list_user_id')
-const pharmacies = document.querySelectorAll('.marker-pharmacy')
+  $('#exampleModal').on('shown.bs.modal', function() {
 
-pharmacies.forEach((pharmacy) => {
-  pharmacy.addEventListener('click', event => {
-    setTimeout(function() {
-      const btn = document.querySelector('.superbtn')
-      btn.addEventListener('click', event => {
-        event.preventDefault();
-        input.value = parseInt(btn.dataset.id);
-        btn.disabled = 'true'
+    initMapbox2();
+    const input = document.getElementById('list_user_id')
+    const pharmacies = document.querySelectorAll('.marker-pharmacy')
+    const selectpharm = document.getElementById('pharmselect')
+    const selectaddre = document.getElementById('addresselect')
 
-        document.querySelector('.mapboxgl-popup-close-button').click()
-      })
-    }, 1);
+    pharmacies.forEach((pharmacy) => {
+      pharmacy.addEventListener('click', event => {
+        setTimeout(function() {
+          const btn = document.querySelector('.superbtn')
+          btn.addEventListener('click', event => {
+            event.preventDefault();
+            input.value = parseInt(btn.dataset.id);
+            // btn.disabled = 'true'
+            selectpharm.innerHTML = btn.dataset.name;
+            selectaddre.innerHTML = btn.dataset.address;
+
+
+            // document.querySelector('.mapboxgl-popup-close-button').click()
+          })
+        }, 1);
+      });
+    });
+
   });
-})
+
+
+
 
 
 

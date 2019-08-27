@@ -13,7 +13,7 @@ if (document.getElementById('chart') !== null){
   const daily = document.querySelector("#chart").dataset.daily
   var myChart = Highcharts.chart('chart', {
           title: {
-            text: 'Fruit Consumption'
+            text: 'Temps de préparation moyen'
           },
           xAxis: {
             tickInterval: 24 * 3600 * 1000, // one week
@@ -22,14 +22,14 @@ if (document.getElementById('chart') !== null){
           },
           yAxis: {
             title: {
-              text: 'Fruit eaten'
+              text: 'Durée'
             }
           },
           series: [{
-            name: 'Jane',
+            name: 'Depuis toujours',
             data: [parseInt(chart)]
           }, {
-            name: 'John',
+            name: "Aujourd'hui",
             data: [parseInt(daily)]
           }]
         });
