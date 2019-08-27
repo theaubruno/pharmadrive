@@ -6,14 +6,13 @@ import Highcharts from 'highcharts';
 require('highcharts/modules/exporting')(Highcharts);
 
 var myChart = Highcharts.chart('chart', {
-          chart: {
-            type: 'bar'
-          },
           title: {
             text: 'Fruit Consumption'
           },
           xAxis: {
-            categories: ['Apples', 'Bananas', 'Oranges']
+            tickInterval: 24 * 3600 * 1000, // one week
+              tickWidth: 0,
+        gridLineWidth: 1,
           },
           yAxis: {
             title: {
