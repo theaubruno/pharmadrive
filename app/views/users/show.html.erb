@@ -41,15 +41,15 @@
       </p>
     </div>
     <div class="card-stats m-2">
-      <%= "Temps de préparation en moyenne:" %>
+      <%= "Temps de préparation en moyenne aujourd'hui:" %>
       <br>
       <p>
-        <strong> <%= current_user.average_daily %>
+        <strong> <%= current_user.average_daily.to_i %>
       </strong>
       <%= "min"  %>
     </p>
   </div>
-  <div id="chart" style="width:100%; height:400px;" data-average="<%= current_user.average_time.to_i %>" data-daily="<%= current_user.average_daily  %>"></div>
+  <div id="chart" style="width:100%; height:400px;" data-average="<%= current_user.average_time.to_i %>" data-daily="<%= current_user.average_daily.to_i  %>"></div>
 
 </div>
 <% end %>
