@@ -48,7 +48,7 @@
                 <div id="newordo" class="d-none">
                     <%= simple_form_for @list , url: doctor_patient_lists_path(@patient, @list), method: :post do |f| %>
                     <div id="drugs">
-                        <%= f.input :user_id, label: ".", input_html: { class: 'hidden' } %>
+                       <div id="point"> <%= f.input :user_id, label: ".", input_html: { class: 'hidden' } %></div>
                         <%= f.simple_fields_for :drugs, Drug.new do |drug| %>
                         <%= drug.input :drug_name, input_html:{ class: 'inputsforms one' }%>
                         <%= drug.input :dosage, input_html:{ class: 'inputsforms two' }%>
@@ -82,8 +82,21 @@
                                 </div>
                                 <div class="modal-body">
                                     Choisir une pharmacie ?
-                                    <div id="map2" style="width: 100%;
-  height: 450px;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+                                <div id="pharmselect">
+                                </div>
+                                <div id="addresselect">
+
+                                </div>
+                                    <div
+                                      id="map2"
+                                      style="
+                                        width: 100%;
+                                        height: 550px;
+                                      "
+                                      data-markers="<%= @markers.to_json %>"
+                                      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+                                    >
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Retour</button>

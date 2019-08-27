@@ -16,6 +16,12 @@ const initMapbox2 = () => {
       container: 'map2',
       style: 'mapbox://styles/mapbox/streets-v10'
     });
+    // map._canvas.width = '932'
+    // map._canvas.height = '1100'
+    // map._canvas.style.width = '100%'
+    // map._canvas.style.height = '100%'
+    // map._canvas.style.top = '0px'
+    // map._canvas.style.right = '0px'
     const markers = JSON.parse(mapElement.dataset.markers);
   markers.forEach((marker) => {
     const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
@@ -34,7 +40,7 @@ const initMapbox2 = () => {
       .addTo(map);
   });
   fitMapToMarkers(map, markers);
-  map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken }));
+  map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken, mapboxgl: mapboxgl }));
   }
 
 
