@@ -80,32 +80,51 @@ import { initMapbox } from '../plugins/init_mapbox';
 
 initMapbox();
 
-
-
-
-
 import { initMapbox2 } from '../plugins/init_mapbox2';
 
-initMapbox2();
+// window.addEventListener("DOMContentLoaded", (event) => {
+//   // Select pharmacy
 
 
-// Select pharmacy
+//   })
 
-const input = document.getElementById('list_user_id')
-const pharmacies = document.querySelectorAll('.marker-pharmacy')
+  $('#exampleModal').on('shown.bs.modal', function() {
 
-pharmacies.forEach((pharmacy) => {
-  pharmacy.addEventListener('click', event => {
-    setTimeout(function() {
-      const btn = document.querySelector('.superbtn')
-      btn.addEventListener('click', event => {
-        event.preventDefault();
-        input.value = parseInt(btn.dataset.id);
-        btn.disabled = 'true'
+    // const map = document.querySelector("#map2");
+    // map._canvas.width = '1532'
+    // map._canvas.height = '1100'
+    // map._canvas.style.width = '100%'
+    // map._canvas.style.height = '550px'
+    // map._canvas.style.top = '0px'
+    // map._canvas.style.right = '0px'
 
-        document.querySelector('.mapboxgl-popup-close-button').click()
-      })
-    }, 1);
+
+
+    initMapbox2();
+    const input = document.getElementById('list_user_id')
+    const pharmacies = document.querySelectorAll('.marker-pharmacy')
+    const selectpharm = document.getElementById('pharmselect')
+
+    pharmacies.forEach((pharmacy) => {
+      pharmacy.addEventListener('click', event => {
+        setTimeout(function() {
+          const btn = document.querySelector('.superbtn')
+          btn.addEventListener('click', event => {
+            event.preventDefault();
+            input.value = parseInt(btn.dataset.id);
+            btn.disabled = 'true'
+            selectpharm.insertAdjacentHTML('beforeend', btn.dataset.name);
+            selectpharm.insertAdjacentHTML('beforeend', btn.dataset.address);
+
+
+            document.querySelector('.mapboxgl-popup-close-button').click()
+          })
+        }, 1);
+      });
+    });
+
   });
-})
+
+
+
 
