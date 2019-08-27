@@ -73,11 +73,8 @@
 }
 
 .noscroll {
-  width: 100vw;
   height: 90vh;
-  position: absolute;
-  left: 0;
-  bottom: 0;
+
 }
 
 .highcharts-credits{
@@ -86,4 +83,8 @@
 
 .accordion-list-day {
   font-weight: bolder !important
+}
+
+.white {
+  color:white;
 }

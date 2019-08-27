@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  :recoverable, :rememberable, :validatable
 
   has_many :patients
   has_many :lists
@@ -16,15 +16,20 @@ class User < ApplicationRecord
     self.lists.map { |list| ((list.ready_at - list.created_at) / 60000) }.sum / self.lists.count
   end
 
-  def sumlists(array)
-  lists = []
-  array.each do |list|
-    if list.delivered? && list.delivered_at.day == Time.now.day
-      lists << list
-    end
+  def average_daily
+    today_lists = self.lists.select { |list| list.created_at.day == Time.now.day }
+    today_lists.map { |list| ((list.ready_at - list.created_at) / 60000) }.sum / today_lists.count
   end
-  return lists
-end
+
+  def sumlists(array)
+    lists = []
+    array.each do |list|
+      if list.delivered? && list.delivered_at.day == Time.now.day
+        lists << list
+      end
+    end
+    return lists
+  end
 
   def pharmacy_patients
     Patient.where(id: self.lists.map(&:patient_id).uniq)
