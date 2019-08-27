@@ -73,13 +73,14 @@
 }
 
 .noscroll {
-  width: 100vw;
   height: 90vh;
-  position: absolute;
-  left: 0;
-  bottom: 0;
+
 }
 
 .highcharts-credits{
   display:none;
+}
+
+.white {
+  color:white;
 }
