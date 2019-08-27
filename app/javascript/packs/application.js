@@ -1,5 +1,8 @@
 import "bootstrap";
-import "../plugins/chart"
+
+// SCRIPT POUR LES ORDONNANCES
+import "../plugins/chart";
+
 
 if (document.getElementById('newordo') !== null) {
     let form = document.getElementById('newordo')
@@ -77,6 +80,10 @@ import { initMapbox } from '../plugins/init_mapbox';
 
 initMapbox();
 
+
+
+
+
 import { initMapbox2 } from '../plugins/init_mapbox2';
 
 initMapbox2();
@@ -99,5 +106,6 @@ pharmacies.forEach((pharmacy) => {
         document.querySelector('.mapboxgl-popup-close-button').click()
       })
     }, 1);
-  })
+  });
 })
+

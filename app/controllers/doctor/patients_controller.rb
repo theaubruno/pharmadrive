@@ -41,6 +41,7 @@ class Doctor::PatientsController < ApplicationController
     # redirect_to root_path
   end
 
+
   private
 
   def map

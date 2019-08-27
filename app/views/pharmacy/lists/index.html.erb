@@ -1,96 +1,117 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="left col-6 border" style="min-height: 100vh">
+<div class="container-fluid dragndrop">
+  <div class="row">
+    <div class="left col-6 border list-num1" style="min-height: 100vh" id='left' ondrop="drop(event)" ondragover="allowDrop(event)">
+      <h2>À livrer</h2>
+      <% @lists.each do |list| %>
+        <% if list.ready? && !list.delivered? %>
+          <div id="card<%=list.id%>" class="blabla card-list d-flex justify-content-lg-between" draggable="true" ondragstart="drag(event)" ondragover="dontAllowDrop(event)">
             <div>
-                <h2>À livrer</h2>
+              <%= list.patient.first_name %>
+              <%= list.patient.last_name %> -
+              <%= list.drugs.count %> prescriptions
             </div>
-            <% @lists.each do |list| %>
-            <% if list.ready? && !list.delivered? %>
-              <div id="card<%=list.id%>" class="card-list d-flex justify-content-lg-between">
-                  <div>
-                      <%= list.patient.first_name %>
-                      <%= list.patient.last_name %> -
-                      <%= list.drugs.count %> prescriptions
-
+             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalLong<%= list.id %>">
+              Détails
+            </button>
+            <div class="modal fade" id="exampleModalLong<%= list.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Prescriptions </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                   </div>
-                  <div>
-                       <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalLong<%= list.id %>">
-                          Détails
-                      </button>
-                      <div class="modal fade" id="exampleModalLong<%= list.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                          <div class="modal-dialog" role="document">
-                              <div class="modal-content">
-                                  <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLongTitle">Prescriptions </h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">&times;</span>
-                                      </button>
-                                  </div>
-                                  <div class="modal-body">
-                                      <% list.drugs.each do |drug| %>
-                                        <%= drug.drug_name %>
-                                        <%= drug.dosage %>
-                                        <%= drug.posology %> <br>
-                                      <% end %>
-                                  </div>
-                                  <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                      <%= link_to 'Livrer', pharmacy_list_path(list.id, list: {delivered_at: Time.now}), method: :patch, class:"btn btn-primary" %>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
+                  <div class="modal-body">
+                    <% list.drugs.each do |drug| %>
+                      <%= drug.drug_name %>
+                      <%= drug.dosage %>
+                      <%= drug.posology %> <br>
+                    <% end %>
                   </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <%= link_to 'Livrer', pharmacy_list_path(list.id, list: {delivered_at: Time.now}), method: :patch, class:"btn btn-primary" %>
+                    <%= link_to 'Retirer', pharmacy_list_path(list.id, list: {ready_at: nil}), method: :patch, class:"d-none card#{list.id}" %>
+                  </div>
+                </div>
               </div>
-            <% end %>
-            <% end %>
-        </div>
-        <div class="right col-6 border">
-            <div>
-                <h2>En cours</h2>
             </div>
-            <% @lists.each do |list| %>
-            <% if !list.ready? && !list.delivered? %>
-              <div id="card<%=list.id%>" class="card-list d-flex justify-content-lg-between">
-                  <div>
-                      <%= list.patient.first_name %>
-                      <%= list.patient.last_name %> -
-                      <%= list.drugs.count %> prescriptions
-                      <% list.id %>
-                  </div>
-                  <div>
-                      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalLong<%= list.id %>">
-                          Détails
-                      </button>
-                      <div class="modal fade" id="exampleModalLong<%= list.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                          <div class="modal-dialog" role="document">
-                              <div class="modal-content">
-                                  <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLongTitle">Prescriptions </h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">&times;</span>
-                                      </button>
-                                  </div>
-                                  <div class="modal-body">
-                                      <% list.drugs.each do |drug| %>
-                                        <%= drug.drug_name %>
-                                        <%= drug.dosage %>
-                                        <%= drug.posology %> <br>
-                                      <% end %>
-                                  </div>
-                                  <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                      <%= link_to 'Préparer', pharmacy_list_path(list.id, list: {ready_at: Time.now}), method: :patch, class:"btn btn-primary" %>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-            <% end %>
-            <% end %>
-        </div>
+          </div>
+        <% end %>
+      <% end %>
     </div>
+    <div class="right col-6 border listnum-0" id='right' ondrop="drop(event)" ondragover="allowDrop(event)">
+      <h2>En cours</h2>
+      <% @lists.each do |list| %>
+        <% if !list.ready? && !list.delivered? %>
+          <div id="card<%=list.id%>" class="blabla card-list d-flex justify-content-lg-between" draggable="true" ondragstart="drag(event)" ondragover="dontAllowDrop(event)">
+            <div>
+              <%= list.patient.first_name %>
+              <%= list.patient.last_name %> -
+              <%= list.drugs.count %> prescriptions
+              <% list.id %>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalLong<%= list.id %>">
+                Détails
+            </button>
+            <div class="modal fade" id="exampleModalLong<%= list.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Prescriptions </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <% list.drugs.each do |drug| %>
+                      <%= drug.drug_name %>
+                      <%= drug.dosage %>
+                      <%= drug.posology %> <br>
+                    <% end %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary <%= list.id %>" data-dismiss="modal">Close</button>
+                    <%= link_to 'Préparer', pharmacy_list_path(list.id, list: {ready_at: Time.now}), method: :patch, class:"btn btn-primary card#{list.id}" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
-<!--
-pharmacy_list_path(list), -->
+
+<script>
+
+let idDragDown = "";
+let idDrag = "";
+
+  function allowDrop(ev) {
+    ev.preventDefault();
+  }
+
+  function dontAllowDrop(ev) {
+    ev.dataTransfer.dropEffect = "none";
+  }
+
+  function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+
+    idDrag = ev.target.id
+    idDragDown = document.querySelector(`.${idDrag}`);
+    console.log(idDragDown);
+  };
+
+  function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+    document.querySelector(`.${idDrag}`).click();
+};
+
+</script>
+

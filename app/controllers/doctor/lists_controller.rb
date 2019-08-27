@@ -47,6 +47,24 @@ class Doctor::ListsController < ApplicationController
     # redirect_to root_path
   end
 
+def listpdf
+
+    @list = List.find(params[:list_id])
+
+      respond_to do |format|
+            format.html
+            format.pdf do
+                render pdf: "Ordonnance du #{@list.created_at}",
+                page_size: 'A4',
+                template: "lists/listpdf.html.erb",
+                layout: "listpdf.pdf.erb",
+                orientation: "Portrait",
+                lowquality: true,
+                zoom: 1,
+                dpi: 75
+            end
+          end
+  end
 
 
   private
