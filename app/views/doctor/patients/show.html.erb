@@ -48,7 +48,26 @@
                     <div id="drugs">
                         <%= f.input :user_id, label: ".", input_html: { class: 'hidden' } %>
                         <%= f.simple_fields_for :drugs, Drug.new do |drug| %>
-                        <%= drug.input :drug_name, input_html:{ class: 'inputsforms one' }%>
+                        <%#= drug.input :drug_name, input_html:{ class: 'inputsforms one'}%>
+                        <div class="form-group string optional list_drugs_drug_name">
+                          <label class="form-control-label string optional" for="list_drugs_attributes_0_drug_name">Drug name</label>
+                          <input class="form-control string optional inputsforms one" type="text" name="list[drugs_attributes][0][drug_name]" id="list_drugs_attributes_0_drug_name" list="drug-proposals">
+                          <datalist id="drug-proposals">
+                           <option value="Jimi Hendrix">
+                           <option value="James Hetfield">
+                           <option value="Eric Clapton">
+                           <option value="Eddie Van Halen">
+                           <option value="Rob Gravelle">
+                           <option value="Jeff Waters">
+                           <option value="John Petrucci">
+                           <option value="Steve Vai">
+                           <option value="The Edge">
+                           <option value="Joe Satriani">
+                           <option value="Yngwie Malmsteen">
+                           <option value="Ian Chrichton">
+                          </datalist>
+
+                        </div>
                         <%= drug.input :dosage, input_html:{ class: 'inputsforms two' }%>
                         <%= drug.input :posology, input_html:{ class: 'inputsforms three' }%>
                         <%= drug.input :quantity, input_html:{ class: 'inputsforms four' }%>
@@ -57,6 +76,11 @@
                         </div>
                         <% end %>
                     </div>
+
+
+
+
+
                     <!--    <div class="">
                         <%= link_to 'Ajouter une prescription', class: 'far fa-plus-circle font05 ' %>
 
@@ -98,4 +122,30 @@
     </div>
 </div>
 
+
+<script>
+
+
+  const
+  drugNameInput = document.querySelector('#list_drugs_attributes_0_drug_name');
+
+  drugNameInput.addEventListener('keyup', (event) => {
+    // event.preventDefault(); // <-- to prevent <form>'s native behaviour
+    // const input = event.currentTarget.querySelector('.form-control');
+    const drugList = document.querySelector("#drug-proposals");
+    console.log(drugList);
+    const query = event.currentTarget.value;
+    drugList.innerHTML = '';
+    fetch(`../../doctor/api/${query}`,
+      { credentials: 'include'})
+    .then(response => response.json())
+    .then((data) => {
+      data.forEach((drug) => {
+        drugList.insertAdjacentHTML('beforeend', `<option value='${drug.denomination}'>` )
+      });
+      // Do something with the response
+    });
+  });
+
+</script>
 

@@ -18,6 +18,7 @@ gem 'webpacker'
 gem 'geocoder'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'rest-client'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
