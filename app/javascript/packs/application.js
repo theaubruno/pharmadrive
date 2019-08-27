@@ -1,8 +1,12 @@
 import "bootstrap";
+import Swal from 'sweetalert2';
+import { drag_drop } from '../plugins/drag_drop.js.erb'
 
 // SCRIPT POUR LES ORDONNANCES
 import "../plugins/chart";
 
+
+drag_drop();
 
 if (document.getElementById('newordo') !== null) {
     let form = document.getElementById('newordo')
@@ -82,6 +86,7 @@ initMapbox();
 
 import { initMapbox2 } from '../plugins/init_mapbox2';
 
+
 // window.addEventListener("DOMContentLoaded", (event) => {
 //   // Select pharmacy
 
@@ -89,16 +94,6 @@ import { initMapbox2 } from '../plugins/init_mapbox2';
 //   })
 
   $('#exampleModal').on('shown.bs.modal', function() {
-
-    // const map = document.querySelector("#map2");
-    // map._canvas.width = '1532'
-    // map._canvas.height = '1100'
-    // map._canvas.style.width = '100%'
-    // map._canvas.style.height = '550px'
-    // map._canvas.style.top = '0px'
-    // map._canvas.style.right = '0px'
-
-
 
     initMapbox2();
     const input = document.getElementById('list_user_id')
@@ -129,3 +124,47 @@ import { initMapbox2 } from '../plugins/init_mapbox2';
 
 
 
+
+
+// const pharmaDelivrate = document.querySelector(".new-employee");
+// if (new_employee) {
+// new_employee.addEventListener("click", (event) => {
+//   Swal.fire({
+//     type: 'success',
+//     title: '<span style="color:lightgreen"> Selectionner la pharmacie!<span>',
+//     width: 1280,
+//     html: '<span style="color: white">The onboarding email has been sent<span>',
+//     background: 'white',
+//     confirmButtonText:'Retourner sur les ordo'
+//     }).then(function() {
+//        new_employee2();
+//        console.log('The Ok Button was clicked.');
+//        });
+// });
+// }
+
+// const new_employee2 = document.querySelector(".new-employee");
+// if (new_employee) {
+// new_employee.addEventListener("click", (event) => {
+//   Swal.fire({
+//     type: 'success',
+//     title: '<span style="color:lightgreen"> Selectionner la pharmacie!<span>',
+//     width: 600,
+//     html: '<span style="color: white">The onboarding email has been sent<span>',
+//     background: 'white',
+//     confirmButtonText:'Retourner sur les ordo'
+//     }).then(function() {
+//        window.location.reload();
+//        console.log('The Ok Button was clicked.');
+//        });
+// });
+// }
+
+//= require jquery
+//= require jquery_ujs
+//= require sweetalert2
+//= require sweet-alert2-rails
+import { typedHome } from '../components/typed';
+if (window.location.href === "https://ibaybeach.herokuapp.com/" || window.location.href === "http://localhost:3000/" ){
+ typedHome();
+};

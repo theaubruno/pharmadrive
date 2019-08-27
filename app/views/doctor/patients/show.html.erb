@@ -15,10 +15,12 @@
                     <div class="card">
                         <div class="card-header d-flex" id="heading<%=list.id%>">
                             <button class="btn d-flex w-100 justify-between" type="button" data-toggle="collapse" data-target="#collapse<%=list.id%>" aria-expanded="false" aria-controls="collapse<%=list.id%>">
-                                <span>
+                              <div <%= "class=accordion-list-day" if list.created_at.day == Time.now.day %>>
+                                <span >
                                     <%= list.created_at.strftime("%d %B %Y")%> </span>
                                 <span>
                                     <%= list.drugs.count %> prescriptions </span>
+                              </div>
                             </button>
                         </div>
                         <div id="collapse<%=list.id%>" class="collapse" aria-labelledby="heading<%=list.id%>" data-parent="#accordionExample">
@@ -98,7 +100,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Retour</button>
-                                    <%= f.submit 'Créer ordonnance' %>
+                                    <%= f.submit 'Créer ordonnance', class: 'new-employee' %>
 
                                 </div>
                             </div>
