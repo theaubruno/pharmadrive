@@ -1,5 +1,5 @@
 <div class="container-fluid dragndrop">
-  <div class="row">
+  <div class="row" style="background-image:linear-gradient(rgba(255,255,255,0.6),rgba(255,255,255,0.6)), url('https://www.123freevectors.com/wp-content/original/131352-green-and-yellow-polygon-pattern-background-vector-art.jpg');">
     <div class="left col-6 border list-num1" style="min-height: 100vh" id='left' ondrop="drop(event)" ondragover="allowDrop(event)">
       <h2>À livrer</h2>
       <% @lists.each do |list| %>
@@ -31,7 +31,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <%= link_to 'Livrer', pharmacy_list_path(list.id, list: {delivered_at: Time.now}), method: :patch, class:"btn btn-primary" %>
+                    <%= link_to 'Livrer', pharmacy_list_path(list.id, list: {delivered_at: Time.now}), method: :patch, class:"btn btn-primary " %>
                     <%= link_to 'Retirer', pharmacy_list_path(list.id, list: {ready_at: nil}), method: :patch, class:"d-none card#{list.id}" %>
                   </div>
                 </div>
@@ -73,7 +73,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary <%= list.id %>" data-dismiss="modal">Close</button>
-                    <%= link_to 'Préparer', pharmacy_list_path(list.id, list: {ready_at: Time.now}), method: :patch, class:"btn btn-primary card#{list.id}" %>
+                    <%= link_to 'Préparer', pharmacy_list_path(list.id, list: {ready_at: Time.now}), method: :patch, class:"btn btn-primary card#{list.id} " %>
                   </div>
                 </div>
               </div>

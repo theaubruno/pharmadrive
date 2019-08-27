@@ -1,8 +1,52 @@
 <%= render 'bannerhome' %>
-<div
-  id="map"
-  style="width: 700px;
-  height: 500px;"
-  data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-></div>
+
+<div class="container-fluid" >
+  <div class="row text-center">
+
+    <div class="p-5 col-6 h500 bkgblc"><p><i class="fas fa-map-marker-alt colorhome fontfa"></i></p></div>
+
+    <div class="p-5 col-6 colorhome h500 bkgblc"><p class="colorhome"> <h2 class="colorhome">Une pharmacie, toujours près de chez vous.</h2> consectetur adipisicing elit. Ea impedit, at voluptatem quaerat, sed doloribus, possimus eveniet natus sit velit repellendus dolore laudantium. </p> </div>
+
+
+
+    <div class="p-5 col-6 colorhome h500"><p class="colorhome"> <h2 class="colorhome">Une rapidité imbattable!</h2> consectetur adipisicing elit. Ea impedit, at voluptatem quaerat, sed doloribus, possimus eveniet natus sit velit repellendus dolore laudantium.</p> </div>
+    <div class="p-5 col-6 h500"><i class="fas fa-business-time colorhome fontfa"></i></div>
+
+    <div class="p-5 col-6 h500 bkgblc"><i class="fas fa-universal-access colorhome fontfa"></i></div>
+
+    <div class="p-5 col-6 colorhome h500 bkgblc"><p class="colorhome"> <h2 class="colorhome">Tout le monde y trouve son compte.</h2> consectetur adipisicing elit. Ea impedit, at voluptatem quaerat, sed doloribus, possimus eveniet natus sit velit repellendus dolore laudantium. .</p> </div>
+
+
+  </div>
+</div>
+<div class="container mt-4 py-4">
+  <div class="row">
+    <div class="col-6">
+      <h2>Ils nous ont fait confiance !</h2>
+      <div class="card-product">
+
+  <div class="card-product-infos">
+    <h2>Laurie Blabla, 26 ans, <strong>Medecin généraliste</strong></h2>
+    <p>Depuis que je suis équipée avec Pharmadrive, je suis vraiment heureuse.</p>
+  </div>
+</div>
+      <div class="card-product">
+
+  <div class="card-product-infos">
+    <h2>Laurie Blabla, 26 ans, <strong>Medecin généraliste</strong></h2>
+    <p>Depuis que je suis équipée avec Pharmadrive, je suis vraiment heureuse.</p>
+  </div>
+</div>      <div class="card-product">
+
+  <div class="card-product-infos">
+    <h2>Laurie Blabla, 26 ans, <strong>Medecin généraliste</strong></h2>
+    <p>Depuis que je suis équipée avec Pharmadrive, je suis vraiment heureuse.</p>
+  </div>
+</div>
+    </div>
+    <div class="col-6">
+    <div id="map" style="
+  height: 500px;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  </div></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script>

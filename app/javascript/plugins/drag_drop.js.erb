@@ -1,4 +1,10 @@
+export { drag_drop };
+
 function drag_drop(){
+
+let idDragDown = "";
+let idDrag = "";
+
   function allowDrop(ev) {
     ev.preventDefault();
   }
@@ -9,22 +15,16 @@ function drag_drop(){
 
   function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
-    const idDrag = ev.target.id
-    console.log(idDrag);
-    let selectDiv = document.querySelector('.left');
-    selectDiv.addEventListener('drop',(event) => {
-    window.location.href = `<%= link_to 'Préparer', pharmacy_list_path(${idDrag}, list: {ready_at: Time.now}), method: :patch %>`
-})
 
-  }
+    idDrag = ev.target.id
+    idDragDown = document.querySelector(`.${idDrag}`);
+    console.log(idDragDown);
+  };
 
   function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
+    document.querySelector(`.${idDrag}`).click();
   }
-
-
 };
-
-export { drag_drop };

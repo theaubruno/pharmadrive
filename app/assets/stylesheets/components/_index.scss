@@ -11,10 +11,11 @@
 @import "form";
 @import "map";
 @import "hiddenfield";
+@import "card";
 
 
 .container-fluid {
-  background-color : #F8F9FA;
+
   a {
     text-decoration: none !important;
   }
@@ -50,16 +51,23 @@
 }
 
 .card-stats {
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: black;
-  font-size: 24px;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  border-radius: 5px;
-  box-shadow: 0 0 13px rgba(0,0,0,0.2);
-  width: 450px;
+  width: 200px;
+  height: 200px;
+  border: solid black;
+  border-radius: 50%;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 200px;
+  font-size: 100px;
+}
+
+
+.card-stats-title {
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 200px;
 }
 
 .row-style {
@@ -67,19 +75,39 @@
 }
 
 .patients {
-  height: 65vh;
+  height: 70vh;
   overflow: hidden;
   overflow-y: scroll;
 }
 
 .noscroll {
-  width: 100vw;
-  height: 90vh;
-  position: absolute;
-  left: 0;
-  bottom: 0;
+  min-height: 90vh;
+
 }
 
 .highcharts-credits{
   display:none;
+}
+
+.accordion-list-day {
+  font-weight: bolder !important
+}
+
+.white {
+  color:white;
+}
+.fontfa {
+  font-size:192px;
+}
+.colorhome {
+  color: #2cb9f5;
+}
+.h500 {
+  height: 300px;
+}
+.bkgblc{
+  background-color:white;
+}
+.100vh{
+  min-height:100vh;
 }
