@@ -18,6 +18,9 @@ gem 'webpacker'
 gem 'geocoder'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'rails-assets-sweetalert2', '~> 5.1.1', source: 'https://rails-assets.org'
+gem 'sweet-alert2-rails'
+gem 'jquery-rails'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
