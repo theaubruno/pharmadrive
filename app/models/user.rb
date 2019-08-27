@@ -22,6 +22,15 @@ class User < ApplicationRecord
     today_lists.map { |list| (list.ready_at - list.created_at) / 60 }.sum / today_lists.count
   end
 
+  def daily_patients
+    today_patients = self.patients.select { |list| list.updated_at.day == Time.now.day }
+    today_patients.count
+  end
+
+  def average_patients
+    self.patients.count / 10
+  end
+
   def sumlists(array)
     lists = []
     array.each do |list|
