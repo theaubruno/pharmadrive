@@ -13,12 +13,13 @@ class User < ApplicationRecord
   # has_many :pharmacy_patients, through: :lists
 
   def average_time
-    self.lists.map { |list| ((list.ready_at - list.created_at) / 60000) }.sum / self.lists.count
+    all_time_lists = self.lists.select { |list| list.ready_at != nil }
+    all_time_lists.map { |list| ((list.ready_at - list.created_at) / 60000) }.sum / self.lists.count
   end
 
   def average_daily
-    today_lists = self.lists.select { |list| list.created_at.day == Time.now.day }
-    today_lists.map { |list| ((list.ready_at - list.created_at) / 60000) }.sum / today_lists.count
+    today_lists = self.lists.select { |list| list.created_at.day == Time.now.day && list.ready_at != nil }
+    today_lists.map { |list| (list.ready_at - list.created_at) }.sum / today_lists.count
   end
 
   def sumlists(array)
