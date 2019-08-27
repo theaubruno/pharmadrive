@@ -68,13 +68,13 @@
 }
 
 .patients {
-  height: 65vh;
+  height: 70vh;
   overflow: hidden;
   overflow-y: scroll;
 }
 
 .noscroll {
-  height: 90vh;
+  min-height: 90vh;
 
 }
 
@@ -88,4 +88,19 @@
 
 .white {
   color:white;
+}
+.fontfa {
+  font-size:192px;
+}
+.colorhome {
+  color: #2cb9f5;
+}
+.h500 {
+  height: 300px;
+}
+.bkgblc{
+  background-color:white;
+}
+.100vh{
+  min-height:100vh;
 }
