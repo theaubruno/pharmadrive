@@ -7,20 +7,24 @@
     </div>
     <% if current_user.role == 'doctor' %>
       <div class="row">
-        <div class="titles-stats col-6">
+        <div class="titles-stats col-5">
           <h4>Nombre de patients:</h4>
           <div class="card-stats2">
             <%= @user.patients.count %></strong>
           </div>
         </div>
-          <div class="titles-stats col-6">
+          <div class="titles-stats col-5">
             <h4> Nombre d'ordonnances: </h4>
             <div class="card-stats2">
               <%= sumordos(@user.patients) %>
             </div>
           </div>
         </div>
+        <div class="graph">
+        <div class="col-12">
         <div id="chart1" style="width:100%; height:400px;" data-daily2="<%= current_user.daily_patients.to_i %>" data-alltime="<%= current_user.average_patients  %>" class="mt-4">
+        </div>
+      </div>
       </div>
     </div>
     </div>
