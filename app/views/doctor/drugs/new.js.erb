@@ -1,0 +1,18 @@
+var drugsContainer = document.getElementById('drugs');
+drugsContainer.insertAdjacentHTML('beforeend', "<%= j render '/doctor/drugs/form', index: @index %>");
+var addDrugBtn = document.querySelector(".add-drug");
+addDrugBtn.setAttribute('href', "<%= new_doctor_drug_path(index: @index.to_i + 1) %>");
+var drugNameInput = document.querySelector('#list_drugs_attributes_<%= @index %>_drug_name');
+drugNameInput.addEventListener('keyup', (event) => {
+
+  var drugList = document.querySelector("#drug-proposals_<%= @index %>");
+  drugList.innerHTML = '';
+  fetch(`../../doctor/api/${event.currentTarget.value}`,
+    { credentials: 'include'})
+  .then(response => response.json())
+  .then((data) => {
+    data.forEach((drug) => {
+      drugList.insertAdjacentHTML('beforeend', `<option value='${drug.denomination}'>` )
+    });
+  });
+});

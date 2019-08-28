@@ -3,4 +3,8 @@ class Doctor::DrugsController < ApplicationController
   def api
     @results = JSON.parse(RestClient.get "https://www.open-medicaments.fr/api/v1/medicaments?query=#{params[:query]}")
   end
+
+  def new
+    @index = params[:index]
+  end
 end
