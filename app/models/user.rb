@@ -24,7 +24,6 @@ class User < ApplicationRecord
     end
 
   end
-  end
 
   def daily_patients
     today_patients = self.patients.select { |list| list.updated_at.day == Time.now.day }
