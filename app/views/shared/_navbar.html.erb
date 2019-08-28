@@ -3,20 +3,20 @@
     <% if current_user.role == 'doctor' %>
     <%= link_to doctor_patients_path, class: "navbar-brand" do %>
        <p>
-      <%= image_tag "ordobleue.png" %>
+      <%= image_tag "logopharma.png" %>
       <%= Pharmadrive %></p>
       <% end %>
   <% else %>
     <%= link_to pharmacy_lists_path, class: "navbar-brand" do %>
       <p>
-      <%= image_tag "ordoverte.png" %>
+      <%= image_tag "logopharma.png"%>
       <%= Pharmadrive %></p>
       <% end %>
   <% end %>
   <% else %>
   <%= link_to root_path, class: "navbar-brand" do %>
       <p>
-      <%= image_tag "clipboard.png" %>
+      <%= image_tag "logopharma.png" %>
       <%= Pharmadrive %></p>
       <% end %>
   <% end %>
