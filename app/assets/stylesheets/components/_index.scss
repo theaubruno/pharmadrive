@@ -36,6 +36,11 @@
 .font12 {
   font-size: 1.2em;
 }
+
+.font13 {
+  font-size: 1.2em;
+  color: lightgreen;
+}
 .font15 {
   font-size: 1.5em;
 }
@@ -53,21 +58,34 @@
 .card-stats {
   width: 200px;
   height: 200px;
-  border: solid black;
   border-radius: 50%;
   text-align: center;
   margin: 0 auto;
   line-height: 200px;
   font-size: 100px;
+  color: white;
+  background: linear-gradient(#51C4DF, #5ED2AA);
+}
+
+.card-stats2 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 200px;
+  font-size: 100px;
+  color: white;
+  background: linear-gradient(#5ED2AA, #51C4DF);
 }
 
 
 .card-stats-title {
-  width: 200px;
-  height: 200px;
-  text-align: center;
+  width: 500px;
+  height: 150px;
   margin: 0 auto;
-  line-height: 200px;
+  line-height: 150px;
+  float: left;
 }
 
 .row-style {
@@ -110,4 +128,9 @@
 }
 .100vh{
   min-height:100vh;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: black;
 }
