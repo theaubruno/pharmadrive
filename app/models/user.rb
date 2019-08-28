@@ -6,7 +6,6 @@ class User < ApplicationRecord
 
   has_many :patients
   has_many :lists
-  after_create :send_welcome_email
 
   # has_many :lists, through: :patients
 
@@ -18,10 +17,13 @@ class User < ApplicationRecord
   end
 
   def average_daily
+
     today_lists = self.lists.select { |list| list.created_at.day == Time.now.day && list.ready_at != nil }
     if today_lists.count != 0
       today_lists.map { |list| (list.ready_at - list.created_at) / 60 }.sum / today_lists.count
     end
+
+  end
   end
 
   def daily_patients
