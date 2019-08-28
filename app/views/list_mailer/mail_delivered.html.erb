@@ -1,11 +1,11 @@
- <div style="background-color: #DFE1E6">
-  <div style="text-align: center, margin: 0 100px, background-color: white">
-    <div style="padding-bottom: 20px ">
-      <h3>Pharmadrive</h3>
+ <div style="background-color: #FAFAFD ; text-align: center; width: 50%" >
+  <div style="text-align: center, background-color: white">
+    <div style="padding-bottom: 16px ">
+      <h2>Pharmadrive</h2>
     </div>
 
-    <div style="border-bottom: solid black">
-      Votre ordonnance vient d'être retirée à la pharmacie : <br>
+    <div style="border-bottom: solid grey 0.5px; margin-bottom: 16px">
+      Votre ordonnance vient d'être retirée à la pharmacie : <br> <br>
       <p>
         <%= @list.user.name %> <br>
         <%= @list.user.address %>
@@ -15,33 +15,33 @@
 
 
     <div style="">
-      <h4>Détails de votre ordonnance </h4>
-      <h5> Ordonnance du medecin : </h5>
+      <h3>Détails de votre ordonnance </h3>
+        Ordonnance du medecin :
       <p>
-        <%= @list.patient.user.name %>
-        <%= @list.patient.user.address %>
-        crée le : <%= @list.patient.created_at.strftime("%d %B %Y, %k %M %P") %>
+        <%= @list.patient.user.name %> <br>
+        <%= @list.patient.user.address %> <br>
+        crée le : <%= @list.patient.created_at.strftime("%d %B %Y, %k:%M %P") %>
       </p>
     </div>
 
 
-    <div>
+    <div style="margin: 30px; background-color: #F5F5FA; border-radius: 4px;">
         <% @list.drugs.each do |drug| %>
-          <div>
-            <h6>
-              <%= drug.drug_name %>
-              <%= drug.posology %>
-              <%= drug.quantity %>
+          <div style="margin: 6px">
+            <h4>
+              <%= drug.drug_name %> <br>
+              <%= drug.posology %> -
+              <%= drug.quantity %> -
               <%= drug.qsp %>
-            </h6>
+            </h4>
           </div>
         <% end %>
     </div>
 
      <div style="">
-        <h3> Livré à la Pharmacie : </h3>
-        <p><%= @list.user.name %>
-          <%= @list.user.address %> </p>
+        Livré à la Pharmacie :
+        <%= @list.user.name %> <br>
+          <%= @list.user.address %>
     </div>
 
   </div>
