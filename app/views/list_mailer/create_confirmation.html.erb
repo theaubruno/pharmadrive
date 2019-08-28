@@ -1,15 +1,44 @@
-<p> <%= @list.patient.user.name %>
-  <%= @list.patient.user.address %>
-  <%= @list.user.name %>
-  <%= @list.user.address %>
-  <%= @list.patient.first_name %>
-  <%= @list.patient.last_name %>
-  <%= @list.patient.created_at %>
-  <% @list.drugs.each do |drug| %>
-  <%= drug.drug_name %>
-  <%= drug.dosage %>
-  <%= drug.posology %>
-  <%= drug.quantity %>
-  <%= drug.qsp %>
-  <% end %> </p>
+ <div style="background-color: #DFE1E6">
+  <div style="text-align: center, margin: 0 100px, background-color: white">
+    <div>
+      <h1>Pharmadrive</h1>
+    </div>
 
+    <div>
+      Bonjour, <%= @list.patient.first_name %>
+        <%= @list.patient.last_name %>
+    </div>
+
+    <div style="border-bottom: solid black">
+      <h3> Une ordonnance a été crée par votre medecin : </h3>
+      <p>
+        <%= @list.patient.user.name %>
+        <%= @list.patient.user.address %>
+        le : <%= @list.patient.created_at.strftime("%d %B %Y, %k %M %P") %>
+      </p>
+    </div>
+
+
+    <div>
+        <% @list.drugs.each do |drug| %>
+          <div>
+            <h6>
+              <%= drug.drug_name %>
+              <%= drug.posology %>
+              <%= drug.quantity %>
+              <%= drug.qsp %>
+            </h6>
+          </div>
+        <% end %>
+    </div>
+
+
+
+    <div style="">
+        <h3> Livré à la Pharmacie : </h3>
+        <p><%= @list.user.name %>
+          <%= @list.user.address %> </p>
+    </div>
+
+  </div>
+</div>
