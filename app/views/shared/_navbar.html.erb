@@ -36,6 +36,7 @@
         <li class="nav-item dropdown">
           <%= link_to "Mon compte", user_path(current_user), class: "nav-link dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+             <%= link_to "Mes statistiques", user_path(current_user), class: "dropdown-item" %>
             <%= link_to "Mes patients", doctor_patients_path, class: "dropdown-item" %>
           </div>
         </li>
