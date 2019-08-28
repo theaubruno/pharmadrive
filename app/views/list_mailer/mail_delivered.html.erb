@@ -1,1 +1,48 @@
-<p>Vous êtes passé chercher votre commande</p>
+ <div style="background-color: #FAFAFD ; text-align: center; width: 50%" >
+  <div style="text-align: center, background-color: white">
+    <div style="padding-bottom: 16px ">
+      <h2>Pharmadrive</h2>
+    </div>
+
+    <div style="border-bottom: solid grey 0.5px; margin-bottom: 16px">
+      Votre ordonnance vient d'être retirée à la pharmacie : <br> <br>
+      <p>
+        <%= @list.user.name %> <br>
+        <%= @list.user.address %>
+      </p>
+    </div>
+
+
+
+    <div style="">
+      <h3>Détails de votre ordonnance </h3>
+        Ordonnance du medecin :
+      <p>
+        <%= @list.patient.user.name %> <br>
+        <%= @list.patient.user.address %> <br>
+        crée le : <%= @list.patient.created_at.strftime("%d %B %Y, %k:%M %P") %>
+      </p>
+    </div>
+
+
+    <div style="margin: 30px; background-color: #F5F5FA; border-radius: 4px;">
+        <% @list.drugs.each do |drug| %>
+          <div style="margin: 6px">
+            <h4>
+              <%= drug.drug_name %> <br>
+              <%= drug.posology %> -
+              <%= drug.quantity %> -
+              <%= drug.qsp %>
+            </h4>
+          </div>
+        <% end %>
+    </div>
+
+     <div style="">
+        Livré à la Pharmacie :
+        <%= @list.user.name %> <br>
+          <%= @list.user.address %>
+    </div>
+
+  </div>
+</div>

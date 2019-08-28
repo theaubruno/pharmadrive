@@ -4,7 +4,7 @@ class ListMailer < ApplicationMailer
 
     mail(
       to:       @list.patient.email,
-      subject:  "list"
+      subject:  "Pharmadrive | Votre ordonnance"
       )
   end
 
@@ -13,7 +13,7 @@ class ListMailer < ApplicationMailer
 
     mail(
       to:       @list.patient.email,
-      subject:  "ready!"
+      subject:  "Pharmadrive | Votre Ordonnance vous attend"
       )
   end
 
@@ -22,7 +22,7 @@ class ListMailer < ApplicationMailer
 
     mail(
       to:       @list.patient.email,
-      subject:  "delivered!"
+      subject:  "Pharmadrive | Votre ordonnance a été retirée"
       )
   end
 end
