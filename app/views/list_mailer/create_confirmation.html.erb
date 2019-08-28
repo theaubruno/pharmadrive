@@ -1,8 +1,7 @@
-<p>
-  <%= @list.patient.user.name %>
+<p> <%= @list.patient.user.name %>
   <%= @list.patient.user.address %>
-  <%#= @list.user.name %>
-  <%#= @list.user.address %>
+  <%= @list.user.name %>
+  <%= @list.user.address %>
   <%= @list.patient.first_name %>
   <%= @list.patient.last_name %>
   <%= @list.patient.created_at %>
@@ -12,6 +11,5 @@
   <%= drug.posology %>
   <%= drug.quantity %>
   <%= drug.qsp %>
-  <% end %>
-</p>
+  <% end %> </p>
 
