@@ -1,29 +1,26 @@
-<div class="row">
   <div class="col-12">
     <div class="card-stats-title">
-      <%= current_user.name %> </div>
+      <h2> <%= current_user.name %> <%= link_to "", edit_user_registration_path, class: 'fas fa-pen ml-1 font13' %> </h2>
     </div>
-    <br>
+    </div>
     <% if current_user.role == 'doctor' %>
-    <div class="container-stats">
       <div class="row">
-        <div class="col-3">
-          <h4>"Nombre de patients:</h4>
-          <div class="card-stats">
-            <br>
+        <div class="col-6">
+          <h4>Nombre de patients:</h4>
+          <div class="card-stats2">
             <%= @user.patients.count %></strong>
           </div>
-          <br>
-          <div class="col-3">
+        </div>
+          <div class="col-6">
             <h4> Nombre d'ordonnances: </h4>
-            <div class="card-stats">
-              <br>
+            <div class="card-stats2">
               <%= sumordos(@user.patients) %>
             </div>
           </div>
         </div>
-        <div id="chart1" style="width:100%; height:400px;" data-daily2="<%= current_user.daily_patients.to_i %>" data-alltime="<%= current_user.average_patients  %>"></div>
+        <div id="chart1" style="width:100%; height:400px;" data-daily2="<%= current_user.daily_patients.to_i %>" data-alltime="<%= current_user.average_patients  %>" class="mt-4">
       </div>
+    </div>
     </div>
     <% else %>
     <div class="container-stats">
@@ -66,14 +63,13 @@
       </div>
       <div class="graph">
         <div class="col-12">
-          <div id="chart" style="width:100%; height:400px;" data-average="<%= current_user.average_time.to_i %>" data-daily="<%= current_user.average_daily.to_i  %>"></div>
+          <div id="chart" style="width:100%; height:400px;" data-average="<%= current_user.average_time.to_i %>" data-daily="<%= current_user.average_daily.to_i  %>" class="mt-4"></div>
         </div>
       </div>
     </div>
     <% end %>
 
 
-    <%= link_to "Modifier vos informations", edit_user_registration_path, class: "nav-link" %>
 
 
     <%#=  List.group_by_day(:created_at).count  %>
