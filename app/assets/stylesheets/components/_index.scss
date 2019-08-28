@@ -53,12 +53,13 @@
 .card-stats {
   width: 200px;
   height: 200px;
-  border: solid black;
   border-radius: 50%;
   text-align: center;
   margin: 0 auto;
   line-height: 200px;
   font-size: 100px;
+  color: white;
+  background: linear-gradient(#51C4DF, #5ED2AA);
 }
 
 
