@@ -1,7 +1,11 @@
 <div class="container-fluid dragndrop">
-  <div class="row" style="background-image:linear-gradient(rgba(255,255,255,0.6),rgba(255,255,255,0.6)), url('https://www.123freevectors.com/wp-content/original/131352-green-and-yellow-polygon-pattern-background-vector-art.jpg');">
+  <div class="row" style="background-image:linear-gradient(rgba(255,255,255,0.7),rgba(255,255,255,0.7)), url('https://i2.wp.com/onlyvectorbackgrounds.com/wp-content/uploads/2018/10/Abstract-Geometric-Background-Green.jpg?resize=1024%2C724&ssl=1');">
     <div class="left col-6 border list-num1" style="min-height: 100vh" id='left' ondrop="drop(event)" ondragover="allowDrop(event)">
-      <h2>À livrer</h2>
+
+      <div class="w-100 text-center p-2">
+        <h2>À livrer</h2>
+      </div>
+
       <% @lists.each do |list| %>
         <% if list.ready? && !list.delivered? %>
           <div id="card<%=list.id%>" class="blabla card-list d-flex justify-content-lg-between" draggable="true" ondragstart="drag(event)" ondragover="dontAllowDrop(event)">
@@ -42,7 +46,9 @@
       <% end %>
     </div>
     <div class="right col-6 border listnum-0" id='right' ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="w-100 text-center p-2">
       <h2>En cours</h2>
+    </div>
       <% @lists.each do |list| %>
         <% if !list.ready? && !list.delivered? %>
           <div id="card<%=list.id%>" class="blabla card-list d-flex justify-content-lg-between" draggable="true" ondragstart="drag(event)" ondragover="dontAllowDrop(event)">
