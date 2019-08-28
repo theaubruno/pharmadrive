@@ -24,8 +24,8 @@ class Doctor::ListsController < ApplicationController
     # passser tous ls params à ta liste
     if @list.save
 
-      mail = ListMailer.with(list: @list).create_confirmation
-      mail.deliver_now
+      # mail = ListMailer.with(list: @list).create_confirmation
+      # mail.deliver_now
      redirect_to doctor_patient_path(@patient)
 
     else
