@@ -31,6 +31,9 @@
       <% if user_signed_in? %>
       <% if current_user.role == 'doctor' %>
         <li class="nav-item active">
+          <%= link_to "Acceuil", root_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item active">
           <%= link_to "Mon compte", user_path(current_user), class: "nav-link" %>
         </li>
         <li class="nav-item">
