@@ -1,5 +1,5 @@
   <div class="col-12">
-    <div class="row">
+    <div class="row-style">
     <div class="card-stats-title">
       <h2> <%= current_user.name %> <%= link_to "", edit_user_registration_path, class: 'fas fa-pen ml-1 font13' %> </h2>
     </div>
@@ -7,13 +7,13 @@
     </div>
     <% if current_user.role == 'doctor' %>
       <div class="row">
-        <div class="col-6">
+        <div class="titles-stats col-6">
           <h4>Nombre de patients:</h4>
           <div class="card-stats2">
             <%= @user.patients.count %></strong>
           </div>
         </div>
-          <div class="col-6">
+          <div class="titles-stats col-6">
             <h4> Nombre d'ordonnances: </h4>
             <div class="card-stats2">
               <%= sumordos(@user.patients) %>
@@ -27,38 +27,32 @@
     <% else %>
     <div class="container-stats">
       <div class="row">
-        <div class="col-3">
+        <div class="titles-stats col-2">
           <h4>Ordonnances délivrées aujourd'hui:</h4>
           <div class="card-stats">
 
             <%= sumlists(@user.lists).count %>
           </div>
         </div>
-        <div class="col-3">
+        <div class="titles-stats col-2">
           <h4> Ordonnances délivrées au total:</h4>
           <div class="card-stats">
             <%= current_user.lists.where.not(delivered_at: nil).count %>
           </div>
         </div>
-        <div class="col-3">
+        <div class="titles-stats col-2">
           <h4>Temps de préparation en moyenne:</h4>
           <div class="card-stats">
-
-
             <p>
-              <%= current_user.average_time.to_i %>
-              <%= "min"  %>
+              <%= "#{current_user.average_time.to_i} min" %>
             </p>
           </div>
         </div>
-        <div class="col-3">
+        <div class="titles-stats col-2">
           <h4> Temps de préparation aujourd'hui:</h4>
           <div class="card-stats">
-
-
             <p>
-              <%= current_user.average_daily.to_i %>
-              <%= "min"  %>
+              <%= "#{current_user.average_daily.to_i} min "%>
             </p>
           </div>
         </div>
