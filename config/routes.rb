@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :doctor do
+    resources :drugs, only: [:new], defaults: { format: :js }
     get "/api/:query", to: "drugs#api", defaults: { format: :json}
     resources :lists, only: [] do
       get 'listpdf', to: 'lists#listpdf', as: :listpdf
