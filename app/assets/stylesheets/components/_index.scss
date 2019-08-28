@@ -38,8 +38,8 @@
 }
 
 .font13 {
-  font-size: 1.2em;
-  color: lightgreen;
+  font-size: 1em;
+  color: white;
 }
 .font15 {
   font-size: 1.5em;
@@ -62,7 +62,7 @@
   text-align: center;
   margin: 0 auto;
   line-height: 200px;
-  font-size: 100px;
+  font-size: 50px;
   color: white;
   background: linear-gradient(#51C4DF, #5ED2AA);
 }
@@ -82,14 +82,20 @@
 
 .card-stats-title {
   width: 500px;
-  height: 150px;
-  margin: 0 auto;
-  line-height: 150px;
-  float: left;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  background: linear-gradient(#5ED2AA, #51C4DF);
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid rgb(84, 201, 199);
+  color: white;
 }
 
 .row-style {
-  justify-content: space-evenly;
+  text-align: center;
 }
 
 .patients {
@@ -133,4 +139,32 @@
 .nav-link {
   text-decoration: none;
   color: black;
+}
+
+#chart {
+  padding: 30px;
+}
+
+#chart1 {
+  padding: 30px;
+}
+
+.titles-stats {
+  text-align: center;
+  background: white;
+  padding: 20px;
+  margin-left: 4.1%;
+  margin-right: 4.1%;
+  border-radius: 10px;
+  border: 2px solid rgb(84, 201, 199);
+}
+
+.graph {
+  background: white;
+  padding: 20px;
+  margin-left: 4.1%;
+  margin-right: 4.1%;
+  margin-top: 20px;
+  border-radius: 10px;
+  border: 2px solid rgb(84, 201, 199);
 }
