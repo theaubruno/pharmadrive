@@ -3,20 +3,20 @@
     <% if current_user.role == 'doctor' %>
     <%= link_to doctor_patients_path, class: "navbar-brand" do %>
        <p>
-      <%= image_tag "ordobleue.png" %>
+      <%= image_tag "logopharma.png" %>
       <%= Pharmadrive %></p>
       <% end %>
   <% else %>
     <%= link_to pharmacy_lists_path, class: "navbar-brand" do %>
       <p>
-      <%= image_tag "ordoverte.png" %>
+      <%= image_tag "logopharma.png"%>
       <%= Pharmadrive %></p>
       <% end %>
   <% end %>
   <% else %>
   <%= link_to root_path, class: "navbar-brand" do %>
       <p>
-      <%= image_tag "clipboard.png" %>
+      <%= image_tag "logopharma.png" %>
       <%= Pharmadrive %></p>
       <% end %>
   <% end %>
@@ -44,11 +44,17 @@
           <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "nav-link" %>
         </li>
         <% else %>
+        <li class="nav-item active">
+          <%= link_to "Accueil", pharmacy_lists_path, class: "nav-link" %>
+        </li>
           <li class="nav-item active">
           <%= link_to "Archives", pharmacy_archives_path, class: "nav-link" %>
         </li>
-           <li class="nav-item active">
-          <%= link_to "Mon compte", user_path(current_user), class: "nav-link" %>
+           <li class="nav-item dropdown">
+          <%= link_to "Mon compte", user_path(current_user), class: "nav-link dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+           <%= link_to "Mes statistiques", user_path(current_user), class: "dropdown-item" %>
+           </div>
         </li>
         <li class="nav-item">
           <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "nav-link" %>
