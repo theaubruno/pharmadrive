@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       get 'listpdf', to: 'lists#listpdf', as: :listpdf
     end
 
-    resources :patients, only: [ :index, :show, :edit, :create, :new ] do
+    resources :patients, only: [ :index, :show, :edit, :create, :new, :update ] do
       resources :lists, only: [:create, :update, :destroy]
     end
 
