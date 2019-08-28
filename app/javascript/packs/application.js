@@ -39,11 +39,11 @@ if (document.getElementById('newordo') !== null) {
 
         if (verify !== undefined) {
         var drugNameInput = document.querySelector(".inputsforms:not(.d-none).one");
-        var dosageInput = document.querySelector(".inputsforms:not(.d-none).two");
+
         var posologyInput = document.querySelector(".inputsforms:not(.d-none).three");
         var quantityInput = document.querySelector(".inputsforms:not(.d-none).four");
         var qspInput = document.querySelector(".inputsforms:not(.d-none).five");
-        listInCreation.insertAdjacentHTML('afterbegin',`<div><p>${drugNameInput.value} - ${dosageInput.value} -${posologyInput.value} /j- ${quantityInput.value} boites - ${qspInput.value}</p></div>`);
+        listInCreation.insertAdjacentHTML('afterbegin',`<div><p>${drugNameInput.value} --${posologyInput.value} - ${quantityInput.value} - ${qspInput.value}</p></div>`);
 
 
         };
