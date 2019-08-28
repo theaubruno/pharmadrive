@@ -1,12 +1,12 @@
- <div style="background-color: #DFE1E6">
-  <div style="text-align: center, margin: 0 100px, background-color: white">
-    <div style="padding-bottom: 20px ">
-      <h3>Pharmadrive</h3>
+ <div style="background-color: #FAFAFD ; text-align: center; width: 50%" >
+  <div style="text-align: center, background-color: white">
+    <div style="padding-bottom: 16px ">
+      <h2>Pharmadrive</h2>
     </div>
 
-    <div style="border-bottom: solid black">
+    <div style="border-bottom: solid grey 0.5px; margin-bottom: 16px">
       Bonjour, <%= @list.patient.first_name %>
-      <%= @list.patient.last_name %> <br>
+      <%= @list.patient.last_name %> <br> <br>
       Nous vous informons que votre ordonnance est maintenant disponible à la pharmacie : <br>
       <p>
         <%= @list.user.name %> <br>
@@ -16,28 +16,28 @@
 
 
 
-    <div style="border-bottom: solid black">
+    <div style="">
       <h4>Détails de votre ordonnance </h4>
-      <h5> Ordonnance du medecin : </h5>
+      Ordonnance du medecin :
       <p>
-        <%= @list.patient.user.name %>
-        <%= @list.patient.user.address %>
-        crée le : <%= @list.patient.created_at.strftime("%d %B %Y, %k %M %P") %>
+        <%= @list.patient.user.name %> <br>
+        <%= @list.patient.user.address %> <br>
+        crée le : <%= @list.patient.created_at.strftime("%d %B %Y, %k:%M %P") %>
       </p>
     </div>
 
 
-    <div>
-        <% @list.drugs.each do |drug| %>
-          <div>
-            <h6>
-              <%= drug.drug_name %>
-              <%= drug.posology %>
-              <%= drug.quantity %>
-              <%= drug.qsp %>
-            </h6>
-          </div>
-        <% end %>
+    <div style="margin: 30px; background-color: #F5F5FA; border-radius: 4px;">
+      <% @list.drugs.each do |drug| %>
+        <div style="margin: 6px">
+          <h4>
+            <%= drug.drug_name %> <br>
+            <%= drug.posology %> -
+            <%= drug.quantity %> -
+            <%= drug.qsp %>
+          </h4>
+        </div>
+      <% end %>
     </div>
 
   </div>

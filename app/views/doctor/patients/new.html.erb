@@ -1,8 +1,8 @@
-<div class="container-fluid 100vh" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://www.123freevectors.com/wp-content/original/131012-blue-and-white-triangle-geometric-background-illustration.jpg); background-size:cover;">
+<div class="container-fluid 100vh pb-5" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://www.123freevectors.com/wp-content/original/131012-blue-and-white-triangle-geometric-background-illustration.jpg); background-size:cover;">
   <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-4 offset-md-4">
-      <div class="form-login">
+      <div class="form-login mt-7 mb-5">
         <h2 class="text-center">Ajouter un patient</h2>
         <%= simple_form_for [:doctor, @patient] do |f| %>
         <%= f.input :first_name, label: 'Prénom' %>
