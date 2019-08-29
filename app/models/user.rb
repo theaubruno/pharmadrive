@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   def average_time
     all_time_lists = self.lists.select { |list| list.ready_at != nil }
-    all_time_lists.map { |list| ((list.ready_at - list.created_at) / 60000) }.sum / all_time_lists.count
+    all_time_lists.map { |list| ((list.ready_at - list.created_at) / 60) }.sum / all_time_lists.count
   end
 
   def average_daily
