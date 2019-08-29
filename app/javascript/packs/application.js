@@ -43,7 +43,7 @@ if (document.getElementById('newordo') !== null) {
         var posologyInput = document.querySelector(".inputsforms:not(.d-none).three");
         var quantityInput = document.querySelector(".inputsforms:not(.d-none).four");
         var qspInput = document.querySelector(".inputsforms:not(.d-none).five");
-        listInCreation.insertAdjacentHTML('afterbegin',`<div><p>${drugNameInput.value} --${posologyInput.value} - ${quantityInput.value} - ${qspInput.value}</p></div>`);
+        listInCreation.insertAdjacentHTML('beforebegin',`<div style="background-color:white; display:flex; margin-top:10px; margin-bottom:10px; padding: 10px; border-radius: 3px;" class="animated fadeIn"><p><b>${drugNameInput.value}</b> <br> Posologie : ${posologyInput.value} Quantité : ${quantityInput.value} QSP :  ${qspInput.value}</p></div>`);
 
 
         };
@@ -164,6 +164,6 @@ import { initMapbox2 } from '../plugins/init_mapbox2';
 //= require sweetalert2
 //= require sweet-alert2-rails
 import { typedHome } from '../components/typed';
-if (window.location.href === "https://pharmadrive.herokuapp.com" || window.location.href === "http://localhost:3000/" ){
+
  typedHome();
-};
+
