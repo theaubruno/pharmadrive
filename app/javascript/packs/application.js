@@ -164,6 +164,6 @@ import { initMapbox2 } from '../plugins/init_mapbox2';
 //= require sweetalert2
 //= require sweet-alert2-rails
 import { typedHome } from '../components/typed';
-if (window.location.href === "https://pharmadrive.herokuapp.com" || window.location.href === "http://localhost:3000/" ){
+if (window.location.href === "https://pharmadrive.herokuapp.com/" || window.location.href === "http://localhost:3000/" ){
  typedHome();
 };
