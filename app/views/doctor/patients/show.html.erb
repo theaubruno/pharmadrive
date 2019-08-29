@@ -6,13 +6,17 @@
                 <h1>
                     <%= @patient.first_name %>
                     <%= @patient.last_name %>
-
                 </h1>
                 <div class="">
-                      <%= link_to '', edit_doctor_patient_path(@patient), class: 'fas fa-pen ml-1 green' %> &nbsp;
-                    <%= link_to '', doctor_patient_path(@patient), method: :delete, data: { confirm: 'Are you sure?' }, class: 'fas fa-trash ml-1 red' %>&nbsp;
+                    <%= link_to '', edit_doctor_patient_path(@patient), class: 'fas fa-pen ml-1 green' %> &nbsp;
+
+                    <label>
+                      <%= button_to '', doctor_patient_path(@patient), data: { confirm: 'Are you sure?' }, method: :delete, class: "d-none" %>
+                      <div class='fas fa-trash ml-1 red'></div>
+                    </label>
+                    &nbsp;
                     <button id="showfrom" class="btn btn-success white font04">+ Ordonnance</button>
-                  </div>
+                </div>
             </div>
             <div class="patient-lists animated fadeIn">
                 <div class="accordion" id="accordionExample">
@@ -20,6 +24,7 @@
                     <div class="card">
                         <div class="card-header d-flex" id="heading<%=list.id%>">
                             <button class="btn d-flex w-100 justify-between" type="button" data-toggle="collapse" data-target="#collapse<%=list.id%>" aria-expanded="false" aria-controls="collapse<%=list.id%>">
+
                               <div class="d-flex justify-between w-100">
                                 <span >
                                     <%= list.created_at.strftime("%d-%m-%Y")%> </span>
@@ -52,6 +57,7 @@
             <div class="list-in-creation">
                 <div id="newordo" class="d-none">
                     <%= simple_form_for @list , url: doctor_patient_lists_path(@patient, @list), method: :post do |f| %>
+
                        <div id="point" class="h20"> <%= f.input :user_id, label: ".",  input_html: { class: 'hidden p-0 m-0' } %></div>
                       <div id="drugs">
                           <%= render "/doctor/drugs/form", index: 0 %>
@@ -62,7 +68,7 @@
                         <%#= link_to 'Ajouter une prescription', class: 'far fa-plus-circle font05 ' %>
 
                     </div> -->
-<!--                     <button type="button" id="book" class="add-drug btn btn-primary">
+                    <!--                     <button type="button" id="book" class="add-drug btn btn-primary">
                         Ajouter
                     </button> -->
                     <div class="col-12">
@@ -95,16 +101,12 @@
                                       style="
                                         width: 100%;
                                         height: 550px;
-                                      "
-                                      data-markers="<%= @markers.to_json %>"
-                                      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-                                    >
+                                      " data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-success white" data-dismiss="modal">Retour</button>
                                     <%= f.submit 'Créer ordonnance', class: 'new-employee btn btn-success white' %>
-
                                 </div>
                             </div>
                         </div>
@@ -115,30 +117,23 @@
         </div>
     </div>
 </div>
-
-
 <script>
+var drugNameInput = document.querySelector('#list_drugs_attributes_0_drug_name');
 
-
-  var drugNameInput = document.querySelector('#list_drugs_attributes_0_drug_name');
-
-  drugNameInput.addEventListener('keyup', (event) => {
+drugNameInput.addEventListener('keyup', (event) => {
     // event.preventDefault(); // <-- to prevent <form>'s native behaviour
     // const input = event.currentTarget.querySelector('.form-control');
     const drugList = document.querySelector("#drug-proposals_0");
     console.log(drugList);
     const query = event.currentTarget.value;
     drugList.innerHTML = '';
-    fetch(`../../doctor/api/${query}`,
-      { credentials: 'include'})
-    .then(response => response.json())
-    .then((data) => {
-      data.forEach((drug) => {
-        drugList.insertAdjacentHTML('beforeend', `<option value='${drug.denomination}'>` )
-      });
-      // Do something with the response
-    });
-  });
-
+    fetch(`../../doctor/api/${query}`, { credentials: 'include' })
+        .then(response => response.json())
+        .then((data) => {
+            data.forEach((drug) => {
+                drugList.insertAdjacentHTML('beforeend', `<option value='${drug.denomination}'>`)
+            });
+            // Do something with the response
+        });
+});
 </script>
-
