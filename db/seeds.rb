@@ -52,13 +52,13 @@ Date.new(2018,02,15)
 
 puts "Adding List"
 
-l1 = List.create!(patient_id: p1.id, user_id: u1.id, note: "Grippe", created_at: Date.new(2018,2,15), ready_at: Date.new(2018,2,16), delivered_at: Date.new(2018,2,17))
-l2 = List.create!(patient_id: p1.id, user_id: u1.id, note: "Entorse", created_at: Date.new(2018,6,21), ready_at: Date.new(2018,6,22), delivered_at: Date.new(2018,6,23))
-l3 = List.create!(patient_id: p1.id, user_id: u1.id, note: "Burn-out", created_at: Date.new(2018,8,30), ready_at: Date.new(2018,8,15))
-l4 = List.create!(patient_id: p1.id, user_id: u1.id, note: "Dépression", created_at: Date.new(2018,12,7))
-l5 = List.create!(patient_id: p1.id, user_id: u1.id, note: "Gastro", created_at: Date.new(2019,03,20))
-l6 = List.create!(patient_id: p1.id, user_id: u1.id, note: "Fracture du genou", created_at: Date.new(2019,07,14))
-
+l1 = List.create!(patient_id: p1.id, user_id: u1.id, created_at: Date.new(2018,2,23), ready_at: Date.new(2018,2,23) + 10.minutes, delivered_at: Date.new(2018,2,23) + 50.minutes)
+l2 = List.create!(patient_id: p1.id, user_id: u1.id, created_at: Date.new(2018,2,24), ready_at: Date.new(2018,2,24) + 20.minutes, delivered_at: Date.new(2018,2,24) + 50.minutes)
+l3 = List.create!(patient_id: p1.id, user_id: u1.id, created_at: Date.new(2018,2,25), ready_at: Date.new(2018,2,25) + 30.minutes, delivered_at: Date.new(2018,2,25) + 50.minutes)
+l4 = List.create!(patient_id: p1.id, user_id: u1.id, created_at: Date.new(2018,2,26), ready_at: Date.new(2018,2,26) + 9.minutes, delivered_at: Date.new(2018,2,26) + 50.minutes)
+l5 = List.create!(patient_id: p1.id, user_id: u1.id, created_at: Date.new(2018,2,27), ready_at: Date.new(2018,2,27) + 18.minutes, delivered_at: Date.new(2018,2,27) + 50.minutes)
+l6 = List.create!(patient_id: p1.id, user_id: u1.id, created_at: Date.new(2018,2,28), ready_at: Date.new(2018,2,28) + 14.minutes, delivered_at: Date.new(2018,2,28) + 50.minutes)
+l7 = List.create!(patient_id: p1.id, user_id: u1.id, created_at: Date.new(2018,2,28), ready_at: Date.new(2018,2,28) + 17.minutes, delivered_at: Date.new(2018,2,28) + 50.minutes)
 
 puts "Adding Drug"
 
@@ -74,7 +74,9 @@ d7 = Drug.create!(list_id: l2.id, drug_name: "Ketum", dosage:"500ml", posology:"
 d8 = Drug.create!(list_id: l2.id, drug_name: "Doliprane3", dosage:"1000mg", posology:"0-1-0", quantity:" 1 boîtes", qsp: "7 jours")
 
 d9 = Drug.create!(list_id: l3.id, drug_name: "Citalorum almus", dosage:"500ml", posology:"0-0-1", quantity:" 2 boites", qsp: " 1 mois")
-d9 = Drug.create!(list_id: l1.id, drug_name: "Citalorum almus", dosage:"500ml", posology:"0-0-1", quantity:" 2 boites", qsp: " 1 mois")
+d10 = Drug.create!(list_id: l1.id, drug_name: "Citalorum almus", dosage:"500ml", posology:"0-0-1", quantity:" 2 boites", qsp: " 1 mois")
+d11 = Drug.create!(list_id: l7.id, drug_name: "Citalorum almus", dosage:"500ml", posology:"0-0-1", quantity:" 2 boites", qsp: " 1 mois")
+d12 = Drug.create!(list_id: l7.id, drug_name: "Citalorum almus", dosage:"500ml", posology:"0-0-1", quantity:" 2 boites", qsp: " 1 mois")
 
 
 puts "Done ! "
