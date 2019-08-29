@@ -35,7 +35,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-success white" data-dismiss="modal">Close</button>
-                    <%= link_to 'Livrer', pharmacy_list_path(list.id, list: {delivered_at: Time.now}), method: :patch, class:"btn btn-primary " %>
+                    <%= link_to 'Livrer', pharmacy_list_path(list.id, list: {delivered_at: Time.now}), method: :patch, class:"btn btn-success white " %>
                     <%= link_to 'Retirer', pharmacy_list_path(list.id, list: {ready_at: nil}), method: :patch, class:"d-none card#{list.id}" %>
                   </div>
                 </div>
@@ -79,7 +79,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-success white <%= list.id %>" data-dismiss="modal">Fermer</button>
-                    <%= link_to 'Préparer', pharmacy_list_path(list.id, list: {ready_at: Time.now}), method: :patch, class:"btn btn-success card#{list.id} " %>
+                    <%= link_to 'Préparer', pharmacy_list_path(list.id, list: {ready_at: Time.now}), method: :patch, class:"btn btn-success white card#{list.id} " %>
                   </div>
                 </div>
               </div>
