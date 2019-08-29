@@ -166,7 +166,5 @@ import { initMapbox2 } from '../plugins/init_mapbox2';
 import { typedHome } from '../components/typed';
 
 if (window.location.href === "https://pharmadrive.herokuapp.com/" || window.location.href === "http://localhost:3000/" ){
-=======
-
  typedHome();
-
+};

@@ -78,8 +78,8 @@
                     <% end %>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-success white <%= list.id %>" data-dismiss="modal">Close</button>
-                    <%= link_to 'Préparer', pharmacy_list_path(list.id, list: {ready_at: Time.now}), method: :patch, class:"btn btn-primary card#{list.id} " %>
+                    <button type="button" class="btn btn-success white <%= list.id %>" data-dismiss="modal">Fermer</button>
+                    <%= link_to 'Préparer', pharmacy_list_path(list.id, list: {ready_at: Time.now}), method: :patch, class:"btn btn-success card#{list.id} " %>
                   </div>
                 </div>
               </div>
