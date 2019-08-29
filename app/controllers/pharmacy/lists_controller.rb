@@ -9,11 +9,16 @@ class Pharmacy::ListsController < ApplicationController
   end
 
   def archives
-    @patients = current_user.pharmacy_patients
+    if params[:query].present?
+      sql_query = "first_name ILIKE :query OR last_name ILIKE :query"
+      @patients = current_user.pharmacy_patients.where(sql_query, query: "%#{params[:query]}%").order('last_name ASC')
+    else
+     @patients = current_user.pharmacy_patients
+   end
   end
 
   def archives_show
-    @patient = Patient.find(params[:format].to_i)
+    @patient = Patient.find(params[:query].to_i)
     @lists = @patient.lists
   end
 
@@ -50,6 +55,6 @@ class Pharmacy::ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:patient_id, :prescribed_at, :user_id, :delivered_at, :ready_at)
+    params.require(:list).permit(:patient_id, :prescribed_at, :user_id, :delivered_at, :ready_at, :format)
   end
 end
