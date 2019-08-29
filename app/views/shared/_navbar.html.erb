@@ -46,14 +46,11 @@
         <% else %>
         <li class="nav-item active">
           <%= link_to "Accueil", pharmacy_lists_path, class: "nav-link" %>
-        </li>
-          <li class="nav-item active">
-          <%= link_to "Archives", pharmacy_archives_path, class: "nav-link" %>
-        </li>
            <li class="nav-item dropdown">
           <%= link_to "Mon compte", user_path(current_user), class: "nav-link dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
            <%= link_to "Mes statistiques", user_path(current_user), class: "dropdown-item" %>
+          <%= link_to "Archives", pharmacy_archives_path, class: "dropdown-item" %>
            </div>
         </li>
         <li class="nav-item">
