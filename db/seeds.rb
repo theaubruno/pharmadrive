@@ -56,7 +56,7 @@ l1 = List.create!(patient_id: p1.id, user_id: u1.id, created_at: Date.new(2019,2
 l2 = List.create!(patient_id: p1.id, user_id: u1.id, created_at: Date.new(2019,2,24), ready_at: Date.new(2019,2,24) + 20.minutes, delivered_at: Date.new(2019,2,24) + 50.minutes)
 l3 = List.create!(patient_id: p1.id, user_id: u1.id, created_at: Date.new(2019,2,25), ready_at: Date.new(2019,2,25) + 30.minutes, delivered_at: Date.new(2019,2,25) + 50.minutes)
 l4 = List.create!(patient_id: p1.id, user_id: u1.id, created_at: Date.new(2019,2,26), ready_at: Date.new(2019,2,26) + 9.minutes, delivered_at: Date.new(2019,2,26) + 50.minutes)
-l5 = List.create!(patient_id: p1.id, user_id: u1.id, created_at: Date.new(2019,2,27), re7ady_at: Date.new(2019,2,27) + 18.minutes, delivered_at: Date.new(2019,2,27) + 50.minutes)
+l5 = List.create!(patient_id: p1.id, user_id: u1.id, created_at: Date.new(2019,2,27), ready_at: Date.new(2019,2,27) + 18.minutes, delivered_at: Date.new(2019,2,27) + 50.minutes)
 l6 = List.create!(patient_id: p1.id, user_id: u1.id, created_at: Date.new(2019,2,28), ready_at: Date.new(2019,2,28) + 14.minutes, delivered_at: Date.new(2019,2,28) + 50.minutes)
 l7 = List.create!(patient_id: p1.id, user_id: u1.id, created_at: Date.new(2019,2,28), ready_at: Date.new(2019,2,28) + 17.minutes, delivered_at: Date.new(2019,2,28) + 50.minutes)
 
