@@ -82,7 +82,7 @@
   line-height: 200px;
   font-size: 100px;
   color: white;
-  background: linear-gradient(#5ED2AA, #51C4DF);
+  background: linear-gradient(#0e76f4, #1cdbed);
 }
 
 
@@ -93,12 +93,25 @@
   margin-top: 20px;
   margin-bottom: 20px;
   text-align: center;
-  background: linear-gradient(#5ED2AA, #51C4DF);
+  background: linear-gradient(#0e76f4, #1cdbed);
   padding: 20px;
   border-radius: 10px;
-  border: 2px solid rgb(84, 201, 199);
   color: white;
 }
+
+.card-stats-title2 {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  background: linear-gradient(#51C4DF, #5ED2AA);
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+}
+
 
 .row-style {
   text-align: center;
@@ -120,7 +133,7 @@
 }
 
 .accordion-list-day {
-  font-weight: bolder !important
+  font-weight: bolder !important;
 }
 
 .white {
@@ -169,12 +182,32 @@
   border: 2px solid rgb(84, 201, 199);
 }
 
-.graph {
+.titles-stats2 {
+  text-align: center;
   background: white;
   padding: 20px;
   margin-left: 4.1%;
   margin-right: 4.1%;
+  border-radius: 10px;
+  border: 2px solid #0e76f4;
+}
+.graph {
+  background: white;
+  padding: 20px;
+  margin-left: 3.6%;
+  margin-right:3.6%;
   margin-top: 20px;
   border-radius: 10px;
   border: 2px solid rgb(84, 201, 199);
 }
+
+.graph2 {
+  background: white;
+  padding: 20px;
+  margin-left: 3.6%;
+  margin-right:3.6%;
+  margin-top: 20px;
+  border-radius: 10px;
+  border: 2px solid #0e76f4;
+}
+

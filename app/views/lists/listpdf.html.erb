@@ -1,33 +1,47 @@
-<div style="text-align: center">
-  <div style="font-size: 25px; padding-bottom: 16px;">
-    <span style="font-family: bold"> Pharmadrive </span> <br>
-    <span >Ordonnance </span> <br>
-  </div>
-  <div style="font-size: 25px">
-    Medecin: <br>
-   <%= @list.patient.user.name %> <br>
-    <%= @list.patient.user.address %>
-  </div>
-</div>
-
-<div style="display: flex; margin: 30px 0px;">
-  <div style="margin: 30px 0px; font-size: 20px">
-    Ordonnance du : <%= @list.created_at.strftime("%d %B %Y, %k:%M %P") %>
+<div >
+  <div style="margin-bottom:50px ">
+    <div style="text-align: center">
+      <img src="../../assets/images/logopharma.png" alt="">
+      <span style="font-family: bold"> Pharmadrive </span> <br>
+    </div>
+    <div style="font-size: 25px; padding-bottom: 16px; text-align: center">
+      <span>Ordonnance</span> <br>
+    </div>
   </div>
 
   <div>
-    <span style="font-size: 20px">
-      Livrée à la Pharmacie : <%= @list.user.name %> <br>
-      <%= @list.user.address %>
-    </span>
-  </div>
-</div>
+      <div style="font-size: 25px; text-align: center">
+        Medecin: <br>
+       <%= @list.patient.user.name %> <br>
+        <%= @list.patient.user.address %>
+      </div>
 
-<div>
-  <% @list.drugs.each do |drug| %>
-    <span style="font-size: 25px; margin: 16px 0px;"> <%= drug.drug_name %> </span> <br>
-    <%= drug.posology %>  -
-    <%= drug.quantity %> -
-    <%= drug.qsp %><br>
-  <% end %>
+
+    <div style="display: inline-block; margin: 30px 0px;">
+
+      <div style="margin: 30px 0px; font-size: 20px">
+        Ordonnance du : <br>
+        <%= @list.created_at.strftime("%d %B %Y, %k:%M %P") %>
+      </div>
+
+      <div style="margin-bottom:50px;">
+        <span style="font-size: 20px;">
+          Livrée à la Pharmacie : <br>
+          <%= @list.user.name %> <br>
+          <%= @list.user.address %>
+        </span>
+      </div>
+
+    </div>
+
+    <div style="text-align: center">
+      <% @list.drugs.each do |drug| %>
+        <div style="font-size: 25px; margin-bottom: 10px;"> <%= drug.drug_name %> <br>
+          <%= drug.posology %>  -
+          <%= drug.quantity %> -
+          <%= drug.qsp %><br>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
