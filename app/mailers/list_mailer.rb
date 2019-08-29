@@ -13,7 +13,7 @@ class ListMailer < ApplicationMailer
 
     mail(
       to:       @list.patient.email,
-      subject:  "Pharmadrive | Votre Ordonnance vous attend"
+      subject:  "Pharmadrive | Votre ordonnance vous attend"
       )
   end
 
