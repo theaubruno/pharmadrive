@@ -1,16 +1,19 @@
 <div class="container-fluid">
     <div class="row">
         <div class="left col-6 border" style="min-height: 100vh">
-            <div class="patient-name mt-2">
+            <div class="patient-name mt-2 d-flex" style="justify-content: space-between; ">
                 <h1>
                     <%= @patient.first_name %>
                     <%= @patient.last_name %>
-                    <%= link_to '', edit_doctor_patient_path(@patient), class: 'fas fa-pen ml-1 font05 green' %>
-                    <%= link_to '', doctor_patient_path(@patient), method: :delete, data: { confirm: 'Are you sure?' }, class: 'fas fa-trash ml-1 font05 red' %>
-                    <button id="showfrom" class="btn btn-success white font04">+ Ordonnance</button>
+
                 </h1>
+                <div class="">
+                      <%= link_to '', edit_doctor_patient_path(@patient), class: 'fas fa-pen ml-1 green' %> &nbsp;
+                    <%= link_to '', doctor_patient_path(@patient), method: :delete, data: { confirm: 'Are you sure?' }, class: 'fas fa-trash ml-1 red' %>&nbsp;
+                    <button id="showfrom" class="btn btn-success white font04">+ Ordonnance</button>
+                  </div>
             </div>
-            <div class="patient-lists ">
+            <div class="patient-lists animated fadeIn">
                 <div class="accordion" id="accordionExample">
                     <% @patient.lists.each do |list| %>
                     <div class="card">
