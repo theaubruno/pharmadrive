@@ -50,7 +50,7 @@
             <div class="list-in-creation">
                 <div id="newordo" class="d-none">
                     <%= simple_form_for @list , url: doctor_patient_lists_path(@patient, @list), method: :post do |f| %>
-                       <div id="point"> <%= f.input :user_id, label: ".", input_html: { class: 'hidden' } %></div>
+                       <div id="point" class="h20"> <%= f.input :user_id, label: ".",  input_html: { class: 'hidden p-0 m-0' } %></div>
                       <div id="drugs">
                           <%= render "/doctor/drugs/form", index: 0 %>
                       </div>
@@ -63,11 +63,13 @@
 <!--                     <button type="button" id="book" class="add-drug btn btn-primary">
                         Ajouter
                     </button> -->
+                    <div class="col-12">
                     <%= link_to "Ajouter", new_doctor_drug_path(index: 1),  remote: true, class: "add-drug btn btn-success white", id: "book" %>
                     <!-- Button trigger modal -->
                     <button id='btn-map' type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
                         Selectionner la pharmacie
                     </button>
+                    </div>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg" role="document">
