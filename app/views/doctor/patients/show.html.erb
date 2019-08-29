@@ -1,3 +1,4 @@
+<% content_for :title, "Consultation / Création d'ordonnance" %>
 <div class="container-fluid">
     <div class="row">
         <div class="left col-6 border" style="min-height: 100vh">
@@ -19,7 +20,7 @@
                     <div class="card">
                         <div class="card-header d-flex" id="heading<%=list.id%>">
                             <button class="btn d-flex w-100 justify-between" type="button" data-toggle="collapse" data-target="#collapse<%=list.id%>" aria-expanded="false" aria-controls="collapse<%=list.id%>">
-                              <div <%= "class=accordion-list-day" if list.created_at.day == Time.now.day %>>
+                              <div class="d-flex justify-between w-100">
                                 <span >
                                     <%= list.created_at.strftime("%d %B %Y")%> </span>
                                 <span>
@@ -30,12 +31,13 @@
                         <div id="collapse<%=list.id%>" class="collapse" aria-labelledby="heading<%=list.id%>" data-parent="#accordionExample">
                             <div class="card-body">
                                 <% list.drugs.each do |drug| %>
-                                <%= drug.drug_name %>
-                                <%= drug.posology %>
-                                <%= drug.quantity %>
-                                <%= drug.qsp %> <br>
+                      <%= drug.drug_name %> |
+                      <%= drug.quantity %> |
+                      <%= drug.posology %> |
+                      <%= drug.qsp %> <br>
                                 <% end %>
-                                <%= link_to 'Pdf', doctor_list_listpdf_path(list.id, format: :pdf), target: :_blank %>
+                                <br>
+                                <%= link_to 'Télécharger le Pdf', doctor_list_listpdf_path(list.id, format: :pdf), target: :_blank , class: 'btn btn-success white' %>
                             </div>
                         </div>
                     </div>
@@ -66,7 +68,7 @@
                     <div class="col-12">
                     <%= link_to "Ajouter", new_doctor_drug_path(index: 1),  remote: true, class: "add-drug btn btn-success white", id: "book" %>
                     <!-- Button trigger modal -->
-                    <button id='btn-map' type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
+                    <button id='btn-map' type="button" class="btn btn-success white" data-toggle="modal" data-target="#exampleModal">
                         Selectionner la pharmacie
                     </button>
                     </div>
@@ -82,10 +84,11 @@
                                 </div>
                                 <div class="modal-body">
                                     <!-- Choisir une pharmacie ? -->
-                                <div id="pharmselect">
+                                    <div class="inject">
+                                <div id="pharmselect" class="animated fadeIn">
                                 </div>
-                                <div id="addresselect">
-
+                                <div id="addresselect" class="animated fadeIn">
+                                </div>
                                 </div>
                                     <div
                                       id="map2"
