@@ -1,5 +1,6 @@
 class Doctor::ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy, :map]
+  skip_before_action :authenticate_user!, only: [:listpdf]
 
   def index
     @lists = List.all
@@ -48,23 +49,22 @@ class Doctor::ListsController < ApplicationController
   end
 
 def listpdf
+  @list = List.find(params[:list_id])
 
-    @list = List.find(params[:list_id])
-
-      respond_to do |format|
-            format.html
-            format.pdf do
-                render pdf: "Ordonnance du #{@list.created_at}",
-                page_size: 'A4',
-                template: "lists/listpdf.html.erb",
-                layout: "listpdf.pdf.erb",
-                orientation: "Portrait",
-                lowquality: true,
-                zoom: 1,
-                dpi: 75
-            end
-          end
-  end
+  # respond_to do |format|
+    # format.html
+    # format.pdf do
+      render pdf: "Ordonnance du #{@list.created_at}",
+      page_size: 'A4',
+      template: "lists/listpdf.html.erb",
+      layout: "listpdf.pdf.erb",
+      orientation: "Portrait",
+      lowquality: true,
+      zoom: 1,
+      dpi: 75
+  #   end
+  # end
+end
 
 
   private
