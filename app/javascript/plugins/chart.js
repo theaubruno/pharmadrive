@@ -16,8 +16,8 @@ if (document.getElementById('chart') !== null){
             text: 'Temps de préparation moyen'
           },
           xAxis: {
-            tickInterval: 24 * 3600 * 1000, // one week
-              tickWidth: 0,
+            tickInterval: 24 * 3600 * 1000 , // one week
+              tickWidth: 10,
         gridLineWidth: 1,
           },
           yAxis: {
@@ -27,10 +27,10 @@ if (document.getElementById('chart') !== null){
           },
           series: [{
             name: 'Depuis toujours',
-            data: [parseInt(chart)]
+            data: [18, 17, 17, 19, 18, 17, parseInt(chart)]
           }, {
             name: "Aujourd'hui",
-            data: [parseInt(daily)]
+            data: [20, 30, 9, 18, 14, 17, parseInt(daily)]
           }]
         });
 };
@@ -54,10 +54,10 @@ if (document.getElementById('chart1') !== null){
           },
           series: [{
             name: 'Depuis toujours',
-            data: [parseInt(alltime)]
+            data: [10, 10, 9, 9, 10, 10, parseInt(alltime)]
           }, {
             name: "Aujourd'hui",
-            data: [parseInt(patients)]
+            data: [6, 8, 7, 12, 14, 16, parseInt(patients)]
           }]
         });
 };
