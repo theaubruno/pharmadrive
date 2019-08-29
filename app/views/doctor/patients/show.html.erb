@@ -7,7 +7,7 @@
                     <%= @patient.last_name %>
                     <%= link_to '', edit_doctor_patient_path(@patient), class: 'fas fa-pen ml-1 font05 green' %>
                     <%= link_to '', doctor_patient_path(@patient), method: :delete, data: { confirm: 'Are you sure?' }, class: 'fas fa-trash ml-1 font05 red' %>
-                    <button id="showfrom" class="btn btn-secondary font04">+ Ordonnance</button>
+                    <button id="showfrom" class="btn btn-success white font04">+ Ordonnance</button>
                 </h1>
             </div>
             <div class="patient-lists ">
@@ -60,7 +60,7 @@
 <!--                     <button type="button" id="book" class="add-drug btn btn-primary">
                         Ajouter
                     </button> -->
-                    <%= link_to "Ajouter", new_doctor_drug_path(index: 1),  remote: true, class: "add-drug btn btn-primary", id: "book" %>
+                    <%= link_to "Ajouter", new_doctor_drug_path(index: 1),  remote: true, class: "add-drug btn btn-success white", id: "book" %>
                     <!-- Button trigger modal -->
                     <button id='btn-map' type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
                         Selectionner la pharmacie
@@ -94,8 +94,8 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Retour</button>
-                                    <%= f.submit 'Créer ordonnance', class: 'new-employee btn btn-danger' %>
+                                    <button type="button" class="btn btn-success white" data-dismiss="modal">Retour</button>
+                                    <%= f.submit 'Créer ordonnance', class: 'new-employee btn btn-success white' %>
 
                                 </div>
                             </div>
