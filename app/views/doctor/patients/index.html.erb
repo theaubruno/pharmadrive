@@ -1,3 +1,4 @@
+<% content_for :title, "Liste des patients" %>
 <div class="container-fluid"  style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://www.123freevectors.com/wp-content/original/131012-blue-and-white-triangle-geometric-background-illustration.jpg); background-size:cover;">
   <div class="noscroll  animated fadeIn">
   <div class="row text-center align-items-center d-inline">
@@ -11,15 +12,17 @@
     </h1>
     <div class="row justify-content-center">
       <div class="search-bar col-12 col-lg-6 mb-3" style='margin-right: 29px;'>
-        <i class="fa fa-search white pl-3 pt-3"></i>
         <%= form_tag doctor_patients_path, method: :get do %>
         <%= text_field_tag :query,
         params[:query],
         class: "form-control",
           placeholder: "Rechercher un patient"
           %>
+
           <% end %>
+
         </div>
+
       </div>
       <div class="patients pt-2">
         <% @patients.each do |p| %>
