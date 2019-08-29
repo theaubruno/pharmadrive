@@ -18,6 +18,12 @@ puts "Adding User"
 d1 = User.create!(role: "doctor", name: "Wangermez Vincent", email:"doctor1@example.com", address:"107 Cours Balguerie Stuttenberg, 33300 Bordeaux", password:"password")
 
 u1 = User.create!(role:"pharmacy", name: "Pharmacie du Musée", email:"pharmacy1@example.com", address:"93 Cours Balguerie Stuttenberg, 33300 Bordeaux", password:"password")
+u2 = User.create!(role:"pharmacy", name: "Pharmacie Tourny", email:"pharmacy2@example.com", address:"40 Allées de Tourny 33000 Bordeaux", password:"password")
+u3 = User.create!(role:"pharmacy", name: "Pharmacie Principale", email:"pharmacy3@example.com", address:"10 Rue Sainte-Catherine 33000 Bordeaux", password:"password")
+u4 = User.create!(role:"pharmacy", name: "Pharmacie d'Alsace et Lorraine", email:"pharmacy4@example.com", address:"132 Cours d'Alsace-Lorraine 33000 Bordeaux", password:"password")
+u5 = User.create!(role:"pharmacy", name: "Pharmacie Victoire", email:"pharmacy5@example.com", address:"24 Place de la Victoire 33000 Bordeaux", password:"password")
+u6 = User.create!(role:"pharmacy", name: "Pharmacie des Chartrons", email:"pharmacy6@example.com", address:"16 Cours Portal 33000 Bordeaux", password:"password")
+u7 = User.create!(role:"pharmacy", name: "Pharmacie Bruce Charrier", email:"pharmacy7@example.com", address:"198 Cours Saint-Louis 33000 Bordeaux", password:"password")
 
 puts "Adding Patient"
 
