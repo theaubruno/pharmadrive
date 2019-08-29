@@ -25,13 +25,13 @@ class Pharmacy::ListsController < ApplicationController
 
   def update
     @list.update(list_params)
-    # if @list.delivered?
-    #   # mail = ListMailer.with(list: @list).mail_delivered
-    #   # mail.deliver_now
-    # elsif @list.ready?
-    #   mail = ListMailer.with(list: @list).mail_ready
-    #   mail.deliver_now
-    # end
+    if @list.delivered?
+      mail = ListMailer.with(list: @list).mail_delivered
+      mail.deliver_now
+    elsif @list.ready?
+      mail = ListMailer.with(list: @list).mail_ready
+      mail.deliver_now
+    end
     redirect_to pharmacy_lists_path(@pharmacy)
   end
 
