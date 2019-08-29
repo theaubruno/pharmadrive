@@ -3,7 +3,7 @@
     <h1 class="col-12 p-2">Mes Clients </h1>
     <div class="row justify-content-center mb-4">
       <div class="search-bar col-12 col-lg-6 fa fa-search" style='margin-right: 19px;'>
-        <%= form_tag pharmacy_archives_path, method: :get do %>
+        <%= form_tag(pharmacy_archives_path, method: :get) do %>
         <%= text_field_tag :query,
         params[:query],
         class: "form-control",
