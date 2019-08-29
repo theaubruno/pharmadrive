@@ -1,4 +1,4 @@
-<div >
+<!-- <div >
   <div style="margin-bottom:50px ">
     <div style="text-align: center">
       <img src="../../assets/images/logopharma.png" alt="">
@@ -12,8 +12,8 @@
   <div>
       <div style="font-size: 25px; text-align: center">
         Medecin: <br>
-       <%= @list.patient.user.name %> <br>
-        <%= @list.patient.user.address %>
+       <#= @list.patient.user.name %> <br>
+        <#= @list.patient.user.address %>
       </div>
 
 
@@ -21,27 +21,27 @@
 
       <div style="margin: 30px 0px; font-size: 20px">
         Ordonnance du : <br>
-        <%= @list.created_at.strftime("%d %B %Y, %k:%M %P") %>
+        <#= @list.created_at.strftime("%d %B %Y, %k:%M %P") %>
       </div>
 
       <div style="margin-bottom:50px;">
         <span style="font-size: 20px;">
           Livrée à la Pharmacie : <br>
-          <%= @list.user.name %> <br>
-          <%= @list.user.address %>
+          <#= @list.user.name %> <br>
+          <#= @list.user.address %>
         </span>
       </div>
 
     </div>
 
     <div style="text-align: center">
-      <% @list.drugs.each do |drug| %>
-        <div style="font-size: 25px; margin-bottom: 10px;"> <%= drug.drug_name %> <br>
-          <%= drug.posology %>  -
-          <%= drug.quantity %> -
-          <%= drug.qsp %><br>
+      <#% @list.drugs.each do |drug| %>
+        <div style="font-size: 25px; margin-bottom: 10px;"> <#= drug.drug_name %> <br>
+          <#= drug.posology %>  -
+          <#= drug.quantity %> -
+          <#= drug.qsp %><br>
         </div>
-      <% end %>
+      <#% end %>
     </div>
   </div>
-</div>
+</div> -->
