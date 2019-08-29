@@ -1,9 +1,10 @@
-<div class="noscroll">
+<% content_for :title, "Archives" %>
+<div class="noscroll" style="background-image:linear-gradient(rgba(255,255,255,0.7),rgba(255,255,255,0.7)), url('https://i2.wp.com/onlyvectorbackgrounds.com/wp-content/uploads/2018/10/Abstract-Geometric-Background-Green.jpg?resize=1024%2C724&ssl=1');">
   <div class="row text-center align-items-center d-inline">
     <h1 class="col-12 p-2"> Ordonnances de :  </h1>
 
     <div class="row justify-content-center mb-4">
-      <div class="search-bar col-12 col-lg-6 fa fa-search" style='margin-right: 19px;'>
+      <div class="search-bar col-12 col-lg-6" style='margin-right: 19px;'>
         <%= form_tag pharmacy_archives_show_path, method: :get do %>
         <%= text_field_tag :query,
         params[:query],
@@ -19,7 +20,7 @@
         <div class="card">
             <div class="card-header d-flex" id="heading<%=list.id%>">
                 <button class="btn d-flex w-100 justify-between" type="button" data-toggle="collapse" data-target="#collapse<%=list.id%>" aria-expanded="false" aria-controls="collapse<%=list.id%>">
-                  <div <%= "class=accordion-list-day" if list.created_at.day == Time.now.day %>>
+                  <div class="w-100 d-flex justify-between">
                     <span >
                         <%= list.created_at.strftime("%d %B %Y")%> </span>
                     <span>
@@ -36,7 +37,8 @@
                     <%= drug.quantity %>
                     <%= drug.qsp %> <br>
                     <% end %>
-                    <%= link_to 'Pdf', doctor_list_listpdf_path(list.id, format: :pdf), target: :_blank %>
+                    <br>
+                    <%= link_to 'Télécharger le Pdf', doctor_list_listpdf_path(list.id, format: :pdf), target: :_blank, class: 'btn btn-success white' %>
                 </div>
             </div>
         </div>
