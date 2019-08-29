@@ -1,3 +1,4 @@
+  <% if current_user.role == 'doctor' %>
   <div class="col-12">
     <div class="row-style">
     <div class="card-stats-title">
@@ -5,22 +6,21 @@
     </div>
   </div>
     </div>
-    <% if current_user.role == 'doctor' %>
       <div class="row">
-        <div class="titles-stats col-5">
+        <div class="titles-stats2 col-5">
           <h4>Nombre de patients:</h4>
           <div class="card-stats2">
             <%= @user.patients.count %></strong>
           </div>
         </div>
-          <div class="titles-stats col-5">
+          <div class="titles-stats2 col-5">
             <h4> Nombre d'ordonnances: </h4>
             <div class="card-stats2">
               <%= sumordos(@user.patients) %>
             </div>
           </div>
         </div>
-        <div class="graph">
+        <div class="graph2">
         <div class="col-12">
         <div id="chart1" style="width:100%; height:400px;" data-daily2="<%= current_user.daily_patients.to_i %>" data-alltime="<%= current_user.average_patients  %>" class="mt-4">
         </div>
@@ -29,6 +29,9 @@
     </div>
     </div>
     <% else %>
+    <div class="card-stats-title2">
+      <h2> <%= current_user.name %> <%= link_to "", edit_user_registration_path, class: 'fas fa-pen ml-1 font13' %> </h2>
+    </div>
     <div class="container-stats">
       <div class="row">
         <div class="titles-stats col-2">
