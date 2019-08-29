@@ -1,0 +1,4 @@
+meta_product_name: "PharmaDrive"
+meta_title: "PharmaDrive - L'ordonnance de demain"
+meta_description: "PharmaDrive facilite le retrait de médicament en pharmacie."
+meta_image: "cover.png" # should exist in `app/assets/images/`

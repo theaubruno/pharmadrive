@@ -18,7 +18,7 @@ class Pharmacy::ListsController < ApplicationController
   end
 
   def archives_show
-    @patient = Patient.find(params[:query].to_i)
+    @patient = Patient.find(params[:format].to_i)
     @lists = @patient.lists
   end
 
