@@ -16,7 +16,9 @@
         <%= @list.user.address %>
       </p>
     </div>
-
+    <div style="margin: 30px">
+          <%= link_to "Télécharger l'ordonnance", doctor_list_listpdf_url(@list.id), format: :pdf, target: :_blank, style: 'color: white; background-color: #66DE89; padding: 15px 10px; border-radius: 4px; text-decoration: none; margin-top: 10px;'%>
+    </div>
 
 
     <div style="">
