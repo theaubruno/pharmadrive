@@ -36,6 +36,7 @@ class Doctor::PatientsController < ApplicationController
   end
 
   def destroy
+    raise
     @patient.destroy
     redirect_to doctor_patients_path
   end
