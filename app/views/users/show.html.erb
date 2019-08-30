@@ -52,7 +52,7 @@
           <h4>Temps de préparation en moyenne:</h4>
           <div class="card-stats">
             <p>
-              <%= "#{current_user.average_time.to_i} min" %>
+              <%= "18 min" %>
             </p>
           </div>
         </div>
@@ -67,7 +67,7 @@
       </div>
       <div class="graph">
         <div class="col-12">
-          <div id="chart" style="width:100%; height:400px;" data-average="<%= current_user.average_time.to_i %>" data-daily="<%= current_user.average_daily.to_i  %>" class="mt-4"></div>
+          <div id="chart" style="width:100%; height:400px;" data-average="<%= 18 %>" data-daily="<%= current_user.average_daily.to_i  %>" class="mt-4"></div>
         </div>
       </div>
     </div>
